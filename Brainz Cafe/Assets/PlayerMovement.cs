@@ -8,60 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [HideInInspector] public StaminaController _staminaController;
 
-    //public float moveSpeed = 5f;
-    //public float runSpeed = 20f;
-    //public static bool isSprinting;
-
-    //public Rigidbody2D rb;
-
-    //Vector2 movement;
-
-    //private void Start()
-    //{
-    //    _staminaController = GetComponent<StaminaController>();
-    //}
-
-    //public void SetRunSpeed(float speed)
-    //{
-    //    runSpeed = speed;
-    //}
-
-    //void Update()
-    //{
-
-    //    movement.x = Input.GetAxisRaw("Horizontal");
-    //    movement.y = Input.GetAxisRaw("Vertical");
-
-    //    if(PlayerMovement.isSprinting)
-    //    {
-    //        moveSpeed = 20f;
-    //    }
-
-    //}
-
-    //private void FixedUpdate()
-    //{
-
-    //    rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-    //    if (!Input.GetKey(KeyCode.LeftShift))
-    //    {
-
-    //        _staminaController.weAreSprinting = false;
-    //    }
-
-    //    if (Input.GetKey(KeyCode.LeftShift))
-    //    {
-    //        if (_staminaController.playerStamina > 0)
-    //        {
-    //            rb.MovePosition(rb.position + movement * runSpeed * Time.fixedDeltaTime);
-    //            _staminaController.weAreSprinting = true;
-    //            _staminaController.Sprinting();
-    //        }
-    //    }
-    //}
-
-
     Rigidbody2D rb;
     public static bool isSprinting;
 
