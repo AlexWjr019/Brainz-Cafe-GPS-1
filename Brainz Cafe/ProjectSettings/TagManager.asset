@@ -13,8 +13,8 @@ TagManager:
   - UI
   - Player
   - PickUp
-  - 
-  - 
+  - Tables
+  - Chairs
   - 
   - 
   - 
@@ -41,9 +41,9 @@ TagManager:
   - name: UI
     uniqueID: 1927497591
     locked: 0
-  - name: Player
-    uniqueID: 2953552789
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2953552789
     locked: 0
