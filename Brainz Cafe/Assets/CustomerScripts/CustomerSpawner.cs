@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public Transform[] spawnpoint;
-    public GameObject[] cusPrefabs;
+    public Transform spawnpoint; // Spawnpoints
+    public GameObject[] cusPrefabs; // Customer list
 
     public Vector2 spawnVal;
 
@@ -15,6 +15,8 @@ public class CustomerSpawner : MonoBehaviour
     public float startWait;
 
     public bool stop;
+
+    public Timer t;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +34,20 @@ public class CustomerSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(startWait);
 
-        while (!stop)
+        while (!stop || !t.timerOn)
         {
-            int randCus = Random.Range(0, cusPrefabs.Length);
+            int randCus = Random.Range(0, cusPrefabs.Length); // Randomize the zombie type
+            int randCusGrp = Random.Range(1, 3); // Randomize the grp size
 
-            Instantiate(cusPrefabs[randCus], spawnpoint[0].position, transform.rotation);
+            if (randCusGrp == 1)
+            {
+                Instantiate(cusPrefabs[randCus], spawnpoint.position, Quaternion.identity);
+            }
+            else if (randCusGrp == 2)
+            {
+                Instantiate(cusPrefabs[randCus], spawnpoint.position, Quaternion.identity);
+                Instantiate(cusPrefabs[randCus], spawnpoint.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
+            }
 
             yield return new WaitForSeconds(spawnWait);
         }
