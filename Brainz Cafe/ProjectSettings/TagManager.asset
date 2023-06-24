@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - order
+  - Customer
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - PickUp
   - Tables
   - Chairs
-  - 
+  - Customer
   - 
   - 
   - 
