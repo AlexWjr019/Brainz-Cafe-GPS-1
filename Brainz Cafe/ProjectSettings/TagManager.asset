@@ -7,6 +7,8 @@ TagManager:
   - Food
   - order
   - Customer
+  - Chairs
+  - Zombie
   layers:
   - Default
   - TransparentFX

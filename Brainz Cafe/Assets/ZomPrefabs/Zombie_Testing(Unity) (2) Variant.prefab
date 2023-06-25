@@ -419,13 +419,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4313481738634425284, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4313481738634425284, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4313481738634425284, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: nextWayPointDistance
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -4013679974697732426, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 536977324706435721, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3696957910246924800, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_Name
-      value: Zombie_Testing(Unity) (2)
+      value: Zombie_Testing(Unity) (2) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3696957910246924800, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_Layer
@@ -496,9 +512,8 @@ PrefabInstance:
       value: -0.02202797
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: -4013679974697732426, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
     - {fileID: -654967759815408231, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
-    - {fileID: 4853363182776344762, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+    - {fileID: -4013679974697732426, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
 --- !u!1 &3969396582630002821 stripped
 GameObject:
@@ -512,7 +527,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3969396582630002821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10d096ae24df8f0479000cda854bf4ee, type: 3}
   m_Name: 
@@ -532,7 +547,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3969396582630002821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cfbbc07056b29548a8aa7d4d02fb691, type: 3}
   m_Name: 
@@ -547,7 +562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3969396582630002821}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76946bcc5645a6e4a9c1f3396dc022f5, type: 3}
   m_Name: 

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4467193395757043330}
   - component: {fileID: 5204542046240820138}
   - component: {fileID: 8664889092227851217}
+  - component: {fileID: -8347123005852811446}
   m_Layer: 9
   m_Name: Chair bottom
-  m_TagString: Untagged
+  m_TagString: Chairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +134,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8347123005852811446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467193395757043329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9686db43f0170fa4ea790783a4741239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  full: 0

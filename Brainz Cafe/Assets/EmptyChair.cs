@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EmptyChair : MonoBehaviour
 {
+    public bool isOccupied;
+
     // Start is called before the first frame update
     void Start()
     {
