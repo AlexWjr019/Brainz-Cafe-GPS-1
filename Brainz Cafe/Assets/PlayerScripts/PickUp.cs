@@ -18,7 +18,8 @@ public class PickUp : MonoBehaviour
                 itemHolding.transform.position = transform.position + Direction;
                 itemHolding.transform.parent = null;
                 if (itemHolding.GetComponent<Rigidbody2D>())
-                    itemHolding.GetComponent<Rigidbody2D>().simulated = true;
+                    Destroy(itemHolding);
+                itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                 itemHolding = null;
             }
             else
@@ -31,6 +32,7 @@ public class PickUp : MonoBehaviour
                     itemHolding.transform.parent = transform;
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = false;
+
                 }
             }
 
