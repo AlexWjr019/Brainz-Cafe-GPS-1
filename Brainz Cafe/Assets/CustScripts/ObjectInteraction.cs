@@ -59,6 +59,7 @@ public class ObjectInteraction : MonoBehaviour
         if (isImageShown)
         {
             HideImage();
+            Invoke("DestroyCustomer", 3f);
         }
     }
 
@@ -77,6 +78,11 @@ public class ObjectInteraction : MonoBehaviour
         foodImage.sprite = foodSprites[randomIndex];
         foodImage.gameObject.SetActive(false);
         isImageShown = false;
+    }
+
+    private void DestroyCustomer()
+    {
+        Destroy(gameObject); // Destroy the customer object
     }
 
 }

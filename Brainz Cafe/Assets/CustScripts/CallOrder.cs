@@ -6,37 +6,44 @@ using UnityEngine.UI;
 public class CallOrder : MonoBehaviour
 {
     public Image popupImage;
-    public bool isSitting = false;
-    public float delay = 5f;
+    private CustomerAI customerAI;
 
     private void Start()
     {
-        Invoke("CallForOrder", delay);
-    }
-
-    private void CallForOrder()
-    {
-        isSitting = true;
-        callOrder();
+        customerAI = GetComponent<CustomerAI>();
+        customerAI.onReachedEndOfPath += HandleReachedEndOfPath;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && popupImage.gameObject.activeSelf)
         {
-            popupImage.gameObject.SetActive(false);
+            DeactivatePopupImage();
         }
     }
 
-    private void callOrder()
+    private void HandleReachedEndOfPath(bool value)
     {
-        if (isSitting)
+        Debug.Log("ReachedEndOfPath: " + value);
+        if (value)
         {
-            popupImage.gameObject.SetActive(true);
+            ActivatePopupImage();
         }
         else
         {
-            popupImage.gameObject.SetActive(false);
+            DeactivatePopupImage();
         }
+    }
+
+    private void ActivatePopupImage()
+    {
+        Debug.Log("Activating Popup Image");
+        popupImage.gameObject.SetActive(true);
+    }
+
+    private void DeactivatePopupImage()
+    {
+        Debug.Log("Deactivating Popup Image");
+        popupImage.gameObject.SetActive(false);
     }
 }

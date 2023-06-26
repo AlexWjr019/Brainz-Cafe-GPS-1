@@ -16,10 +16,13 @@ public class CustomerAI : MonoBehaviour
 
     Path path;
     int currentWayPoint = 0;
-    bool reachedEndOfPath = false;
+    public bool reachedEndOfPath = false;
 
     Seeker seeker;
     Rigidbody2D rb;
+
+    public delegate void ReachedEndOfPath(bool value);
+    public event ReachedEndOfPath onReachedEndOfPath;
 
     // Start is called before the first frame update
     void Start()
@@ -81,8 +84,8 @@ public class CustomerAI : MonoBehaviour
 
     IEnumerator lookChair()
     {
-        while (true) 
-        { 
+        while (true)
+        {
             for (int i = 0; i < chairs.Length; i++)
             {
                 if (!chairs[i].isOccupied)
@@ -102,6 +105,7 @@ public class CustomerAI : MonoBehaviour
         if (tempChair != null && col.gameObject == tempChair.gameObject)
         {
             reachedEndOfPath = true;
+            onReachedEndOfPath?.Invoke(reachedEndOfPath);
             Debug.Log("Finally FOOD");
         }
     }

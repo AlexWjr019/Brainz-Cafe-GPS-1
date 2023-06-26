@@ -6,14 +6,17 @@ public class ObjectHighlighted : MonoBehaviour
 {
     public GameObject player;
     public float highlightDistance = 2f;
-    public CallOrder callorder;
+    //public CallOrder callorder;
+    public CustomerAI customerAI;
 
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        callorder = GetComponent<CallOrder>();
+        //callorder = GetComponent<CallOrder>();
+        customerAI = GetComponent<CustomerAI>();
+        player = GameObject.Find("Player_Testing(Unity)");
     }
 
     private void Update()
@@ -26,7 +29,7 @@ public class ObjectHighlighted : MonoBehaviour
             float distance = Vector2.Distance(transform.position, player.transform.position);
 
             // Check if the player is within the highlighting distance
-            if (distance <= highlightDistance && callorder.isSitting)
+            if (distance <= highlightDistance && /*callorder.isSitting*/ customerAI.reachedEndOfPath)
             {
                 // Highlight the object
                 spriteRenderer.color = Color.yellow;
