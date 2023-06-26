@@ -6,23 +6,23 @@ public class HealthDamage : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-
     public HealthBar healthBar;
+
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.V))
-        {
-            TakeDamage(20);
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.V))
+    //    {
+    //        TakeDamage(20);
+    //    }
+    //}
 
-    void TakeDamage(int damege)
+    public void TakeDamage(int damege)
     {
         currentHealth -= damege;
 

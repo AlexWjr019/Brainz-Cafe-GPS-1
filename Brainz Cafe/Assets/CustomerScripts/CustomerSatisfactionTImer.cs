@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class CustomerSatisfactionTImer : MonoBehaviour
 {
     public Image timer_radial_image;
-    float time_remaining;
+    public float time_remaining;
     public float max_time = 5.0f;
-    // Start is called before the first frame update
+    private bool damageApplied = false; // Declare the damageApplied variable
+
     void Start()
     {
         time_remaining = max_time;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (time_remaining > 0)
@@ -22,6 +22,29 @@ public class CustomerSatisfactionTImer : MonoBehaviour
             time_remaining -= Time.deltaTime;
             timer_radial_image.fillAmount = time_remaining / max_time;
         }
+
+        CheckTimeRemaining();
+    }
+
+    void CheckTimeRemaining()
+    {
+        if (time_remaining <= 0)
+        {
+            if (!damageApplied)
+            {
+                HealthDamage health_damage = FindObjectOfType<HealthDamage>();
+                if (health_damage != null)
+                {
+                    health_damage.TakeDamage(20);
+                }
+                damageApplied = true;
+            }
+        }
+        else
+        {
+            damageApplied = false;
+        }
     }
 }
+
 

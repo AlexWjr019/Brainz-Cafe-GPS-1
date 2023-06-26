@@ -1415,13 +1415,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890858839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -491.11, y: -261.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1603691691}
-  m_RootOrder: 4
+  m_Father: {fileID: 2076734754}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &890858841
 MonoBehaviour:
@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer_radial_image: {fileID: 2076734752}
+  time_remaining: 0
   max_time: 5
 --- !u!1001 &890998507
 PrefabInstance:
@@ -2079,6 +2080,7 @@ GameObject:
   - component: {fileID: 1307916384}
   - component: {fileID: 1307916383}
   - component: {fileID: 1307916388}
+  - component: {fileID: 1307916390}
   m_Layer: 6
   m_Name: Player_Testing(Unity)
   m_TagString: Player
@@ -2254,6 +2256,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5935006, y: 1.7495409}
   m_EdgeRadius: 0
+--- !u!114 &1307916390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307916382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f885a9dc038fa0549a7bb1cb158ef73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 1063617064}
 --- !u!1 &1347802204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,7 +3422,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 890858840}
   m_Father: {fileID: 1562574733}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
