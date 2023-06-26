@@ -570,6 +570,21 @@ MonoBehaviour:
   popupImage: {fileID: 309409205}
   isSitting: 0
   delay: 5
+--- !u!114 &270755003874184315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969396582630002821}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb2ac51909973448aff4a7f98d88a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer_radial_image: {fileID: 0}
+  time_remaining: 0
+  max_time: 5
 --- !u!114 &4244489146613135419
 MonoBehaviour:
   m_ObjectHideFlags: 0

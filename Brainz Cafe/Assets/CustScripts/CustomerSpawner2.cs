@@ -54,7 +54,9 @@ public class CustomerSpawner2 : MonoBehaviour
 
     public void SpawnCustomers()
     {
-        int randomPair = Random.Range(1, 3); // Generate a random number between 1 and 2
+        Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+
+/*        int randomPair = Random.Range(1, 3); // Generate a random number between 1 and 2
 
         if (randomPair == 1)
         {
@@ -65,5 +67,5 @@ public class CustomerSpawner2 : MonoBehaviour
             Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
             Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
         }
-    }
+*/    }
 }
