@@ -14,19 +14,25 @@ public class HealthDamage : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    //void Update()
-    //{
+    void Update()
+    {
     //    if (Input.GetKeyUp(KeyCode.V))
     //    {
     //        TakeDamage(20);
     //    }
-    //}
+
+    }
 
     public void TakeDamage(int damege)
     {
         currentHealth -= damege;
 
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject); // Destroy the player GameObject or perform other actions
+        }
     }
 
 }

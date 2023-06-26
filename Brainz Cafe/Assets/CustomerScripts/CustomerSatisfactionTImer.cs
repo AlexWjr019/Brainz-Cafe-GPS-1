@@ -35,7 +35,7 @@ public class CustomerSatisfactionTImer : MonoBehaviour
                 HealthDamage health_damage = FindObjectOfType<HealthDamage>();
                 if (health_damage != null)
                 {
-                    health_damage.TakeDamage(20);
+                    health_damage.TakeDamage(100);
                 }
                 damageApplied = true;
             }
