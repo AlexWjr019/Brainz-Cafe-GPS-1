@@ -8,7 +8,7 @@ public class CustomerSpawner2 : MonoBehaviour
     public GameObject customerPair2; // Prefab for the second pair with 2 customers
     public Transform spawnPosition; // Reference to the empty GameObject for the spawn position
 
-    private float checkInterval = 5f; // Interval in seconds to check for customer presence
+    private float checkInterval = 10f; // Interval in seconds to check for customer presence
     private float timer = 0f; // Timer to track the elapsed time
 
     private void Start()
@@ -56,7 +56,7 @@ public class CustomerSpawner2 : MonoBehaviour
     {
         Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
 
-/*        int randomPair = Random.Range(1, 3); // Generate a random number between 1 and 2
+        int randomPair = Random.Range(1, 3); // Generate a random number between 1 and 2
 
         if (randomPair == 1)
         {
@@ -67,5 +67,5 @@ public class CustomerSpawner2 : MonoBehaviour
             Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
             Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
         }
-*/    }
+    }
 }
