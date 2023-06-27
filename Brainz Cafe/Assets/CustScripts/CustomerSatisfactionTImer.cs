@@ -38,6 +38,7 @@ public class CustomerSatisfactionTImer : MonoBehaviour
                     health_damage.TakeDamage(10);
                 }
                 damageApplied = true;
+                Destroy(gameObject);
             }
         }
         else
