@@ -22,7 +22,7 @@ public class CustomerAI : MonoBehaviour
     Rigidbody2D rb;
 
     public delegate void ReachedEndOfPath(bool value);
-    public event ReachedEndOfPath onReachedEndOfPath;
+    public event ReachedEndOfPath OnReachedEndOfPath;
 
     // Start is called before the first frame update
     void Start()
@@ -105,8 +105,13 @@ public class CustomerAI : MonoBehaviour
         if (tempChair != null && col.gameObject == tempChair.gameObject)
         {
             reachedEndOfPath = true;
-            onReachedEndOfPath?.Invoke(reachedEndOfPath);
+            OnReachedEndOfPath?.Invoke(reachedEndOfPath);
             Debug.Log("Finally FOOD");
         }
+    }
+
+    private void OnDestroy()
+    {
+         tempChair.isOccupied = false;
     }
 }

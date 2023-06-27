@@ -628,6 +628,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Customer
       objectReference: {fileID: 0}
+    - target: {fileID: 4853363182776344762, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: detailedGizmos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853363182776344762, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: graphMask.value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6098095590989837369, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -687,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 9065235823712487721, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_Offset.y
       value: -0.02202797
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065235823712487721, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -654967759815408231, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
@@ -759,7 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer_radial_image: {fileID: 3374217472247243213}
   time_remaining: 0
-  max_time: 20
+  max_time: 40
 --- !u!114 &4244489146613135419
 MonoBehaviour:
   m_ObjectHideFlags: 0

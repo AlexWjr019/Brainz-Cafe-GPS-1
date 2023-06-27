@@ -11,7 +11,7 @@ public class CallOrder : MonoBehaviour
     private void Start()
     {
         customerAI = GetComponent<CustomerAI>();
-        customerAI.onReachedEndOfPath += HandleReachedEndOfPath;
+        customerAI.OnReachedEndOfPath += HandleReachedEndOfPath;
     }
 
     private void Update()
