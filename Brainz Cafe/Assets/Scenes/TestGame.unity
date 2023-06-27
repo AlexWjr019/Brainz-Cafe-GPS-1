@@ -536,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -84.98999, y: -84.99}
+  m_AnchoredPosition: {x: -84.98999, y: -84.98999}
   m_SizeDelta: {x: 169.98, y: 169.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264468349
@@ -1711,7 +1711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3696957910246924800, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6098095590989837369, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_RootOrder
@@ -2325,6 +2325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie_Testing(Unity) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3696957910246924800, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6098095590989837369, guid: a0a705a730b412541b99ce30d33ef521, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2407,8 +2411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupImage: {fileID: 1798647893}
-  isSitting: 0
-  delay: 5
 --- !u!114 &1603691686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,7 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1307916382}
   highlightDistance: 1
-  callorder: {fileID: 1603691685}
+  customerAI: {fileID: 0}
 --- !u!114 &1603691687
 MonoBehaviour:
   m_ObjectHideFlags: 0
