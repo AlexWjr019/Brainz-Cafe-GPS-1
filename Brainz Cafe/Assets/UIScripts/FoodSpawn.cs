@@ -22,7 +22,7 @@ public class FoodSpawn : MonoBehaviour
             delayStarted = true;
         }
 
-        if (delayStarted && timer >= 5.0f)
+        if (delayStarted && timer >= 2.0f)
         {
             if (timer >= spawnInterval)
             {
@@ -33,7 +33,6 @@ public class FoodSpawn : MonoBehaviour
 
         int i = objectInteraction.randomIndex;
         r = i;
-
     }
 
     private void SpawnFood()

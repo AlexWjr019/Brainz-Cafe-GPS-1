@@ -18,7 +18,7 @@ public class Timer : MonoBehaviour
     private float timerStart = 0;
     private float timer;
 
-    public string sceneToLoad;
+    public int sceneID;
 
     public TMP_Text timerTxt;
 
@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time is UP!");
                 timerDuration = 0;
                 timerOn = false;
-                SceneManager.LoadScene(sceneToLoad);
+                SceneManager.LoadScene(sceneID);
             }
         }
     }

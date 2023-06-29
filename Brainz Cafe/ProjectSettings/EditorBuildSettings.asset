@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: b141a52809ba7d14e95b6158d3c97f38
+  - enabled: 1
+    path: Assets/Scenes/PlayerDeath.unity
+    guid: f723a74ec39f28748b7867d2c1f93155
   m_configObjects: {}
