@@ -1,41 +1,43 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodSpawn : MonoBehaviour
 {
     public GameObject[] foodPrefabs;
     public Transform[] spawnPositions;
-    public float spawnInterval = 1.0f;
+    public float spawnInterval = 1f;
     public bool canSpawnFood = true;
     private bool delayStarted = false;
-    private float timer = 0.0f;
+    private float delayTimer = 0.0f;
+    private const float spawnDelay = 3.0f;
     private int spawnIndex = 0;
-    public ObjectInteraction objectInteraction;
-    int r;
+    private Queue<int> customerFoodIndices = new Queue<int>(); // Indices of the food shown to the customers
 
     private void Update()
     {
-        timer += Time.deltaTime;
+        //delayTimer += Time.deltaTime;
 
-        if (!delayStarted && Input.GetKeyDown(KeyCode.Return))
+        //if (delayStarted && delayTimer >= spawnDelay)
+        //{
+        //    if (delayTimer >= spawnInterval)
+        //    {
+        //        SpawnFood();
+        //        delayTimer = 0.0f; // Reset the delay timer
+        //    }
+        //}
+        if (canSpawnFood && customerFoodIndices.Count > 0)
         {
-            timer = 0.0f;
-            delayStarted = true;
-        }
+            delayTimer += Time.deltaTime;
 
-        if (delayStarted && timer >= 2.0f)
-        {
-            if (timer >= spawnInterval)
+            if (delayTimer >= spawnDelay)
             {
                 SpawnFood();
-                timer = 0.0f;
+                delayTimer = 0.0f; // Reset the delay timer
             }
         }
-
-        int i = objectInteraction.randomIndex;
-        r = i;
     }
 
-    private void SpawnFood()
+    public void SpawnFood()
     {
         if (foodPrefabs.Length == 0)
         {
@@ -49,27 +51,54 @@ public class FoodSpawn : MonoBehaviour
             return;
         }
 
-        bool hasObject = CheckForExistingObject(spawnPositions[spawnIndex].position);
-        if (hasObject)
+        if (customerFoodIndices.Count == 0)
         {
-            // Skip spawning if an object is already present
-            spawnIndex = (spawnIndex + 1) % spawnPositions.Length; // Move to the next spawn position
+            Debug.LogWarning("No customer food indices available to spawn.");
             return;
         }
 
+        int spawnPositionIndex = GetNextAvailableSpawnPosition();
+        if (spawnPositionIndex == -1)
+        {
+            Debug.LogWarning("All spawn positions are currently occupied.");
+            return; // Exit the method if no available spawn positions
+        }
 
-        GameObject FoodPrefab = foodPrefabs[r];
+        int foodIndex = customerFoodIndices.Dequeue(); // Dequeue the first customer food index
 
-        Transform spawnPosition = spawnPositions[spawnIndex];
+        if (foodIndex < 0 || foodIndex >= foodPrefabs.Length)
+        {
+            Debug.LogWarning("Invalid food index: " + foodIndex);
+            return; // Exit the method if the food index is invalid
+        }
 
-        Instantiate(foodPrefabs[r], spawnPosition.position, spawnPosition.rotation);
+        GameObject foodPrefab = foodPrefabs[foodIndex];
+        Transform spawnPosition = spawnPositions[spawnPositionIndex];
+        Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
 
-        spawnIndex = (spawnIndex + 1) % spawnPositions.Length; // Move to the next spawn position
+        //canSpawnFood = false;
+        //delayStarted = false; // Reset the delay flag
+        delayTimer = 0.0f; // Reset the delay timer
 
-        canSpawnFood = false;
-        delayStarted = false;
+        // Check if there are more customer food indices to spawn
+        if (customerFoodIndices.Count > 0)
+        {
+            delayStarted = true; // Start the delay for the next food spawn
+        }
+    }
 
+    private int GetNextAvailableSpawnPosition()
+    {
+        for (int i = 0; i < spawnPositions.Length; i++)
+        {
+            int nextIndex = (spawnIndex + i) % spawnPositions.Length;
+            if (!CheckForExistingObject(spawnPositions[nextIndex].position))
+            {
+                return nextIndex;
+            }
+        }
 
+        return -1; // No available spawn positions
     }
 
     private bool CheckForExistingObject(Vector3 position)
@@ -87,5 +116,17 @@ public class FoodSpawn : MonoBehaviour
         return false; // No object found at the position
     }
 
-
+    public void AddCustomerFoodIndex(int index)
+    {
+        customerFoodIndices.Enqueue(index); // Enqueue the customer food index
+        if (!delayStarted)
+        {
+            delayStarted = true; // Start the delay when the first customer food index is added
+            delayTimer = 0.0f; // Reset the delay timer
+        }
+        else
+        {
+            delayTimer = 0.0f; // Reset the delay timer for subsequent customer food indices
+        }
+    }
 }

@@ -14,12 +14,30 @@ public class ObjectAutoWalk : MonoBehaviour
     private float checkInterval = 5f; // Interval in seconds to check for the first point occupancy
     private float timer = 0f; // Timer to track the elapsed time
 
+    //private GameObject chairParent; // Reference to the parent object holding the chairs
+    //private List<Transform> chairs = new List<Transform>(); // List to store references to the individual chairs
+
+
     private void Start()
     {
-        // Assign the start and end points programmatically
         startPoint = GameObject.Find("StartPoint").transform;
         endPoint = GameObject.Find("EndPoint").transform;
+        //chairParent = GameObject.Find("Chairs"); // Replace "Tables & Chairs" with the actual name of the chair parent GameObject
+
+        //if (chairParent != null)
+        //{
+        //    // Store references to the individual chairs
+        //    foreach (Transform chair in chairParent.transform)
+        //    {
+        //        chairs.Add(chair);
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.LogError("Chair parent not found!");
+        //}
     }
+
 
     private void Update()
     {
@@ -81,10 +99,44 @@ public class ObjectAutoWalk : MonoBehaviour
             yield return null;
         }
 
-        // Ensure the object reaches the destination precisely
         transform.position = targetPos;
 
-        hasReachedDestination = true;
-        isMoving = false;
+    //    // Find an empty chair
+    //    Transform emptyChair = GetEmptyChair();
+    //    if (emptyChair != null)
+    //    {
+    //        // Move to the empty chair
+    //        Vector2 chairPosition = emptyChair.position;
+    //        while (Vector2.Distance(transform.position, chairPosition) > 0.01f)
+    //        {
+    //            transform.position = Vector2.MoveTowards(transform.position, chairPosition, speed * Time.deltaTime);
+    //            yield return null;
+    //        }
+
+    //        // Sit down on the chair
+    //        hasReachedDestination = true;
+    //        isMoving = false;
+
+    //        // TODO: Perform the sitting down animation or logic here
+    //        emptyChair.GetComponent<ChairOccupancy>().OccupyChair(); // Set the chair as occupied
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("No empty chairs available.");
+    //    }
     }
+
+
+    //private Transform GetEmptyChair()
+    //{
+    //    foreach (Transform chair in chairs)
+    //    {
+    //        if (!chair.GetComponent<ChairOccupancy>().IsOccupied())
+    //        {
+    //            return chair;
+    //        }
+    //    }
+
+    //    return null; // No empty chairs found
+    //}
 }

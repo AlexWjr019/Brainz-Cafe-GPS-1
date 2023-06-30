@@ -9,6 +9,7 @@ TagManager:
   - Customer
   - Chairs
   - Zombie
+  - Boundary
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2953552789
+    locked: 0
+  - name: Customer
+    uniqueID: 3430771267
     locked: 0

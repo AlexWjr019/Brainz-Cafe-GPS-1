@@ -71,4 +71,17 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(0f, 0f);
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Check if the player is colliding with the screen boundaries
+        if (collision.CompareTag("Boundary"))
+        {
+            // Clamp the player's position within the screen boundaries
+            float clampedX = Mathf.Clamp(transform.position.x, collision.bounds.min.x, collision.bounds.max.x);
+            float clampedY = Mathf.Clamp(transform.position.y, collision.bounds.min.y, collision.bounds.max.y);
+
+            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+        }
+    }
 }
