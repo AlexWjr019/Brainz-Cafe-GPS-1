@@ -22,7 +22,7 @@ TagManager:
   - Tables
   - Chairs
   - Customer
-  - 
+  - Obstacals
   - 
   - 
   - 
@@ -52,6 +52,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2953552789
+    locked: 0
+  - name: Shop
+    uniqueID: 2971136831
+    locked: 0
+  - name: Obstacals
+    uniqueID: 2414006213
     locked: 0
   - name: Customer
     uniqueID: 3430771267

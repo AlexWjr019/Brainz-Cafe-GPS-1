@@ -232,7 +232,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &22068690
 PrefabInstance:
@@ -1312,7 +1312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &368430034
 PrefabInstance:
@@ -2013,7 +2013,7 @@ Transform:
   - {fileID: 2009472664}
   - {fileID: 1228091793}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534741064
 GameObject:
@@ -2075,7 +2075,7 @@ Transform:
   - {fileID: 1320611459}
   - {fileID: 1973817536}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &563983224
 PrefabInstance:
@@ -2877,14 +2877,13 @@ GameObject:
   - component: {fileID: 927229797}
   - component: {fileID: 927229796}
   - component: {fileID: 927229795}
-  - component: {fileID: 927229794}
   m_Layer: 5
   m_Name: Start Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927229793
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2906,34 +2905,6 @@ RectTransform:
   m_AnchoredPosition: {x: -100.4, y: -37.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &927229794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 927229792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69574a88557d7fc479932ad641685c3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Chef
-    sentences:
-    - Hey! over here!
-    - W,A,S,D to move around
-    - "Don\u2019t forget to use your legs by pressing LShift. It can be useful"
-    - 'Oh! Look, a customer. '
-    - Try taking their order by pressing Q
-    - Hold on, let me finish the order
-    - Here, take the food from the counter by pressing E
-    - Remember, the satisfaction bar is dropping, try to serve him fast
-    - You can press E to serve him food
-    - Great, nice to see you are catching up fast
-    - Your shift is from 11:00A.M until 5:00P.M
-    - "Try to survive till 5:00P.M, the zombie can be aggressive if they are not
-      satisfied\r."
 --- !u!114 &927229795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2978,7 +2949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 927229794}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
         m_MethodName: TriggerDialogue
         m_Mode: 1
@@ -3429,7 +3400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1218956893084428345, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1218956893084428345, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3513,7 +3484,7 @@ RectTransform:
   - {fileID: 117212792}
   - {fileID: 1547430337}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3678,7 +3649,7 @@ RectTransform:
   - {fileID: 927229793}
   - {fileID: 1642210251}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5008,6 +4979,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547430336}
   m_CullTransparentMesh: 1
+--- !u!1 &1572120911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572120914}
+  - component: {fileID: 1572120913}
+  - component: {fileID: 1572120912}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1572120912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572120911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69574a88557d7fc479932ad641685c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Chef
+    sentences:
+    - Hey! over here!
+    - W,A,S,D to move around
+    - "Don\u2019t forget to use your legs by pressing LShift. It can be useful"
+    - 'Oh! Look, a customer. '
+    - Try taking their order by pressing Q
+    - Hold on, let me finish the order
+    - Here, take the food from the counter by pressing E
+    - Remember, the satisfaction bar is dropping, try to serve him fast
+    - You can press E to serve him food
+    - Great, nice to see you are catching up fast
+    - Your shift is from 11:00A.M until 5:00P.M
+    - "Try to survive till 5:00P.M, the zombie can be aggressive if they are not
+      satisfied\r."
+  interactKey: 97
+--- !u!58 &1572120913
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572120911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.8455564
+--- !u!4 &1572120914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572120911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.1, y: -0.31, z: 4.7213874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1642210250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,7 +5095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.40454102, y: -107.9}
+  m_AnchoredPosition: {x: 0.40454102, y: -224.8}
   m_SizeDelta: {x: 594.8091, y: 204.6899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1642210252
