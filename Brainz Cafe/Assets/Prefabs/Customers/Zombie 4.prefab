@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5935459561539810021}
   - component: {fileID: 5517725439119277244}
   m_Layer: 10
-  m_Name: Food2
+  m_Name: food2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 7542297940097336356}
   - component: {fileID: 5337543362693312149}
   m_Layer: 10
-  m_Name: Food2
+  m_Name: food2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 729230265153869888}
   - component: {fileID: 5670832604049296510}
   m_Layer: 10
-  m_Name: Food3
+  m_Name: food3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 8417484363513652460}
   - component: {fileID: 5477525815557222540}
   m_Layer: 10
-  m_Name: Food1
+  m_Name: food1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,7 +1206,7 @@ GameObject:
   - component: {fileID: 8496134944204571870}
   - component: {fileID: 7619886615130328803}
   m_Layer: 10
-  m_Name: Food1
+  m_Name: food1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 1018128285461168707}
   - component: {fileID: 1340434894874245408}
   m_Layer: 10
-  m_Name: Food3
+  m_Name: food3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

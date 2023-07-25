@@ -4074,17 +4074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25190867b4f22ce4eb1a726406d6a521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStamina: 100
-  maxStamina: 100
-  hasRegenerated: 1
-  weAreSprinting: 0
-  staminaDrain: 35
-  staminaRegen: 20.5
-  slowedRunSpeed: 5
-  normalRunSpeed: 20
-  staminaProgressUI: {fileID: 1788188097}
-  sliderCanvasGroup: {fileID: 39769047}
-  playerController: {fileID: 0}
 --- !u!61 &1307916389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4633,7 +4622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 430.23, y: -165.66998}
+  m_AnchoredPosition: {x: 430.22998, y: -165.66998}
   m_SizeDelta: {x: -1298.39, y: -470.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457432759
