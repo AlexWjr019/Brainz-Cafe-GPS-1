@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class Timer : MonoBehaviour
 {
@@ -22,10 +23,15 @@ public class Timer : MonoBehaviour
 
     public TMP_Text timerTxt;
 
+    public GameObject customerSpawnObject;
+
+    public bool nightShift = false;
+
     // Start is called before the first frame update
     void Start()
     {
         resetTimer();
+        nightShift = false;
     }
 
     // Update is called once per frame
@@ -40,15 +46,15 @@ public class Timer : MonoBehaviour
             }
             else if (!countDown && ((timer - timerStart) <= timerDuration))
             {
-                timer += Time.deltaTime;        
-                updateTimerDisplay(timer);            
+                timer += Time.deltaTime;
+                updateTimerDisplay(timer);
             }
             else
             {
                 Debug.Log("Time is UP!");
                 timerDuration = 0;
                 timerOn = false;
-                SceneManager.LoadScene(sceneID);
+                //SceneManager.LoadScene(sceneID);
             }
         }
     }
@@ -63,7 +69,7 @@ public class Timer : MonoBehaviour
         else
         {
             Debug.Log(timer);
-            timer = timerStart; 
+            timer = timerStart;
             timerOn = true;
         }
     }
@@ -85,6 +91,31 @@ public class Timer : MonoBehaviour
         else
         {
             timerTxt.text = string.Format("{0:00} : {1:00} PM", min, sec);
+            if (min == 12 && sec == 0)
+            {
+                Debug.Log("Player Break Time"); // Display break time message
+                // Deactivate the customer spawn game object at 12:00 PM
+                customerSpawnObject.SetActive(false);
+            }
+            if (min == 13 && sec == 0)
+            {
+                Debug.Log("Player Afternoon shift"); // Display break time message
+                // Activate the customer spawn game object at 12:00 PM
+                customerSpawnObject.SetActive(true);
+            }
+            if (min == 17 && sec == 0)
+            {
+                Debug.Log("Player Break Time"); // Display break time message
+                // Deactivate the customer spawn game object at 12:00 PM
+                customerSpawnObject.SetActive(false);
+            }
+            if (min == 18 && sec == 0)
+            {
+                Debug.Log("Player Night shift"); // Display break time message
+                // Activate the customer spawn game object at 12:00 PM
+                customerSpawnObject.SetActive(true);
+                nightShift = true;
+            }
         }
     }
 }

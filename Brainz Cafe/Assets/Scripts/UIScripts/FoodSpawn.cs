@@ -5,11 +5,11 @@ public class FoodSpawn : MonoBehaviour
 {
     public GameObject[] foodPrefabs;
     public Transform[] spawnPositions;
-    public float spawnInterval = 1f;
+    //public float spawnInterval = 1f;
     public bool canSpawnFood = true;
     private bool delayStarted = false;
     private float delayTimer = 0.0f;
-    private const float spawnDelay = 3.0f;
+    public float spawnDelay = 3.0f;
     private int spawnIndex = 0;
     private Queue<int> customerFoodIndices = new Queue<int>(); // Indices of the food shown to the customers
 
@@ -74,7 +74,10 @@ public class FoodSpawn : MonoBehaviour
 
         GameObject foodPrefab = foodPrefabs[foodIndex];
         Transform spawnPosition = spawnPositions[spawnPositionIndex];
-        Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
+        GameObject foodInstance = Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
+
+        // Remove the "(clone)" suffix from the instantiated food object's name
+        foodInstance.name = RemoveCloneSuffix(foodInstance.name);
 
         //canSpawnFood = false;
         //delayStarted = false; // Reset the delay flag
@@ -128,5 +131,19 @@ public class FoodSpawn : MonoBehaviour
         {
             delayTimer = 0.0f; // Reset the delay timer for subsequent customer food indices
         }
+    }
+
+    private string RemoveCloneSuffix(string name)
+    {
+        // Check if the name contains the "(clone)" suffix
+        int cloneIndex = name.IndexOf("(Clone)");
+
+        if (cloneIndex != -1)
+        {
+            // Remove the "(clone)" suffix from the name
+            name = name.Substring(0, cloneIndex);
+        }
+
+        return name;
     }
 }

@@ -11,18 +11,29 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private bool isSitting = false; // Flag to track if the customer is sitting
 
     public bool isChasing = false; // Flag to track if the customer is currently chasing the player
-    private float chaseDuration = 10f; // Duration of the chase in seconds
-    private float chaseTimer = 0f; // Timer to track the chase duration
+    //private float chaseDuration = 10f; // Duration of the chase in seconds
+    //private float chaseTimer = 0f; // Timer to track the chase duration
 
-    public string playerTag = "Player"; // Tag of the player object
+    public string playerTag = "Chairs"; // Tag of the player object
     public float moveSpeed = 5f; // Speed at which the customer moves towards the player
 
+    public float damageRate = 1f; // Rate at which damage is applied to the table
+    private float damageTimer = 0f; // Timer to track the time since the last damage
+
     private Transform player; // Reference to the player's transform
+    private float destroyTimer = 0f;
+    private float destroyDelay = 3f;
+    public CustomerInteraction CustomerInteraction;
+
+    private Coroutine damageCoroutine; // Reference to the damage coroutine
+    private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
+
+
 
     void Start()
     {
         time_remaining = max_time;
-        timer_radial_image.gameObject.SetActive(false); // Deactivate the image at the start
+        timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
 
         // Find the player object with the specified tag
         GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
@@ -34,23 +45,43 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             Debug.LogWarning("Player object not found with tag: " + playerTag);
         }
+
+        CustomerInteraction = GetComponent<CustomerInteraction>();
+
     }
 
     void Update()
     {
         if (isSitting)
         {
+
             if (time_remaining > 0)
             {
-                time_remaining -= Time.deltaTime;
-                timer_radial_image.fillAmount = time_remaining / max_time;
+                if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                {
+                    // Do nothing, time_remaining will remain unchanged
+                    if (destroyTimer < destroyDelay)
+                    {
+                        destroyTimer += Time.deltaTime;
+                    }
+                    else
+                    {
+                        DestroyCustomer();
+                    }
+                }
+                else
+                {
+                    time_remaining -= Time.deltaTime;
+                    timer_radial_image.fillAmount = time_remaining / max_time;
+                }
+
             }
             else
             {
                 if (!isChasing)
                 {
                     // Customer satisfaction time has run out, start chasing the player
-                    StartChase();
+                    StartDamageTable();
                 }
             }
         }
@@ -58,22 +89,54 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         if (isChasing)
         {
             // Update the chase timer
-            chaseTimer += Time.deltaTime;
-            if (chaseTimer >= chaseDuration)
+            //chaseTimer += Time.deltaTime;
+            //if (chaseTimer >= chaseDuration)
+            //{
+            //    // Chase duration has ended, destroy the customer
+            //    StopDamageTable();
+            //    //DestroyCustomer();
+            //}
+            //else
+            //{
+            //    //if (player != null)
+            //    //{
+            //    //    // Move the customer towards the player
+            //    //    Vector2 direction = player.position + new Vector3(1.2f, 0f, 0f) - transform.position;
+            //    //    direction.Normalize();
+            //    //    transform.Translate(direction * moveSpeed * Time.deltaTime);
+
+            //    //}
+            //    // Apply damage to the table at the specified rate
+            //    damageTimer += Time.deltaTime;
+            //    if (damageTimer >= damageRate)
+            //    {
+            //        DamageTable();
+            //        damageTimer = 0f;
+            //    }
+            //}
+            //damageTimer += Time.deltaTime;
+            //if (damageTimer >= damageRate)
+            //{
+            //    DamageTable();
+            //    damageTimer = 0f;
+            //}
+            //if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+            //{
+            //    Destroy(gameObject, 3f);
+            //}
+            damageTimer += Time.deltaTime;
+            if (damageTimer >= damageRate)
             {
-                // Chase duration has ended, destroy the customer
-                DestroyCustomer();
+                DamageTable();
+                damageTimer = 0f;
+
             }
-            else
+            if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
             {
-                if (player != null)
-                {
-                    // Move the customer towards the player
-                    Vector2 direction = player.position + new Vector3(1.2f, 0f, 0f) - transform.position;
-                    direction.Normalize();
-                    transform.Translate(direction * moveSpeed * Time.deltaTime);
-                }
+                shouldDamageTable = false; // Set the flag to stop damaging the table
+                StartCoroutine(LeaveAfterDelay(3f));
             }
+
         }
     }
 
@@ -86,11 +149,20 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Chair"))
+    //    {
+    //        // Customer is sitting on a chair
+    //        isSitting = true;
+    //        StartCoroutine(StartTimerAfterDelay(2f)); // Start the timer after a 2-second delay
+    //    }
+    //}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Chairs"))
+        if (collision.gameObject.CompareTag("Chairs"))
         {
-            // Customer is sitting on a chair
             isSitting = true;
             StartCoroutine(StartTimerAfterDelay(2f)); // Start the timer after a 2-second delay
         }
@@ -98,7 +170,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Chairs"))
+        if (collision.gameObject.CompareTag("Chairs"))
         {
             // Customer is leaving the chair
             isSitting = false;
@@ -106,14 +178,88 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Chair"))
+    //    {
+    //        // Customer is leaving the chair
+    //        isSitting = false;
+    //        timer_radial_image.gameObject.SetActive(false); // Deactivate the image when the customer is leaving the chair
+    //    }
+    //}
+
     public void StartChase()
     {
         isChasing = true;
     }
 
+    public void StartDamageTable()
+    {
+        isChasing = true;
+        damageCoroutine = StartCoroutine(ContinuousDamageTable());
+    }
+
+    private void StopDamageTable()
+    {
+        isChasing = false;
+        if (damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+        }
+    }
+
     private void DestroyCustomer()
     {
-        // Perform any necessary clean-up tasks
+        // Perform any necessary clean-up tasks;
         Destroy(gameObject);
+    }
+
+    private void DamageTable()
+    {
+        //// Find all the table objects with the "Table" tag
+        //GameObject[] tables = GameObject.FindGameObjectsWithTag("Table");
+
+        //foreach (GameObject table in tables)
+        //{
+        //    // Check if the table has a HealthBar component
+        //    HealthBar healthBar = table.GetComponent<HealthBar>();
+        //    if (healthBar != null)
+        //    {
+        //        // Apply damage to the table's health bar
+        //        healthBar.TakeDamage(5f);
+        //    }
+        //}
+        if (shouldDamageTable)
+        {
+            // Find all the table objects with the "Table" tag
+            GameObject[] tables = GameObject.FindGameObjectsWithTag("Chairs");
+
+            foreach (GameObject table in tables)
+            {
+                // Check if the table has a HealthBar component
+                HealthBar healthBar = table.GetComponent<HealthBar>();
+                if (healthBar != null)
+                {
+                    // Apply damage to the table's health bar
+                    healthBar.TakeDamage(5f);
+                }
+            }
+        }
+    }
+
+    private IEnumerator LeaveAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        StopDamageTable();
+        DestroyCustomer();
+    }
+
+    private IEnumerator ContinuousDamageTable()
+    {
+        while (true)
+        {
+            DamageTable();
+            yield return new WaitForSeconds(damageRate);
+        }
     }
 }

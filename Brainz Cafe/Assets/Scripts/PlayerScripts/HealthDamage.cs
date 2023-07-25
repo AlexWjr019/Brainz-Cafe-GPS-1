@@ -1,41 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HealthDamage : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
-    public HealthBar healthBar;
-    public int sceneID;
+    private CustomerSatisfactionTimer CustomerSatisfactionTimer;
+    //private Timer timer;
 
-    void Start()
-    {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
+    public float damageAmount = 3f;
+    //private float originalDamageAmount;
 
-    void Update()
+    private void Start()
     {
-    //    if (Input.GetKeyUp(KeyCode.V))
-    //    {
-    //        TakeDamage(20);
-    //    }
+        CustomerSatisfactionTimer = GetComponent<CustomerSatisfactionTimer>();
+        //originalDamageAmount = damageAmount;
 
     }
 
-    public void TakeDamage(int damege)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        currentHealth -= damege;
-
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
+        if (collision.gameObject.CompareTag("Chairs") && CustomerSatisfactionTimer.time_remaining <= 0)
         {
-            Destroy(gameObject); // Destroy the player GameObject or perform other actions
-            SceneManager.LoadScene(sceneID);
+            HealthBar healthBar = collision.gameObject.GetComponent<HealthBar>();
+            if (healthBar != null)
+            {
+                // Apply damage to the player's health bar
+                healthBar.TakeDamage(damageAmount);
+            }
+
+            // Destroy the enemy object
+            Destroy(gameObject);
         }
+
     }
+
 
 }

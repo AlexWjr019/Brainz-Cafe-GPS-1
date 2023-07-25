@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [HideInInspector] public StaminaController _staminaController;
+    //[HideInInspector] public StaminaController _staminaController;
 
     Rigidbody2D rb;
-    public static bool isSprinting;
+    //public static bool isSprinting;
 
-    float walkSpeed = 5f;
-    float runSpeed = 20f;
+    public float walkSpeed = 5f;
+    //float runSpeed = 20f;
     float speedLimiter = 0.8f;
     float inputHorizontal;
     float inputVertical;
@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        _staminaController = GetComponent<StaminaController>();
+       //_staminaController = GetComponent<StaminaController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    public void SetRunSpeed(float speed)
-    {
-        runSpeed = speed;
-    }
+    //public void SetRunSpeed(float speed)
+    //{
+    //    runSpeed = speed;
+    //}
 
 
     void Update()
@@ -33,10 +33,10 @@ public class PlayerMovement : MonoBehaviour
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
-        if (PlayerMovement.isSprinting)
-        {
-            walkSpeed = 20f;
-        }
+        //if (PlayerMovement.isSprinting)
+        //{
+        //    walkSpeed = 20f;
+        //}
     }
 
     void FixedUpdate()
@@ -51,20 +51,20 @@ public class PlayerMovement : MonoBehaviour
 
             rb.velocity = new Vector2(inputHorizontal * walkSpeed, inputVertical * walkSpeed);
 
-            if (!Input.GetKey(KeyCode.LeftShift))
-            {
-                _staminaController.weAreSprinting = false;
-            }
+            //if (!Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    _staminaController.weAreSprinting = false;
+            //}
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                if (_staminaController.playerStamina > 0)
-                {
-                    rb.velocity = new Vector2(inputHorizontal * runSpeed, inputVertical * runSpeed);
-                    _staminaController.weAreSprinting = true;
-                    _staminaController.Sprinting();
-                }
-            }
+            //if (Input.GetKey(KeyCode.LeftShift))
+            //{
+            //    if (_staminaController.playerStamina > 0)
+            //    {
+            //        rb.velocity = new Vector2(inputHorizontal * runSpeed, inputVertical * runSpeed);
+            //        _staminaController.weAreSprinting = true;
+            //        _staminaController.Sprinting();
+            //    }
+            //}
         }
         else
         {
