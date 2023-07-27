@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    BuyItem BT;
+
     //[HideInInspector] public StaminaController _staminaController;
 
     Rigidbody2D rb;
     //public static bool isSprinting;
 
     public float walkSpeed = 5f;
+    float tempSpeed;
+
     //float runSpeed = 20f;
     float speedLimiter = 0.8f;
     float inputHorizontal;
     float inputVertical;
 
+    float boostTimer = 0f;
 
     private void Start()
     {
        //_staminaController = GetComponent<StaminaController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        tempSpeed = walkSpeed;
     }
 
     //public void SetRunSpeed(float speed)
@@ -32,6 +40,16 @@ public class PlayerMovement : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
+
+        if (BT.boost)
+        {
+            boostTimer = Time.deltaTime;
+        }
+        if (BT.boost && boostTimer >= 15)
+        {
+            walkSpeed = tempSpeed;
+            BT.boost = false;
+        }
 
         //if (PlayerMovement.isSprinting)
         //{
