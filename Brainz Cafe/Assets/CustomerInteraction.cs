@@ -23,6 +23,10 @@ public class CustomerInteraction : MonoBehaviour
     //NEW ADDED
     private PickUp pickup;
 
+    private Rigidbody2D rb2D;
+
+    private bool isCustomerStopMoving = false;
+
     private void Start()
     {
         // Deactivate the menu and food images at the beginning
@@ -41,6 +45,11 @@ public class CustomerInteraction : MonoBehaviour
         {
             Debug.LogError("PickUp component not found!");
         }
+
+        // Find and store a reference to the Rigidbody2D component
+        rb2D = GetComponent<Rigidbody2D>();
+        isCustomerStopMoving = false;
+
 
     }
 
@@ -77,6 +86,14 @@ public class CustomerInteraction : MonoBehaviour
         //    SetFoodImagesActive(false);
         //    SetFoodImages2Active(false);
         //}
+        if (Mathf.Approximately(rb2D.velocity.magnitude, 0f))
+        {
+            isCustomerStopMoving = true;
+        }
+        else
+        {
+            isCustomerStopMoving = false;
+        }
     }
 
     public void serveCustomer()
@@ -163,18 +180,21 @@ public class CustomerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Chairs"))
+        if (collision.gameObject.CompareTag("Chairs") && isCustomerStopMoving)
         {
             Debug.Log("Touch");
-            // Delay the activation of the menu image
             StartCoroutine(ActivateMenuImageDelayed());
+
         }
+
     }
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Chairs"))
         {
+            isCustomerStopMoving = false;
             // Reset the food image flag
             hasShownFoodImage = false;
             hasShownFoodImage2 = false;
@@ -184,6 +204,7 @@ public class CustomerInteraction : MonoBehaviour
             SetFoodImagesActive(false);
             SetFoodImages2Active(false);
         }
+
     }
 
     private void ShowRandomFoodImage()

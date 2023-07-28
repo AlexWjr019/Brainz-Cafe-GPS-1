@@ -10,6 +10,7 @@ TagManager:
   - Chairs
   - Zombie
   - Boundary
+  - Debris
   layers:
   - Default
   - TransparentFX
