@@ -32,6 +32,8 @@ public class Timer : MonoBehaviour
     {
         resetTimer();
         nightShift = false;
+
+        
     }
 
     // Update is called once per frame
@@ -115,6 +117,7 @@ public class Timer : MonoBehaviour
                 // Activate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(true);
                 nightShift = true;
+                EventManager.isAfter5PM = true;
             }
         }
     }

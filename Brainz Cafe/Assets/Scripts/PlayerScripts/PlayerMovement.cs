@@ -22,11 +22,23 @@ public class PlayerMovement : MonoBehaviour
 
     float boostTimer = 0f;
 
+    Animator animator;
+    string currentState;
+    const string PLAYER_IDLE_FRONT = "Player_Idle_Front";
+    const string PLAYER_IDLE_BACK = "Player_Idle_Back";
+    const string PLAYER_IDLE_LEFT = "Player_Idle_Left";
+    const string PLAYER_IDLE_RIGHT = "Player_Idle_Right";
+    const string PLAYER_WALK_LEFT = "Player_Walk_Left";
+    const string PLAYER_WALK_RIGHT = "Player_Walk_Right";
+    const string PLAYER_WALK_FRONT = "Player_Walk_Front";
+    const string PLAYER_WALK_BACK = "Player_Walk_Back";
+    bool isMoving = false;
+
     private void Start()
     {
        //_staminaController = GetComponent<StaminaController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-
+        animator = gameObject.GetComponent<Animator>();
         tempSpeed = walkSpeed;
     }
 
@@ -40,6 +52,39 @@ public class PlayerMovement : MonoBehaviour
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
+
+        // Check if the player is moving
+        if (inputHorizontal != 0f || inputVertical != 0f)
+        {
+            isMoving = true;
+
+            // Rest of the movement code...
+        }
+        else
+        {
+            isMoving = false;
+
+            // Set idle animation based on the last movement direction
+            if (currentState == PLAYER_WALK_RIGHT || currentState == PLAYER_IDLE_RIGHT)
+            {
+                changeAnimationState(PLAYER_IDLE_RIGHT);
+            }
+            else if (currentState == PLAYER_WALK_LEFT || currentState == PLAYER_IDLE_LEFT)
+            {
+                changeAnimationState(PLAYER_IDLE_LEFT);
+            }
+            else if (currentState == PLAYER_WALK_BACK || currentState == PLAYER_IDLE_BACK)
+            {
+                changeAnimationState(PLAYER_IDLE_BACK);
+            }
+            else if (currentState == PLAYER_WALK_FRONT || currentState == PLAYER_IDLE_FRONT)
+            {
+                changeAnimationState(PLAYER_IDLE_FRONT);
+            }
+
+            // Reset velocity to stop the player's movement
+            rb.velocity = Vector2.zero;
+        }
 
         if (BT.boost)
         {
@@ -55,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         //{
         //    walkSpeed = 20f;
         //}
+        
     }
 
     void FixedUpdate()
@@ -68,6 +114,23 @@ public class PlayerMovement : MonoBehaviour
             }
 
             rb.velocity = new Vector2(inputHorizontal * walkSpeed, inputVertical * walkSpeed);
+
+            if (inputHorizontal > 0)
+            {
+                changeAnimationState(PLAYER_WALK_RIGHT);
+            }
+            else if (inputHorizontal < 0)
+            {
+                changeAnimationState(PLAYER_WALK_LEFT);
+            }
+            else if (inputVertical > 0)
+            {
+                changeAnimationState(PLAYER_WALK_BACK);
+            }
+            else if (inputVertical < 0)
+            {
+                changeAnimationState(PLAYER_WALK_FRONT);
+            }
 
             //if (!Input.GetKey(KeyCode.LeftShift))
             //{
@@ -101,5 +164,18 @@ public class PlayerMovement : MonoBehaviour
 
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }
+    }
+
+    void changeAnimationState(string newState)
+    {
+        // Stop animation from interrupting itself
+        if (currentState == newState) return;
+
+        //Play new animation
+        animator.Play(newState);
+
+
+        //Update current state
+        currentState = newState;
     }
 }

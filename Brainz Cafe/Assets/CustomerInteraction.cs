@@ -20,12 +20,14 @@ public class CustomerInteraction : MonoBehaviour
     public string foodName2;
     private PlayerController playercontroller;
 
+
     //NEW ADDED
     private PickUp pickup;
 
     private Rigidbody2D rb2D;
 
     private bool isCustomerStopMoving = false;
+    private Vector2 previousPosition;
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class CustomerInteraction : MonoBehaviour
         // Find and store a reference to the Rigidbody2D component
         rb2D = GetComponent<Rigidbody2D>();
         isCustomerStopMoving = false;
-
+        previousPosition = rb2D.position;
 
     }
 
@@ -86,7 +88,16 @@ public class CustomerInteraction : MonoBehaviour
         //    SetFoodImagesActive(false);
         //    SetFoodImages2Active(false);
         //}
-        if (Mathf.Approximately(rb2D.velocity.magnitude, 0f))
+        //if (Mathf.Approximately(rb2D.velocity.magnitude, 0f))
+        //{
+        //    isCustomerStopMoving = true;
+        //}
+        //else
+        //{
+        //    isCustomerStopMoving = false;
+        //}
+        // Check if the customer's position is not changing anymore
+        if (rb2D.position == previousPosition)
         {
             isCustomerStopMoving = true;
         }
@@ -94,6 +105,9 @@ public class CustomerInteraction : MonoBehaviour
         {
             isCustomerStopMoving = false;
         }
+
+        // Update the previous position for the next frame
+        previousPosition = rb2D.position;
     }
 
     public void serveCustomer()
@@ -180,7 +194,7 @@ public class CustomerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Chairs") && isCustomerStopMoving)
+        if (collision.gameObject.CompareTag("Chairs"))
         {
             Debug.Log("Touch");
             StartCoroutine(ActivateMenuImageDelayed());

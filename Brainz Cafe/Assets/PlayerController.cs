@@ -21,9 +21,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 raycastDirection = isFacingLeft ? Vector2.left : Vector2.right;
+        // Calculate the direction based on player's facing
+        Vector2 raycastDirection = rb.velocity.x > 0 ? Vector2.right : Vector2.left;
+
+        // Perform the raycast in the calculated direction
         customerHit = Physics2D.Raycast(transform.position, raycastDirection, customerDetectionDistance, customerLayer);
         Debug.DrawRay(transform.position, raycastDirection * customerDetectionDistance, Color.red);
+
+        //customerHit = Physics2D.Raycast(transform.position, raycastDirection, customerDetectionDistance, customerLayer);
+        //Debug.DrawRay(transform.position, raycastDirection * customerDetectionDistance, Color.red);
         if (customerHit)
         {
             if (customerHit)
