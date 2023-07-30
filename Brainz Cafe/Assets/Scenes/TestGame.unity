@@ -3603,7 +3603,7 @@ MonoBehaviour:
   timerOn: 0
   countDown: 0
   timerDuration: 780
-  timerStart: 1070
+  timerStart: 1010
   sceneID: 2
   timerTxt: {fileID: 673767410}
   customerSpawnObject: {fileID: 1086172051}

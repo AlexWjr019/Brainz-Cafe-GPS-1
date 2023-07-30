@@ -31,6 +31,8 @@ public class Timer : MonoBehaviour
     public GameObject darkMode;
     public GameObject lights;
 
+    public static bool playerBreakTime = false;
+
     public float fadeDuration = 2.0f; // Time in seconds to fade from 0 to 0.98
     public CanvasGroup canvasGroup;
     private float targetAlpha = 0.98f;
@@ -113,24 +115,28 @@ public class Timer : MonoBehaviour
             timerTxt.text = string.Format("{0:00} : {1:00} PM", min, sec);
             if (min == 12 && sec == 0)
             {
+                playerBreakTime = true;
                 Debug.Log("Player Break Time"); // Display break time message
                 // Deactivate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(false);
             }
             if (min == 13 && sec == 0)
             {
+                playerBreakTime = false;
                 Debug.Log("Player Afternoon shift"); // Display break time message
                 // Activate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(true);
             }
             if (min == 17 && sec == 0)
             {
+                playerBreakTime = true;
                 Debug.Log("Player Break Time"); // Display break time message
                 // Deactivate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(false);
             }
             if (min == 18 && sec == 0)
             {
+                playerBreakTime = false;
                 Debug.Log("Player Night shift"); // Display break time message
                 // Activate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(true);
