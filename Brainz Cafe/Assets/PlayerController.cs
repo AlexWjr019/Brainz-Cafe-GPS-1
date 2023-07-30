@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Transform player;
     public RaycastHit2D customerHit;
 
+    private bool canBeDestroyed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +23,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Calculate the direction based on player's facing
-        Vector2 raycastDirection = rb.velocity.x > 0 ? Vector2.right : Vector2.left;
-
-        // Perform the raycast in the calculated direction
+        Vector2 raycastDirection = isFacingLeft ? Vector2.left : Vector2.right;
         customerHit = Physics2D.Raycast(transform.position, raycastDirection, customerDetectionDistance, customerLayer);
         Debug.DrawRay(transform.position, raycastDirection * customerDetectionDistance, Color.red);
-
-        //customerHit = Physics2D.Raycast(transform.position, raycastDirection, customerDetectionDistance, customerLayer);
-        //Debug.DrawRay(transform.position, raycastDirection * customerDetectionDistance, Color.red);
         if (customerHit)
         {
             if (customerHit)
@@ -66,5 +62,47 @@ public class PlayerController : MonoBehaviour
             isFacingLeft = true;
         }
 
+        // Check if the player presses the 'E' key
+        if (canBeDestroyed && Input.GetKeyDown(KeyCode.E))
+        {
+            DestroyFoodObject(); // Destroy the food object
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the food object collides with the dustbin
+        if (collision.gameObject.CompareTag("Trash"))
+        {
+            Debug.Log("OnTriggerEnter2D: " + collision.gameObject.name);
+            canBeDestroyed = true;
+        }
+    }
+
+    // OnTriggerExit2D is called when the food object stops colliding with something
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if the food object stops colliding with the dustbin
+        if (collision.gameObject.CompareTag("Trash"))
+        {
+            Debug.Log("OnTriggerExit2D: " + collision.gameObject.name);
+            canBeDestroyed = false;
+        }
+    }
+
+    private void DestroyFoodObject()
+    {
+        // Loop through all child objects of the player
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+
+            // Check if the child has the "Food" tag
+            if (child.CompareTag("Food"))
+            {
+                Destroy(child.gameObject); // Destroy the food object
+                return; // Exit the function to avoid destroying multiple food objects
+            }
+        }
     }
 }
