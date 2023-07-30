@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -27,13 +28,28 @@ public class Timer : MonoBehaviour
 
     public bool nightShift = false;
 
+    public GameObject darkMode;
+    public GameObject lights;
+
+    public float fadeDuration = 2.0f; // Time in seconds to fade from 0 to 0.98
+    public CanvasGroup canvasGroup;
+    private float targetAlpha = 0.98f;
+    //private float currentAlpha = 0f;
+    //private float ctimer = 0f;
+    public TMP_Text textToFade; // Reference to the TextMeshPro text you want to fade
+    private Color originalTextColor; // Store the original text color
+
     // Start is called before the first frame update
     void Start()
     {
         resetTimer();
         nightShift = false;
+        canvasGroup = darkMode.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0f; // Start with alpha 0
 
-        
+        // Store the original text color
+        originalTextColor = textToFade.color;
+
     }
 
     // Update is called once per frame
@@ -59,6 +75,8 @@ public class Timer : MonoBehaviour
                 //SceneManager.LoadScene(sceneID);
             }
         }
+
+        
     }
 
     private void resetTimer()
@@ -116,9 +134,64 @@ public class Timer : MonoBehaviour
                 Debug.Log("Player Night shift"); // Display break time message
                 // Activate the customer spawn game object at 12:00 PM
                 customerSpawnObject.SetActive(true);
+                darkMode.SetActive(true);
+
+
+                //ctimer += Time.deltaTime;
+                StartCoroutine(FadeInCanvas());
+                //float t = ctimer / fadeDuration;
+                //currentAlpha = Mathf.Lerp(0f, targetAlpha, t);
+                //canvasGroup.alpha = currentAlpha;
+
+                //if (t >= 1.0f) // Use 1 instead of 0.98 to ensure reaching the targetAlpha
+                //{
+                //    canvasGroup.alpha = targetAlpha;
+                //}
+                //else
+                //{
+                //    StartCoroutine(ActivateLightDelayed());
+                //}
+
+                //StartCoroutine(ActivateLightDelayed());
+
+
+                //// Activate the lights at 6:00 PM
+                //foreach (GameObject lightObject in lights)
+                //{
+                //    lightObject.SetActive(true);
+                //}
+
                 nightShift = true;
                 EventManager.isAfter5PM = true;
             }
         }
+    }
+
+    private IEnumerator FadeInCanvas()
+    {
+        float startAlpha = canvasGroup.alpha;
+        float timePassed = 0f;
+
+        while (timePassed < fadeDuration)
+        {
+            timePassed += Time.deltaTime;
+            float t = timePassed / fadeDuration;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+            yield return null;
+        }
+
+        // Ensure the alpha value is set to the target value after the loop ends
+        canvasGroup.alpha = targetAlpha;
+
+        // Set the text color alpha based on the original alpha, not the canvas alpha
+        textToFade.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, originalTextColor.a);
+
+        StartCoroutine(ActivateLightDelayed());
+    }
+
+    private IEnumerator ActivateLightDelayed()
+    {
+        yield return new WaitForSeconds(1f);
+        lights.SetActive(true);
     }
 }
