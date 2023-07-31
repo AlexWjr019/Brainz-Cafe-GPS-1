@@ -57,45 +57,7 @@ public class CustomerInteraction : MonoBehaviour
 
     private void Update()
     {
-        //if (isSitting && !hasShownFoodImage && playerEnteredCollision && !hasShownFoodImage2)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Return))
-        //    {
-        //        if(menuImage.activeInHierarchy)
-        //        {
-        //            // Player pressed the Enter key
-        //            menuImage.SetActive(false); // Deactivate the menu image
-        //            ShowRandomFoodImage(); // Show a random food image
-        //            ShowRandomFoodImage2();
-        //            hasShownFoodImage = true; // Set the flag to true
-        //            hasShownFoodImage2 = true;
-        //        }
 
-
-        //    }
-        //}
-
-        //if (isSitting && hasShownFoodImage && playerEnteredCollision && hasShownFoodImage2)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.E))
-        //    {
-        //        DropOffFood();
-        //    }
-        //}
-        //if (timer.isChasing)
-        //{
-        //    menuImage.SetActive(false);
-        //    SetFoodImagesActive(false);
-        //    SetFoodImages2Active(false);
-        //}
-        //if (Mathf.Approximately(rb2D.velocity.magnitude, 0f))
-        //{
-        //    isCustomerStopMoving = true;
-        //}
-        //else
-        //{
-        //    isCustomerStopMoving = false;
-        //}
         // Check if the customer's position is not changing anymore
         if (rb2D.position == previousPosition)
         {
@@ -115,23 +77,6 @@ public class CustomerInteraction : MonoBehaviour
         DropOffFood();
     }
 
-    //public void customerOrder()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        if (menuImage.activeInHierarchy)
-    //        {
-    //            // Player pressed the Enter key
-    //            menuImage.SetActive(false); // Deactivate the menu image
-    //            ShowRandomFoodImage(); // Show a random food image
-    //            ShowRandomFoodImage2();
-    //            hasShownFoodImage = true; // Set the flag to true
-    //            hasShownFoodImage2 = true;
-    //        }
-
-
-    //    }
-    //}
 
     private IEnumerator ActivateMenuImageDelayed()
     {
@@ -147,50 +92,6 @@ public class CustomerInteraction : MonoBehaviour
             menuImage.SetActive(false);
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Chair"))
-    //    {
-    //        // Customer is sitting on a chair
-    //        isSitting = true;
-
-    //        // Delay the activation of the menu image
-    //        StartCoroutine(ActivateMenuImageDelayed());
-
-    //    }
-
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        playerEnteredCollision = true;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Chair"))
-    //    {
-    //        // Customer is leaving the chair
-    //        isSitting = false;
-
-    //        // Reset the food image flag
-    //        hasShownFoodImage = false;
-    //        hasShownFoodImage2 = false;
-
-    //        // Deactivate the menu and food images
-    //        menuImage.SetActive(false);
-    //        SetFoodImagesActive(false);
-    //        SetFoodImages2Active(false);
-
-    //        // Reset the customer food index in the FoodSpawn script
-    //        //foodSpawn.AddCustomerFoodIndex(-1);
-    //    }
-
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        playerEnteredCollision = false;
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

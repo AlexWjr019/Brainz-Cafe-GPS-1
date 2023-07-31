@@ -36,20 +36,15 @@ public class PlayerMovement : MonoBehaviour
     const string PLAYER_WALK_FRONT = "Player_Walk_Front";
     const string PLAYER_WALK_BACK = "Player_Walk_Back";
 
-    bool isMoving = false;
+    private bool isMoving = false;
 
     private void Start()
     {
-       //_staminaController = GetComponent<StaminaController>();
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         tempSpeed = walkSpeed;
     }
 
-    //public void SetRunSpeed(float speed)
-    //{
-    //    runSpeed = speed;
-    //}
 
 
     void Update()
@@ -60,9 +55,7 @@ public class PlayerMovement : MonoBehaviour
         // Check if the player is moving
         if (inputHorizontal != 0f || inputVertical != 0f)
         {
-            isMoving = true;
-
-            // Rest of the movement code...
+            isMoving = true;       
         }
         else
         {
@@ -100,10 +93,6 @@ public class PlayerMovement : MonoBehaviour
             BT.boost = false;
         }
 
-        //if (PlayerMovement.isSprinting)
-        //{
-        //    walkSpeed = 20f;
-        //}
         
     }
 
@@ -135,21 +124,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 changeAnimationState(PLAYER_WALK_FRONT);
             }
-
-            //if (!Input.GetKey(KeyCode.LeftShift))
-            //{
-            //    _staminaController.weAreSprinting = false;
-            //}
-
-            //if (Input.GetKey(KeyCode.LeftShift))
-            //{
-            //    if (_staminaController.playerStamina > 0)
-            //    {
-            //        rb.velocity = new Vector2(inputHorizontal * runSpeed, inputVertical * runSpeed);
-            //        _staminaController.weAreSprinting = true;
-            //        _staminaController.Sprinting();
-            //    }
-            //}
         }
         else
         {
@@ -157,18 +131,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        // Check if the player is colliding with the screen boundaries
-        if (collision.CompareTag("Boundary"))
-        {
-            // Clamp the player's position within the screen boundaries
-            float clampedX = Mathf.Clamp(transform.position.x, collision.bounds.min.x, collision.bounds.max.x);
-            float clampedY = Mathf.Clamp(transform.position.y, collision.bounds.min.y, collision.bounds.max.y);
-
-            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
-        }
-    }
 
     void changeAnimationState(string newState)
     {

@@ -3530,7 +3530,6 @@ GameObject:
   - component: {fileID: 673767411}
   - component: {fileID: 673767410}
   - component: {fileID: 673767409}
-  - component: {fileID: 673767412}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -3573,7 +3572,7 @@ MonoBehaviour:
   timerOn: 0
   countDown: 0
   timerDuration: 780
-  timerStart: 540
+  timerStart: 1070
   sceneID: 2
   timerTxt: {fileID: 673767410}
   customerSpawnObject: {fileID: 1086172051}
@@ -3582,7 +3581,6 @@ MonoBehaviour:
   lights: {fileID: 1933977809}
   fadeDuration: 2
   canvasGroup: {fileID: 919570965}
-  textToFade: {fileID: 673767410}
 --- !u!114 &673767410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3630,8 +3628,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3680,20 +3678,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673767407}
   m_CullTransparentMesh: 1
---- !u!114 &673767412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673767407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab085329beb64df4fb28aa3afd623b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customMaterial: {fileID: 2100000, guid: 8563edfef4ff51d4ea05debff3f0dabd, type: 2}
-  textMeshPro: {fileID: 673767410}
 --- !u!1 &680472226
 GameObject:
   m_ObjectHideFlags: 0
@@ -4467,7 +4451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4567,8 +4551,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1004, y: 565}
+  m_AnchoredPosition: {x: 0.000044972, y: 0.000022486}
+  m_SizeDelta: {x: 1006, y: 566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832048563
 MonoBehaviour:
@@ -5560,7 +5544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968269649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.919, y: 4.95, z: -219.69379}
+  m_LocalPosition: {x: 8.89, y: 4.65, z: -219.69379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

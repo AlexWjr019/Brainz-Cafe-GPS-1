@@ -39,14 +39,6 @@ public class PlayerController : MonoBehaviour
                     customerAction.serveCustomer();
                 }
 
-                //customerAction.custome        
-                //if (!customerAction.menuImage.activeInHierarchy)
-                //{
-                //    if (Input.GetKeyDown(KeyCode.E))
-                //    {
-                //        customerAction.serveCustomer();
-                //    }
-                //}
             }
         }
 

@@ -36,10 +36,7 @@ public class Timer : MonoBehaviour
     public float fadeDuration = 2.0f; // Time in seconds to fade from 0 to 0.98
     public CanvasGroup canvasGroup;
     private float targetAlpha = 0.98f;
-    //private float currentAlpha = 0f;
-    //private float ctimer = 0f;
-    public TMP_Text textToFade; // Reference to the TextMeshPro text you want to fade
-    private Color originalTextColor; // Store the original text color
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +46,6 @@ public class Timer : MonoBehaviour
         canvasGroup = darkMode.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // Start with alpha 0
 
-        // Store the original text color
-        originalTextColor = textToFade.color;
 
     }
 
@@ -142,30 +137,7 @@ public class Timer : MonoBehaviour
                 customerSpawnObject.SetActive(true);
                 darkMode.SetActive(true);
 
-
-                //ctimer += Time.deltaTime;
                 StartCoroutine(FadeInCanvas());
-                //float t = ctimer / fadeDuration;
-                //currentAlpha = Mathf.Lerp(0f, targetAlpha, t);
-                //canvasGroup.alpha = currentAlpha;
-
-                //if (t >= 1.0f) // Use 1 instead of 0.98 to ensure reaching the targetAlpha
-                //{
-                //    canvasGroup.alpha = targetAlpha;
-                //}
-                //else
-                //{
-                //    StartCoroutine(ActivateLightDelayed());
-                //}
-
-                //StartCoroutine(ActivateLightDelayed());
-
-
-                //// Activate the lights at 6:00 PM
-                //foreach (GameObject lightObject in lights)
-                //{
-                //    lightObject.SetActive(true);
-                //}
 
                 nightShift = true;
                 EventManager.isAfter5PM = true;
@@ -189,8 +161,6 @@ public class Timer : MonoBehaviour
         // Ensure the alpha value is set to the target value after the loop ends
         canvasGroup.alpha = targetAlpha;
 
-        // Set the text color alpha based on the original alpha, not the canvas alpha
-        textToFade.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, originalTextColor.a);
 
         StartCoroutine(ActivateLightDelayed());
     }
