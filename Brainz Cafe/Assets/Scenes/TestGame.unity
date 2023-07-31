@@ -3908,7 +3908,7 @@ MonoBehaviour:
   timerOn: 0
   countDown: 0
   timerDuration: 780
-  timerStart: 1070
+  timerStart: 540
   sceneID: 2
   timerTxt: {fileID: 673767410}
   customerSpawnObject: {fileID: 1086172051}
@@ -6498,7 +6498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPair1: {fileID: 1218956893084428294, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
-  customerPair2: {fileID: 1218956893084428294, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
+  customerPair2: {fileID: 1218956893084428294, guid: ed3225ca36ba2534990ed36a0a72af4b, type: 3}
   spawnPosition: {fileID: 509236466}
   checkInterval: 8
 --- !u!1 &1113456433
@@ -7830,7 +7830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 397.96002, y: -165.66998}
+  m_AnchoredPosition: {x: 397.96002, y: -165.66995}
   m_SizeDelta: {x: -1237.12, y: -470.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457432759

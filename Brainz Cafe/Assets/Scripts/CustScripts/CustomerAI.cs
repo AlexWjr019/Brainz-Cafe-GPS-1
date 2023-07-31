@@ -24,6 +24,8 @@ public class CustomerAI : MonoBehaviour
     public delegate void ReachedEndOfPath(bool value);
     public event ReachedEndOfPath OnReachedEndOfPath;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,11 +60,14 @@ public class CustomerAI : MonoBehaviour
     {
         if (reachedEndOfPath || path == null)
         {
+            
             return;
         }
         if (currentWayPoint >= path.vectorPath.Count)
         {
+            
             reachedEndOfPath = true;
+            animator.SetBool("IsWalking", false);
             return;
         }
         else
@@ -93,6 +98,9 @@ public class CustomerAI : MonoBehaviour
                     target = chairs[i].transform;
                     tempChair = chairs[i];
                     tempChair.isOccupied = true;
+                    
+                    animator.SetBool("IsWalking", true);
+
                     GetComponent<ObjectAutoWalk>().enabled = false;
                     yield break;
                 }
@@ -104,6 +112,7 @@ public class CustomerAI : MonoBehaviour
     {
         if (tempChair != null && col.gameObject == tempChair.gameObject)
         {
+            animator.SetBool("IsWalking", false);
             reachedEndOfPath = true;
             OnReachedEndOfPath?.Invoke(reachedEndOfPath);
             Debug.Log("Finally FOOD");
