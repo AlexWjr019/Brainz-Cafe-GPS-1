@@ -496,10 +496,10 @@ RectTransform:
   m_Father: {fileID: 1642210251}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -112.14958, y: 71.80316}
-  m_SizeDelta: {x: 353.73, y: 48.1}
+  m_SizeDelta: {x: -240.26999, y: -155.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &78476587
 MonoBehaviour:
@@ -631,10 +631,10 @@ RectTransform:
   m_Father: {fileID: 1642210251}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 3}
-  m_SizeDelta: {x: 274.5134, y: 90.1219}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: -319.4866, y: -113.8781}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80231760
 MonoBehaviour:
@@ -704,37 +704,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 117212793}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 0.75294125, g: 0.050980397, b: 0.03137255, a: 1}
-    key1: {r: 0.9541607, g: 1, b: 0.069811285, a: 1}
-    key2: {r: 0, g: 0.9215687, b: 0.1254902, a: 0}
-    key3: {r: 0, g: 0.9215687, b: 0.1254902, a: 0}
-    key4: {r: 0, g: 0.9215687, b: 0.1254902, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 19661
-    ctime1: 39321
-    ctime2: 65535
-    ctime3: 65535
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
-  fill: {fileID: 239512712}
+  healthBarFill: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 100
+  fillSpeed: 1
 --- !u!224 &117212792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1631,10 +1604,10 @@ RectTransform:
   m_Father: {fileID: 1642210251}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 202.85042, y: -67.19684}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 202.8504, y: -67.19684}
+  m_SizeDelta: {x: -434, y: -174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444363319
 MonoBehaviour:
@@ -1859,10 +1832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdSpot: {fileID: 1690070302}
+  holdSpot2: {fileID: 0}
   pickUpMask:
     serializedVersion: 2
     m_Bits: 128
-  isHoldingFood: 0
+  itemHolding: {fileID: 0}
+  itemHolding2: {fileID: 0}
+  currentFoodObjectName: 
+  currentFoodObjectName2: 
 --- !u!114 &487015107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,7 +1874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29268d13a0a8c4447b6d4af25d221321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _staminaController: {fileID: 0}
+  BT: {fileID: 0}
+  walkSpeed: 5
 --- !u!50 &487015109
 Rigidbody2D:
   serializedVersion: 4
@@ -2583,7 +2561,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3104ce8f8baf0cc4db7dd86f394f1bdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c08cdd96c43db974da51f9ffd45915d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3056,6 +3034,12 @@ MonoBehaviour:
   timerStart: 660
   sceneID: 2
   timerTxt: {fileID: 943464517}
+  customerSpawnObject: {fileID: 0}
+  nightShift: 0
+  darkMode: {fileID: 0}
+  lights: {fileID: 0}
+  fadeDuration: 2
+  canvasGroup: {fileID: 0}
 --- !u!114 &943464517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3186,10 +3170,10 @@ RectTransform:
   m_Father: {fileID: 1642210251}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.0795748, y: -28.93784}
-  m_SizeDelta: {x: 571.86, y: 117.014}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -3.5795898, y: -28.937843}
+  m_SizeDelta: {x: -23.140015, y: -86.986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &951163871
 MonoBehaviour:
@@ -4002,10 +3986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f885a9dc038fa0549a7bb1cb158ef73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 117212791}
-  sceneID: 0
+  damageAmount: 3
 --- !u!1001 &1241183155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4703,8 +4684,8 @@ MonoBehaviour:
   - {fileID: 2077549496}
   - {fileID: 2015522971}
   - {fileID: 1127993071}
-  spawnInterval: 5
   canSpawnFood: 1
+  spawnDelay: 3
 --- !u!1 &1470300274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5093,10 +5074,10 @@ RectTransform:
   m_Father: {fileID: 1178293231}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.40454102, y: -224.8}
-  m_SizeDelta: {x: 594.8091, y: 204.6899}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -130}
+  m_SizeDelta: {x: -157.19092, y: -219.3101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1642210252
 Animator:

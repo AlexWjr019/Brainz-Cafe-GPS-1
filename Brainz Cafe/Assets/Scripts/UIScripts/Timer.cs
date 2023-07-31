@@ -9,6 +9,7 @@ using System;
 
 public class Timer : MonoBehaviour
 {
+    [HideInInspector]
     public bool timerOn = false;
 
     [SerializeField]
@@ -20,16 +21,24 @@ public class Timer : MonoBehaviour
     private float timerStart = 0;
     private float timer;
 
-    public int sceneID;
+    [SerializeField]
+    int sceneID;
 
-    public TMP_Text timerTxt;
+    [SerializeField]
+    TMP_Text timerTxt;
 
-    public GameObject customerSpawnObject;
+    [SerializeField]
+    GameObject customerSpawnObject;
 
     public bool nightShift = false;
 
-    public GameObject darkMode;
-    public GameObject lights;
+    [SerializeField]
+    GameObject darkMode;
+    [SerializeField]
+    GameObject lights;
+    [SerializeField]
+    Image clockImage;
+
 
     public static bool playerBreakTime = false;
 
@@ -37,8 +46,6 @@ public class Timer : MonoBehaviour
     public CanvasGroup canvasGroup;
     private float targetAlpha = 0.98f;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         resetTimer();
@@ -49,7 +56,6 @@ public class Timer : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timerOn)
@@ -72,8 +78,6 @@ public class Timer : MonoBehaviour
                 //SceneManager.LoadScene(sceneID);
             }
         }
-
-        
     }
 
     private void resetTimer()
@@ -111,31 +115,37 @@ public class Timer : MonoBehaviour
             if (min == 12 && sec == 0)
             {
                 playerBreakTime = true;
+
                 Debug.Log("Player Break Time"); // Display break time message
-                // Deactivate the customer spawn game object at 12:00 PM
+
                 customerSpawnObject.SetActive(false);
             }
             if (min == 13 && sec == 0)
             {
                 playerBreakTime = false;
+
                 Debug.Log("Player Afternoon shift"); // Display break time message
-                // Activate the customer spawn game object at 12:00 PM
+
                 customerSpawnObject.SetActive(true);
             }
             if (min == 17 && sec == 0)
             {
                 playerBreakTime = true;
+
                 Debug.Log("Player Break Time"); // Display break time message
-                // Deactivate the customer spawn game object at 12:00 PM
+
                 customerSpawnObject.SetActive(false);
             }
             if (min == 18 && sec == 0)
             {
                 playerBreakTime = false;
+
                 Debug.Log("Player Night shift"); // Display break time message
-                // Activate the customer spawn game object at 12:00 PM
+
                 customerSpawnObject.SetActive(true);
                 darkMode.SetActive(true);
+
+                clockImage.color = Color.gray;
 
                 StartCoroutine(FadeInCanvas());
 
@@ -160,7 +170,6 @@ public class Timer : MonoBehaviour
 
         // Ensure the alpha value is set to the target value after the loop ends
         canvasGroup.alpha = targetAlpha;
-
 
         StartCoroutine(ActivateLightDelayed());
     }
