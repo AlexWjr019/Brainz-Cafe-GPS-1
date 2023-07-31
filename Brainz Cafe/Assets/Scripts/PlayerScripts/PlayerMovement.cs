@@ -23,15 +23,19 @@ public class PlayerMovement : MonoBehaviour
     float boostTimer = 0f;
 
     Animator animator;
+
     string currentState;
+
     const string PLAYER_IDLE_FRONT = "Player_Idle_Front";
     const string PLAYER_IDLE_BACK = "Player_Idle_Back";
     const string PLAYER_IDLE_LEFT = "Player_Idle_Left";
     const string PLAYER_IDLE_RIGHT = "Player_Idle_Right";
+
     const string PLAYER_WALK_LEFT = "Player_Walk_Left";
     const string PLAYER_WALK_RIGHT = "Player_Walk_Right";
     const string PLAYER_WALK_FRONT = "Player_Walk_Front";
     const string PLAYER_WALK_BACK = "Player_Walk_Back";
+
     bool isMoving = false;
 
     private void Start()

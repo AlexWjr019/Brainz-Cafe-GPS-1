@@ -26,28 +26,27 @@ public class PlayerController : MonoBehaviour
         Vector2 raycastDirection = isFacingLeft ? Vector2.left : Vector2.right;
         customerHit = Physics2D.Raycast(transform.position, raycastDirection, customerDetectionDistance, customerLayer);
         Debug.DrawRay(transform.position, raycastDirection * customerDetectionDistance, Color.red);
+        
         if (customerHit)
         {
-            if (customerHit)
-            {
-                CustomerInteraction customerAction = customerHit.collider.gameObject.GetComponent<CustomerInteraction>();
-                PickUp pickUp = customerHit.collider.gameObject.GetComponent<PickUp>();
-                if (customerAction != null && !customerAction.menuImage.activeInHierarchy)
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        customerAction.serveCustomer();
-                    }
-                    //customerAction.customerOrder();
+            CustomerInteraction customerAction = customerHit.collider.gameObject.GetComponent<CustomerInteraction>();
+            PickUp pickUp = customerHit.collider.gameObject.GetComponent<PickUp>();
 
-                    //if (!customerAction.menuImage.activeInHierarchy)
-                    //{
-                    //    if (Input.GetKeyDown(KeyCode.E))
-                    //    {
-                    //        customerAction.serveCustomer();
-                    //    }
-                    //}
+            if (customerAction != null && !customerAction.menuImage.activeInHierarchy)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    customerAction.serveCustomer();
                 }
+
+                //customerAction.custome        
+                //if (!customerAction.menuImage.activeInHierarchy)
+                //{
+                //    if (Input.GetKeyDown(KeyCode.E))
+                //    {
+                //        customerAction.serveCustomer();
+                //    }
+                //}
             }
         }
 
