@@ -1101,7 +1101,7 @@ MonoBehaviour:
   timerTxt: {fileID: 145933663}
   customerSpawnObject: {fileID: 1086172051}
   nightShift: 0
-  darkMode: {fileID: 919570964}
+  darkMode: {fileID: 832048561}
   lights: {fileID: 1933977809}
   clockImage: {fileID: 61983772}
   fadeDuration: 2
@@ -3913,9 +3913,9 @@ MonoBehaviour:
   timerTxt: {fileID: 673767410}
   customerSpawnObject: {fileID: 1086172051}
   nightShift: 0
-  darkMode: {fileID: 919570964}
+  darkMode: {fileID: 832048561}
   lights: {fileID: 1933977809}
-  clockImage: {fileID: 0}
+  clockImage: {fileID: 111145248}
   fadeDuration: 2
   canvasGroup: {fileID: 919570965}
 --- !u!114 &673767410
@@ -4736,13 +4736,14 @@ GameObject:
   - component: {fileID: 832048562}
   - component: {fileID: 832048564}
   - component: {fileID: 832048563}
+  - component: {fileID: 832048565}
   m_Layer: 5
   m_Name: DarkMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &832048562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4801,6 +4802,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832048561}
   m_CullTransparentMesh: 1
+--- !u!225 &832048565
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832048561}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &844769356
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,7 +5122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &919570965
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5117,8 +5130,8 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919570964}
-  m_Enabled: 1
-  m_Alpha: 0.97
+  m_Enabled: 0
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
