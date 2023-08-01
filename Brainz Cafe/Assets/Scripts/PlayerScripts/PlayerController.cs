@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     private bool canBeDestroyed = false;
 
+    [SerializeField] private AudioSource throwingFoodSoundEffect;
+    [SerializeField] private AudioSource servingFoodSoundEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    servingFoodSoundEffect.Play();
                     customerAction.serveCustomer();
                 }
 
@@ -76,6 +80,7 @@ public class PlayerController : MonoBehaviour
         // Check if the food object stops colliding with the dustbin
         if (collision.gameObject.CompareTag("Trash"))
         {
+            
             Debug.Log("OnTriggerExit2D: " + collision.gameObject.name);
             canBeDestroyed = false;
         }
@@ -91,6 +96,8 @@ public class PlayerController : MonoBehaviour
             // Check if the child has the "Food" tag
             if (child.CompareTag("Food"))
             {
+                
+                throwingFoodSoundEffect.Play();
                 Destroy(child.gameObject); // Destroy the food object
                 return; // Exit the function to avoid destroying multiple food objects
             }

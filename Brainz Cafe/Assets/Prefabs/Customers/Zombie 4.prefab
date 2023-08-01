@@ -176,11 +176,11 @@ GameObject:
   - component: {fileID: 1218956893084428290}
   - component: {fileID: 8561214904854730930}
   - component: {fileID: 673824610393985413}
+  - component: {fileID: 6945789997787134022}
+  - component: {fileID: 6423988895833422588}
   - component: {fileID: 8881889787797086473}
   - component: {fileID: 7222245054334037303}
   - component: {fileID: 2671653146162926309}
-  - component: {fileID: 6423988895833422588}
-  - component: {fileID: 6945789997787134022}
   m_Layer: 10
   m_Name: Zombie 4
   m_TagString: Customer
@@ -393,6 +393,39 @@ MonoBehaviour:
   moveSpeed: 5
   damageRate: 1
   CustomerInteraction: {fileID: 0}
+--- !u!114 &6945789997787134022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218956893084428294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e892d3f9a319145a7e2486abdd9466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 3
+--- !u!95 &6423988895833422588
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218956893084428294}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6c4d6fa2b11d2b4cb230ac583dfc0f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8881889787797086473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,39 +474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
---- !u!95 &6423988895833422588
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b6c4d6fa2b11d2b4cb230ac583dfc0f9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6945789997787134022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e892d3f9a319145a7e2486abdd9466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 3
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0

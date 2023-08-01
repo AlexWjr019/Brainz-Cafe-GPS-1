@@ -47,6 +47,10 @@ public class Timer : MonoBehaviour
     private float targetAlpha = 0.98f;
     private bool isDarkMode = false;
 
+
+    [SerializeField] AudioSource daySound;
+    [SerializeField] AudioSource nightSound;
+
     void Start()
     {
         resetTimer();
@@ -109,6 +113,9 @@ public class Timer : MonoBehaviour
         if (currentTime <= 720)
         {
             timerTxt.text = string.Format("{0:00} : {1:00} AM", min, sec);
+
+            daySound.Play();
+
         }
         else
         {
@@ -142,6 +149,8 @@ public class Timer : MonoBehaviour
                 playerBreakTime = false;
 
                 Debug.Log("Player Night shift"); // Display break time message
+
+                nightSound.Play();
 
                 customerSpawnObject.SetActive(true);
                 darkMode.SetActive(true);
