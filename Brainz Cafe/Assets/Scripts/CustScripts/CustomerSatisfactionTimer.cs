@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CustomerSatisfactionTimer : MonoBehaviour
@@ -10,7 +11,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     public float max_time = 5.0f;
     private bool isSitting = false; // Flag to track if the customer is sitting
 
-    public bool isChasing = false; // Flag to track if the customer is currently chasing the player
+    public bool isAttacking = false; // Flag to track if the customer is currently chasing the player
     //private float chaseDuration = 10f; // Duration of the chase in seconds
     //private float chaseTimer = 0f; // Timer to track the chase duration
 
@@ -28,7 +29,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private Coroutine damageCoroutine; // Reference to the damage coroutine
     private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
-
+    public int moneyDrop;
 
     void Start()
     {
@@ -47,14 +48,12 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
 
         CustomerInteraction = GetComponent<CustomerInteraction>();
-
     }
 
     void Update()
     {
         if (isSitting)
         {
-
             if (time_remaining > 0)
             {
                 if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
@@ -74,11 +73,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     time_remaining -= Time.deltaTime;
                     timer_radial_image.fillAmount = time_remaining / max_time;
                 }
-
             }
             else
             {
-                if (!isChasing)
+                if (!isAttacking)
                 {
                     // Customer satisfaction time has run out, start chasing the player
                     StartDamageTable();
@@ -86,21 +84,19 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             }
         }
 
-        if (isChasing)
+        if (isAttacking)
         {
             damageTimer += Time.deltaTime;
             if (damageTimer >= damageRate)
             {
                 DamageTable();
                 damageTimer = 0f;
-
             }
             if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
             {
                 shouldDamageTable = false; // Set the flag to stop damaging the table
                 StartCoroutine(LeaveAfterDelay(3f));
             }
-
         }
     }
 
@@ -133,20 +129,15 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    public void StartChase()
-    {
-        isChasing = true;
-    }
-
     public void StartDamageTable()
     {
-        isChasing = true;
+        isAttacking = true;
         damageCoroutine = StartCoroutine(ContinuousDamageTable());
     }
 
     private void StopDamageTable()
     {
-        isChasing = false;
+        isAttacking = false;
         if (damageCoroutine != null)
         {
             StopCoroutine(damageCoroutine);
@@ -155,13 +146,12 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     private void DestroyCustomer()
     {
-        // Perform any necessary clean-up tasks;
+        CurrencyManager.Instance.AddMoney(moneyDrop);
         Destroy(gameObject);
     }
 
     private void DamageTable()
     {
-
         if (shouldDamageTable)
         {
             // Find all the table objects with the "Table" tag

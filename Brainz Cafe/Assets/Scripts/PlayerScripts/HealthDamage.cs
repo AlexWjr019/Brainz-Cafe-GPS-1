@@ -14,7 +14,6 @@ public class HealthDamage : MonoBehaviour
     {
         CustomerSatisfactionTimer = GetComponent<CustomerSatisfactionTimer>();
         //originalDamageAmount = damageAmount;
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +21,7 @@ public class HealthDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Chairs") && CustomerSatisfactionTimer.time_remaining <= 0)
         {
             HealthBar healthBar = collision.gameObject.GetComponent<HealthBar>();
+
             if (healthBar != null)
             {
                 // Apply damage to the player's health bar
@@ -31,8 +31,5 @@ public class HealthDamage : MonoBehaviour
             // Destroy the enemy object
             Destroy(gameObject);
         }
-
     }
-
-
 }

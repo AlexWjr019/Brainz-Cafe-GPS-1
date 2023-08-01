@@ -1,9 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq.Expressions;
 
 public class HealthBar : MonoBehaviour
 {
+    [HideInInspector]
+    SpriteRenderer sr;
+
+    [HideInInspector]
+    BuyItem bi;
+
     public Image healthBarFill;
     public float currentHealth;
     public float maxHealth = 100f;
@@ -11,60 +18,54 @@ public class HealthBar : MonoBehaviour
 
     private Coroutine fillCoroutine; // Store a reference to the fill coroutine
 
-    //private Timer timer;
-    //private HealthBar healthBar;
+    public Sprite[] phasesDefault;
+    public Sprite[] phasesVer2;
 
     private void Start()
     {
-        //timer = GameObject.FindObjectOfType<Timer>();
-        //healthBar = GetComponent<HealthBar>();
         currentHealth = maxHealth;
+        sr = GetComponent<SpriteRenderer>();
+        bi = FindObjectOfType<BuyItem>();
+    }
+
+    private void Update()
+    {
+        switch (bi.upgradedTable)
+        {
+            case -1:
+                switch (currentHealth)
+                {
+                    case 60: 
+                        sr.sprite = phasesDefault[0];
+                        break;
+                    case 20:
+                        sr.sprite = phasesDefault[1];
+                        break;
+                }
+                break;
+            case 0:
+                switch (currentHealth)
+                {
+                    case 150:
+                        sr.sprite = phasesVer2[0];
+                        break;
+                    case 50:
+                        sr.sprite = phasesVer2[1];
+                        break;
+                }
+                break;
+        }
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
-        //if (timer.nightShift)
-        //{
-        //    currentHealth -= damage * 2;
-        //}
-        //if (!timer.nightShift)
-        //{
-        //    currentHealth -= damage;
-        //}
-
         Debug.Log(damage);
-
-        // Stop the previous fill coroutine if it is running
-        if (fillCoroutine != null)
-            StopCoroutine(fillCoroutine);
-
-        // Start a new fill coroutine
-        fillCoroutine = StartCoroutine(FillCoroutine());
 
         if (currentHealth <= 0)
         {
-            // Perform necessary actions when health reaches zero (e.g., player dies)
-            // You can add your own logic here.
             Destroy(gameObject);
         }
-    }
-
-    private IEnumerator FillCoroutine()
-    {
-        float targetFillAmount = currentHealth / 100f;
-        float currentFillAmount = healthBarFill.fillAmount;
-
-        // Gradually decrease the fill amount until it reaches the target fill amount
-        while (healthBarFill.fillAmount > targetFillAmount)
-        {
-            currentFillAmount -= fillSpeed * Time.deltaTime;
-            healthBarFill.fillAmount = Mathf.Max(currentFillAmount, targetFillAmount);
-            yield return null;
-        }
-
-        // Reset the fill coroutine reference
-        fillCoroutine = null;
     }
 }

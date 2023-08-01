@@ -26,7 +26,6 @@ public class Shop : MonoBehaviour
                     OpenShop();
                 }
             }
-            
         }
         else if (!inRange)
         {
@@ -44,7 +43,7 @@ public class Shop : MonoBehaviour
             shopUI.SetActive(true);
             shopOpen = true;
         }
-        else if(shopOpen)
+        else if (shopOpen)
         {
             shopUI.SetActive(false);
             shopOpen = false;

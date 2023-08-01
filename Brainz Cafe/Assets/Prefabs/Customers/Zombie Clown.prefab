@@ -349,6 +349,7 @@ MonoBehaviour:
   speed: 1
   nextWayPointDistance: 0.5
   reachedEndOfPath: 0
+  animator: {fileID: 0}
 --- !u!114 &8561214904854730930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,11 +388,12 @@ MonoBehaviour:
   timer_radial_image: {fileID: 3106324215579278099}
   time_remaining: 0
   max_time: 30
-  isChasing: 0
+  isAttacking: 0
   playerTag: Player
   moveSpeed: 5
   damageRate: 1
   CustomerInteraction: {fileID: 0}
+  moneyDrop: 5
 --- !u!114 &7222245054334037303
 MonoBehaviour:
   m_ObjectHideFlags: 0

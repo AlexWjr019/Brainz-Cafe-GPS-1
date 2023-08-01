@@ -10,7 +10,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
     public float max_time = 5.0f;
     private bool isSitting = false; // Flag to track if the customer is sitting
 
-    public bool isChasing = false; // Flag to track if the customer is currently chasing the player
+    public bool isAttacking = false; // Flag to track if the customer is currently chasing the player
     //private float chaseDuration = 10f; // Duration of the chase in seconds
     //private float chaseTimer = 0f; // Timer to track the chase duration
 
@@ -28,7 +28,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
     private Coroutine damageCoroutine; // Reference to the damage coroutine
     private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
-
+    public int moneyDrop;
 
     void Start()
     {
@@ -78,7 +78,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
             }
             else
             {
-                if (!isChasing)
+                if (!isAttacking)
                 {
                     // Customer satisfaction time has run out, start chasing the player
                     StartDamageTable();
@@ -86,7 +86,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
             }
         }
 
-        if (isChasing)
+        if (isAttacking)
         {
             damageTimer += Time.deltaTime;
             if (damageTimer >= damageRate)
@@ -133,20 +133,15 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
         }
     }
 
-    public void StartChase()
-    {
-        isChasing = true;
-    }
-
     public void StartDamageTable()
     {
-        isChasing = true;
+        isAttacking = true;
         damageCoroutine = StartCoroutine(ContinuousDamageTable());
     }
 
     private void StopDamageTable()
     {
-        isChasing = false;
+        isAttacking = false;
         if (damageCoroutine != null)
         {
             StopCoroutine(damageCoroutine);
@@ -155,13 +150,12 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
 
     private void DestroyCustomer()
     {
-        // Perform any necessary clean-up tasks;
+        CurrencyManager.Instance.AddMoney(moneyDrop);
         Destroy(gameObject);
     }
 
     private void DamageTable()
     {
-
         if (shouldDamageTable)
         {
             // Find all the table objects with the "Table" tag

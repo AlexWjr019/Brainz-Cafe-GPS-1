@@ -146,4 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9686db43f0170fa4ea790783a4741239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 6637835000142267307}
   isOccupied: 0

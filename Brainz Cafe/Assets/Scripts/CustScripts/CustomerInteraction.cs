@@ -87,7 +87,7 @@ public class CustomerInteraction : MonoBehaviour
         hasShownFoodImage = true; // Set the flag to true
         hasShownFoodImage2 = true;
 
-        if (timer.isChasing)
+        if (timer.isAttacking)
         {
             menuImage.SetActive(false);
         }

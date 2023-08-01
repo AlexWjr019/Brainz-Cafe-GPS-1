@@ -6,70 +6,100 @@ using TMPro;
 
 public class BuyItem : MonoBehaviour
 {
-    [SerializeField]
-    FoodSpawn FS;
-    [SerializeField]
-    PlayerMovement PM;
+    [SerializeField] FoodSpawn FS;
 
-    [SerializeField]
-    TMP_Text CookCost;
-    [SerializeField]
-    int cookPrice;
-    private int upgradedCook;
+    [SerializeField] PlayerMovement PM;
 
-    [SerializeField]
-    TMP_Text TableCost;
-    [SerializeField]
-    int barrierPrice;
-    private int upgradedTable;
+    [SerializeField] TMP_Text cookText;
+    [SerializeField] int cookPrice;
+    int upgradedCook;
 
-    [SerializeField]
-    TMP_Text RepairCost;
-    [SerializeField]
-    int repairPrice;
+    [SerializeField] EmptyChair[] upgradable;
+    [SerializeField] HealthBar[] repairable;
+ 
+    [SerializeField] TMP_Text barrierText;
+    [SerializeField] int barrierPrice;
+    [SerializeField] Sprite[] upgrades;
+    [HideInInspector] public int upgradedTable = -1;
 
-    [SerializeField]
-    TMP_Text PillCost; 
-    [SerializeField]
-    int pillPrice;
-    [HideInInspector]
-    public bool boost;
+    [SerializeField] TMP_Text repairText;
+    [SerializeField] int repairPrice;
 
-    void Start()
+    [SerializeField] TMP_Text pillText; 
+    [SerializeField] int pillPrice;
+    [HideInInspector] public bool boost;
+
+    private void Start()
     {
-        
+        upgradable = FindObjectsOfType<EmptyChair>();
+        repairable = FindObjectsOfType<HealthBar>();
+
+        cookText.text = cookPrice.ToString();
+        barrierText.text = barrierPrice.ToString();
+        repairText.text = repairPrice.ToString();
+        pillText.text = pillPrice.ToString();
     }
 
-    void Update()
+    public void UpgradeTable()
     {
-        
-    }
-
-    public void UgradeTable()
-    {
-        if (upgradedTable == 0)
+        if (CurrencyManager.Instance.currency >= barrierPrice)
         {
-            //get barrier cord
-            //spawn upgraded barrier at cord
+            CurrencyManager.Instance.SpendMoney(barrierPrice);
+
+            if (upgradedTable < upgrades.Length)
+            {
+                for (int i = 0; i < upgradable.Length; i++)
+                {
+                    upgradable[i].sr.sprite = upgrades[upgradedTable];
+
+                    HealthBar hb = GetComponent<HealthBar>();
+                    hb.maxHealth += 150;
+                    hb.currentHealth = hb.maxHealth;
+                }
+                upgradedTable++;
+            }
         }
     }
-    
+
+    public void Repair()
+    {
+        if (CurrencyManager.Instance.currency >= repairPrice)
+        {
+            CurrencyManager.Instance.SpendMoney(repairPrice);
+
+            for (int i = 0; i < repairable.Length; i++)
+            {
+                HealthBar hb = GetComponent<HealthBar>();
+
+                hb.currentHealth = hb.maxHealth;
+            }
+        }
+    }
+
     public void SuperPill()
     {
-        if (!boost)
+        if (CurrencyManager.Instance.currency >= pillPrice)
         {
-            PM.walkSpeed = PM.walkSpeed * 0.40f;
-            boost = true;
+            CurrencyManager.Instance.SpendMoney(pillPrice);
+            if (!boost)
+            {
+                PM.walkSpeed *= 1.40f;
+                boost = true;
+            }
         }
     }
 
     public void UpgradeCook()
     {
-        if (upgradedCook < 5)
+        if (CurrencyManager.Instance.currency >= cookPrice)
         {
-            FS.spawnDelay -= 0.2f;
-            cookPrice += 10;
-            upgradedCook += 1;
+            CurrencyManager.Instance.SpendMoney(cookPrice);
+            if (upgradedCook < 5)
+            {
+                FS.spawnDelay -= 0.2f;
+                cookPrice += 10;
+                upgradedCook += 1;
+            }
         }
     }
 }
