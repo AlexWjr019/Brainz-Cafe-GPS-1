@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 7222245054334037303}
   - component: {fileID: 2671653146162926309}
   - component: {fileID: 42583204692176768}
+  - component: {fileID: 875784011907880734}
   m_Layer: 10
   m_Name: Zombie Acid
   m_TagString: Customer
@@ -381,7 +382,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecae52469bd6d914b8b824aa86960eb5, type: 3}
   m_Name: 
@@ -417,7 +418,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f885a9dc038fa0549a7bb1cb158ef73e, type: 3}
   m_Name: 
@@ -443,6 +444,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &875784011907880734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218956893084428294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f555cad57089bd241a68def17b2c2df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer_radial_image: {fileID: 3106324215579278099}
+  time_remaining: 0
+  max_time: 30
+  isChasing: 0
+  playerTag: Player
+  moveSpeed: 2
+  CustomerInteraction: {fileID: 0}
+  tileSpawner: {fileID: 0}
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0

@@ -80,7 +80,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time is UP!");
                 timerDuration = 0;
                 timerOn = false;
-                //SceneManager.LoadScene(sceneID);
+                SceneManager.LoadScene(sceneID);
             }
         }
     }
