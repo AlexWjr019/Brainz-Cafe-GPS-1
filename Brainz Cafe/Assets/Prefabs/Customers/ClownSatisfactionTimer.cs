@@ -30,6 +30,8 @@ public class ClownSatisfactionTimer : MonoBehaviour
 
     public JumpScare jumpscareImage;
     public bool jumpscare = false;
+
+    public int moneyDrop;
     void Start()
     {
         //jumpscareImage.SetActive(false);
@@ -112,6 +114,7 @@ public class ClownSatisfactionTimer : MonoBehaviour
             {
 
                 StartCoroutine(LeaveAfterDelay(3f));
+                CurrencyManager.Instance.AddMoney(moneyDrop);
             }
 
         }
@@ -170,6 +173,7 @@ public class ClownSatisfactionTimer : MonoBehaviour
     private void DestroyCustomer()
     {
         // Perform any necessary clean-up tasks;
+        CurrencyManager.Instance.AddMoney(moneyDrop);
         Destroy(gameObject);
     }
 

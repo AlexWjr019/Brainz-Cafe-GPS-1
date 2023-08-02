@@ -66,6 +66,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
                     }
                     else
                     {
+                        CurrencyManager.Instance.AddMoney(moneyDrop);
                         DestroyCustomer();
                     }
                 }
@@ -88,18 +89,20 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
 
         if (isAttacking)
         {
-            damageTimer += Time.deltaTime;
-            if (damageTimer >= damageRate)
-            {
-                DamageTable();
-                damageTimer = 0f;
+            //StartCoroutine(LeaveAfterDelay(3f));
+            DestroyCustomer();
+            //damageTimer += Time.deltaTime;
+            //if (damageTimer >= damageRate)
+            //{
+            //    DamageTable();
+            //    damageTimer = 0f;
 
-            }
-                if (CustomerInteraction.foodName == null )
-            {
-                shouldDamageTable = false; // Set the flag to stop damaging the table
-                StartCoroutine(LeaveAfterDelay(3f));
-            }
+            //}
+            //    if (CustomerInteraction.foodName == null )
+            //{
+            //    shouldDamageTable = false; // Set the flag to stop damaging the table
+            //    StartCoroutine(LeaveAfterDelay(3f));
+            //}
 
         }
     }
@@ -150,7 +153,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
 
     private void DestroyCustomer()
     {
-        CurrencyManager.Instance.AddMoney(moneyDrop);
+        //CurrencyManager.Instance.AddMoney(moneyDrop);
         Destroy(gameObject);
     }
 

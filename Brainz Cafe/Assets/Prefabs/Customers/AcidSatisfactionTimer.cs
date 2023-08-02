@@ -30,6 +30,7 @@ public class AcidSatisfactionTimer : MonoBehaviour
 
     public TileSpawner tileSpawner;
 
+    public int moneyDrop;
     void Start()
     {
         time_remaining = max_time;
@@ -78,6 +79,7 @@ public class AcidSatisfactionTimer : MonoBehaviour
                     }
                     else
                     {
+                        CurrencyManager.Instance.AddMoney(moneyDrop);
                         DestroyCustomer();
                     }
                 }

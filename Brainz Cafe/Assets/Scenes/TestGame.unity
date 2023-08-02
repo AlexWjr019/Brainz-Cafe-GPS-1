@@ -6870,7 +6870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customerPair1: {fileID: 1218956893084428294, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
-  customerPair2: {fileID: 1218956893084428294, guid: ed3225ca36ba2534990ed36a0a72af4b, type: 3}
+  customerPair2: {fileID: 1218956893084428294, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
   spawnPosition: {fileID: 509236466}
   checkInterval: 8
 --- !u!1 &1113456433
