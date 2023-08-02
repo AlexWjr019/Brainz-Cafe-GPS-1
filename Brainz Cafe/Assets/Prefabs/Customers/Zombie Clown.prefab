@@ -444,6 +444,7 @@ MonoBehaviour:
   CustomerInteraction: {fileID: 0}
   jumpscareImage: {fileID: 0}
   jumpscare: 0
+  moneyDrop: 5
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0

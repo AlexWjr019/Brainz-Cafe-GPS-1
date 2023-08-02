@@ -83,6 +83,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
                 {
                     // Customer satisfaction time has run out, start chasing the player
                     StartDamageTable();
+                    
                 }
             }
         }
@@ -90,19 +91,20 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
         if (isAttacking)
         {
             //StartCoroutine(LeaveAfterDelay(3f));
-            DestroyCustomer();
+            //DestroyCustomer();
             //damageTimer += Time.deltaTime;
             //if (damageTimer >= damageRate)
             //{
-            //    DamageTable();
+               DamageTable();
+            shouldDamageTable = false;
             //    damageTimer = 0f;
 
             //}
-            //    if (CustomerInteraction.foodName == null )
-            //{
-            //    shouldDamageTable = false; // Set the flag to stop damaging the table
-            //    StartCoroutine(LeaveAfterDelay(3f));
-            //}
+            if (CustomerInteraction.foodName == null)
+            {
+                shouldDamageTable = false; // Set the flag to stop damaging the table
+                StartCoroutine(LeaveAfterDelay(3f));
+            }
 
         }
     }
@@ -171,7 +173,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
                 if (healthBar != null)
                 {
                     // Apply damage to the table's health bar
-                    healthBar.TakeDamage(3f);
+                    healthBar.TakeDamage(0.5f);
                 }
             }
         }

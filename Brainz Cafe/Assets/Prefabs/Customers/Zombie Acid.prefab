@@ -464,6 +464,7 @@ MonoBehaviour:
   moveSpeed: 2
   CustomerInteraction: {fileID: 0}
   tileSpawner: {fileID: 0}
+  moneyDrop: 5
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0

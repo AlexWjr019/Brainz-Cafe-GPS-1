@@ -6,9 +6,11 @@ public class CustomerSpawner2 : MonoBehaviour
 {
     public GameObject customerPair1; // Prefab for the first pair with 1 customer
     public GameObject customerPair2; // Prefab for the second pair with 2 customers
+    public GameObject customerPair3;
+    public GameObject customerPair4;
     public Transform spawnPosition; // Reference to the empty GameObject for the spawn position
 
-    public float checkInterval = 5f; // Interval in seconds to check for customer presence
+    public float checkInterval = 3f; // Interval in seconds to check for customer presence
     private float timer = 0f; // Timer to track the elapsed time
 
     private bool isSpawningAllowed = true;
@@ -63,20 +65,30 @@ public class CustomerSpawner2 : MonoBehaviour
     public void SpawnCustomers()
     {
 
-        Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+        //Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
 
-        /*        int randomPair = Random.Range(1, 3); // Generate a random number between 1 and 2
+        int randomPair = Random.Range(1, 6); // Generate a random number between 1 and 2
 
-                if (randomPair == 1)
-                {
-                    Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
-                }
-                else if (randomPair == 2)
-                {
-                    Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
-                    Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
-                }
-        */
+        if (randomPair == 1 || randomPair == 5)
+        {
+            Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+        }
+        else if (randomPair == 2)
+        {
+            Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
+            //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
+        }
+        else if (randomPair == 3)
+        {
+            Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
+            //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
+        }
+        else if (randomPair == 4)
+        {
+            Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
+            //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
+        }
+
 
     }
 
