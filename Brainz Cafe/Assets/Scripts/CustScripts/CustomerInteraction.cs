@@ -74,12 +74,13 @@ public class CustomerInteraction : MonoBehaviour
     private IEnumerator ActivateMenuImageDelayed()
     {
         yield return new WaitForSeconds(2.0f);
+        AudioManager.instance.PlayFoodCookAudio();
         //menuImage.SetActive(true);
         ShowRandomFoodImage(); // Show a random food image
         ShowRandomFoodImage2();
         hasShownFoodImage = true; // Set the flag to true
         hasShownFoodImage2 = true;
-
+        
         //if (timer.isAttacking)
         //{
         //    menuImage.SetActive(false);
@@ -192,6 +193,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding = null;
                 pickup.currentFoodObjectName = null;
                 foodName = null;
+                AudioManager.instance.PlayFoodServeAudio();
+                AudioManager.instance.PlayZombieEatAudio();
                 return; // Exit the method after deactivating the image
             }
         }
@@ -211,6 +214,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding = null;
                 pickup.currentFoodObjectName = null;
                 foodName2 = null;
+                AudioManager.instance.PlayFoodServeAudio();
+                AudioManager.instance.PlayZombieEatAudio();
                 return; // Exit the method after deactivating the image
             }
         }
@@ -230,6 +235,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding2 = null;
                 pickup.currentFoodObjectName2 = null;
                 foodName = null;
+                AudioManager.instance.PlayFoodServeAudio();
+                AudioManager.instance.PlayZombieEatAudio();
                 return; // Exit the method after deactivating the image
             }
         }
@@ -249,10 +256,13 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding2 = null;
                 pickup.currentFoodObjectName2 = null;
                 foodName2 = null;
+                AudioManager.instance.PlayFoodServeAudio();
+                AudioManager.instance.PlayZombieEatAudio();
                 return; // Exit the method after deactivating the image
             }
         }
 
+        
         // If the food doesn't match the served food or the corresponding food image is not active, log a message
         Debug.Log("The food does not match the served food or the food image is not active.");
 

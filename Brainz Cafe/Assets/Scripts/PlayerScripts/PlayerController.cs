@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private bool canBeDestroyed = false;
 
-    [SerializeField] private AudioSource throwingFoodSoundEffect;
-    [SerializeField] private AudioSource servingFoodSoundEffect;
+    //[SerializeField] private AudioSource throwingFoodSoundEffect;
+    //[SerializeField] private AudioSource servingFoodSoundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    servingFoodSoundEffect.Play();
+                    //servingFoodSoundEffect.Play();
                     customerAction.serveCustomer();
                 }
 
@@ -97,8 +97,9 @@ public class PlayerController : MonoBehaviour
             if (child.CompareTag("Food"))
             {
                 
-                throwingFoodSoundEffect.Play();
+                //throwingFoodSoundEffect.Play();
                 Destroy(child.gameObject); // Destroy the food object
+                AudioManager.instance.PlayFoodThrowAudio();
                 return; // Exit the function to avoid destroying multiple food objects
             }
         }

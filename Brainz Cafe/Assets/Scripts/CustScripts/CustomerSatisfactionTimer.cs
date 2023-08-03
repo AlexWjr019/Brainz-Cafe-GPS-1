@@ -165,6 +165,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     // Apply damage to the table's health bar
                     healthBar.TakeDamage(5f);
+                    AudioManager.instance.PlayZombieAttackBarrierAudio();
                 }
             }
         }

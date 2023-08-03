@@ -65,29 +65,33 @@ public class CustomerSpawner2 : MonoBehaviour
     public void SpawnCustomers()
     {
 
-        Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+        //Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+        
 
-        //int randomPair = Random.Range(1, 6); // Generate a random number between 1 and 2
+        int randomPair = Random.Range(1, 6); // Generate a random number between 1 and 2
 
-        //if (randomPair == 1 || randomPair == 5)
-        //{
-        //    Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
-        //}
-        //else if (randomPair == 2)
-        //{
-        //    Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
-        //    //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
-        //}
-        //else if (randomPair == 3)
-        //{
-        //    Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
-        //    //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
-        //}
-        //else if (randomPair == 4)
-        //{
-        //    Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
-        //    //Instantiate(customerPair2, spawnPosition.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
-        //}
+        if (randomPair == 1 || randomPair == 5)
+        {
+            Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayNormalZombieAudio();
+        }
+        else if (randomPair == 2)
+        {
+            Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayAcidZombieAudio();
+            
+        }
+        else if (randomPair == 3)
+        {
+            Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayBruteZombieAudio();
+
+        }
+        else if (randomPair == 4)
+        {
+            Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayClownZombieAudio();
+        }
 
 
     }

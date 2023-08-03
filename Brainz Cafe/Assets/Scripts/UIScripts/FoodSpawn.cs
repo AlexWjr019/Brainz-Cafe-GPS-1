@@ -75,6 +75,7 @@ public class FoodSpawn : MonoBehaviour
         GameObject foodPrefab = foodPrefabs[foodIndex];
         Transform spawnPosition = spawnPositions[spawnPositionIndex];
         GameObject foodInstance = Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
+        AudioManager.instance.PlayFoodPreparedAudio();
 
         // Remove the "(clone)" suffix from the instantiated food object's name
         foodInstance.name = RemoveCloneSuffix(foodInstance.name);

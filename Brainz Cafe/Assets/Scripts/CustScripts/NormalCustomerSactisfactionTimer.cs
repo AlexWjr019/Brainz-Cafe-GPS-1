@@ -174,6 +174,7 @@ public class NormalCustomerSactisfactionTimer : MonoBehaviour
                 {
                     // Apply damage to the table's health bar
                     healthBar.TakeDamage(0.5f);
+                    AudioManager.instance.PlayZombieAttackBarrierAudio();
                 }
             }
         }
