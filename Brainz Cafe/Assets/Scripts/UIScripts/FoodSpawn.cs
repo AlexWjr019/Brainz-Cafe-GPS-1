@@ -9,7 +9,7 @@ public class FoodSpawn : MonoBehaviour
     public bool canSpawnFood = true;
     private bool delayStarted = false;
     private float delayTimer = 0.0f;
-    public float spawnDelay = 3.0f;
+    public float spawnDelay = 1.5f;
     private int spawnIndex = 0;
     private Queue<int> customerFoodIndices = new Queue<int>(); // Indices of the food shown to the customers
 

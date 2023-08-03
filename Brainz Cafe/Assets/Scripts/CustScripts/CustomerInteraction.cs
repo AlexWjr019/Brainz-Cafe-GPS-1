@@ -19,15 +19,12 @@ public class CustomerInteraction : MonoBehaviour
     public string foodName;
     public string foodName2;
     private PlayerController playercontroller;
-
+    private bool hasEntered = false;
 
     //NEW ADDED
     private PickUp pickup;
 
     private Rigidbody2D rb2D;
-
-    private bool isCustomerStopMoving = false;
-    private Vector2 previousPosition;
 
     private void Start()
     {
@@ -48,28 +45,24 @@ public class CustomerInteraction : MonoBehaviour
             Debug.LogError("PickUp component not found!");
         }
 
-        // Find and store a reference to the Rigidbody2D component
-        rb2D = GetComponent<Rigidbody2D>();
-        isCustomerStopMoving = false;
-        previousPosition = rb2D.position;
 
     }
 
     private void Update()
     {
 
-        // Check if the customer's position is not changing anymore
-        if (rb2D.position == previousPosition)
-        {
-            isCustomerStopMoving = true;
-        }
-        else
-        {
-            isCustomerStopMoving = false;
-        }
+        //// Check if the customer's position is not changing anymore
+        //if (rb2D.position == previousPosition)
+        //{
+        //    isCustomerStopMoving = true;
+        //}
+        //else
+        //{
+        //    isCustomerStopMoving = false;
+        //}
 
-        // Update the previous position for the next frame
-        previousPosition = rb2D.position;
+        //// Update the previous position for the next frame
+        //previousPosition = rb2D.position;
     }
 
     public void serveCustomer()
@@ -87,17 +80,18 @@ public class CustomerInteraction : MonoBehaviour
         hasShownFoodImage = true; // Set the flag to true
         hasShownFoodImage2 = true;
 
-        if (timer.isAttacking)
-        {
-            menuImage.SetActive(false);
-        }
+        //if (timer.isAttacking)
+        //{
+        //    menuImage.SetActive(false);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Chairs"))
+        if (!hasEntered && collision.gameObject.CompareTag("Chairs"))
         {
-            Debug.Log("Touch");
+            hasEntered = true;
+            Debug.Log("Touch Serving Counter");
             StartCoroutine(ActivateMenuImageDelayed());
 
         }
@@ -109,7 +103,7 @@ public class CustomerInteraction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Chairs"))
         {
-            isCustomerStopMoving = false;
+            //isCustomerStopMoving = false;
             // Reset the food image flag
             hasShownFoodImage = false;
             hasShownFoodImage2 = false;
@@ -202,7 +196,7 @@ public class CustomerInteraction : MonoBehaviour
             }
         }
 
-        // Compare the names of the picked up food object and the food image
+        //Compare the names of the picked up food object and the food image
         if (pickup.currentFoodObjectName == foodName2 && foodImage2Active)
         {
             // Deactivate the second food image if it matches the last served food
@@ -240,7 +234,7 @@ public class CustomerInteraction : MonoBehaviour
             }
         }
 
-        // Compare the names of the picked up food object and the food image
+        //Compare the names of the picked up food object and the food image
         if (pickup.currentFoodObjectName2 == foodName2 && foodImage2Active2)
         {
             // Deactivate the second food image if it matches the last served food

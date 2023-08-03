@@ -30,31 +30,31 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        switch (bi.upgradedTable)
-        {
-            case -1:
-                switch (currentHealth)
-                {
-                    case 60: 
-                        sr.sprite = phasesDefault[0];
-                        break;
-                    case 20:
-                        sr.sprite = phasesDefault[1];
-                        break;
-                }
-                break;
-            case 0:
-                switch (currentHealth)
-                {
-                    case 150:
-                        sr.sprite = phasesVer2[0];
-                        break;
-                    case 50:
-                        sr.sprite = phasesVer2[1];
-                        break;
-                }
-                break;
-        }
+        //switch (bi.upgradedTable)
+        //{
+        //    case -1:
+        //        switch (currentHealth)
+        //        {
+        //            case 60: 
+        //                sr.sprite = phasesDefault[0];
+        //                break;
+        //            case 20:
+        //                sr.sprite = phasesDefault[1];
+        //                break;
+        //        }
+        //        break;
+        //    case 0:
+        //        switch (currentHealth)
+        //        {
+        //            case 150:
+        //                sr.sprite = phasesVer2[0];
+        //                break;
+        //            case 50:
+        //                sr.sprite = phasesVer2[1];
+        //                break;
+        //        }
+        //        break;
+        //}
     }
 
     public void TakeDamage(float damage)

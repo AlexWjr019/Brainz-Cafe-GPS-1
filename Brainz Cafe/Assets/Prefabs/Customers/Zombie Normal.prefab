@@ -176,11 +176,7 @@ GameObject:
   - component: {fileID: 1218956893084428290}
   - component: {fileID: 8561214904854730930}
   - component: {fileID: 673824610393985413}
-  - component: {fileID: 6945789997787134022}
   - component: {fileID: 6423988895833422588}
-  - component: {fileID: 8881889787797086473}
-  - component: {fileID: 7222245054334037303}
-  - component: {fileID: 2671653146162926309}
   m_Layer: 10
   m_Name: Zombie Normal
   m_TagString: Customer
@@ -273,7 +269,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12617493, y: 0.012416124}
+  m_Offset: {x: 0.29348004, y: 0.29231265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -284,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4678907, y: 2.7728667}
+  m_Size: {x: 1.0076525, y: 0.4918508}
   m_EdgeRadius: 0
 --- !u!50 &1218956893084428348
 Rigidbody2D:
@@ -370,9 +366,7 @@ MonoBehaviour:
   - {fileID: 7763266165897557512}
   - {fileID: 1119910132310575060}
   - {fileID: 9165532689061436282}
-  foodImages2: []
   foodName: 
-  foodName2: 
 --- !u!114 &673824610393985413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,19 +388,6 @@ MonoBehaviour:
   damageRate: 1
   CustomerInteraction: {fileID: 0}
   moneyDrop: 5
---- !u!114 &6945789997787134022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e892d3f9a319145a7e2486abdd9466, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 1
 --- !u!95 &6423988895833422588
 Animator:
   serializedVersion: 4
@@ -427,55 +408,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8881889787797086473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecae52469bd6d914b8b824aa86960eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer_radial_image: {fileID: 3106324215579278099}
-  time_remaining: 0
-  max_time: 30
-  isAttacking: 0
-  playerTag: Player
-  moveSpeed: 5
-  damageRate: 1
-  CustomerInteraction: {fileID: 0}
-  moneyDrop: 1
---- !u!114 &7222245054334037303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f8d259569ef4b459da216a0054d378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
-  speed: 2
---- !u!114 &2671653146162926309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f885a9dc038fa0549a7bb1cb158ef73e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 1
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0
