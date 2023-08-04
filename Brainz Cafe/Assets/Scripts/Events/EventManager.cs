@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    //public static bool isAfter5PM = true;
+    public static bool isAfter5PM = true;
     private float timeSinceLastEvent = 0f;
     private float eventInterval = 30f; // 30 minutes
     private float eventChance = 0.5f; // 50% chance
@@ -14,8 +14,8 @@ public class EventManager : MonoBehaviour
     {
         //CheckTime();
 
-        //if (isAfter5PM == true)
-        //{
+        if (isAfter5PM == true)
+        {
             //Debug.Log("Start Event");
             timeSinceLastEvent += Time.deltaTime;
 
@@ -33,7 +33,7 @@ public class EventManager : MonoBehaviour
                     Debug.Log("No Event");
                 }
             }
-        //}
+        }
     }
 
     //private void CheckTime()
