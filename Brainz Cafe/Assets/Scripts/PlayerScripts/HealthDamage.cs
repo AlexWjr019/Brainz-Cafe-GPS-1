@@ -20,7 +20,7 @@ public class HealthDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Chairs") && CustomerSatisfactionTimer.time_remaining <= 0)
         {
-            HealthBar healthBar = collision.gameObject.GetComponent<HealthBar>();
+            Counter healthBar = collision.gameObject.GetComponent<Counter>();
 
             if (healthBar != null)
             {

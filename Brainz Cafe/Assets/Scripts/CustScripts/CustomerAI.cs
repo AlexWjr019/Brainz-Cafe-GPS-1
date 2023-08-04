@@ -5,11 +5,11 @@ using Pathfinding;
 
 public class CustomerAI : MonoBehaviour
 {
-    public EmptyChair[] chairs;
+    public Counter[] chairs;
 
     public Transform target;
 
-    EmptyChair tempChair;
+    Counter tempChair;
 
     public float speed = 1f;
     public float nextWayPointDistance = 3f;
@@ -32,7 +32,7 @@ public class CustomerAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        chairs = FindObjectsOfType<EmptyChair>();
+        chairs = FindObjectsOfType<Counter>();
 
         StartCoroutine(lookChair());
 

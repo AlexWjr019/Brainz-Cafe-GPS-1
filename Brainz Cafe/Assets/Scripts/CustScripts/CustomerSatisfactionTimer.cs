@@ -160,7 +160,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             foreach (GameObject table in tables)
             {
                 // Check if the table has a HealthBar component
-                HealthBar healthBar = table.GetComponent<HealthBar>();
+                Counter healthBar = table.GetComponent<Counter>();
                 if (healthBar != null)
                 {
                     // Apply damage to the table's health bar

@@ -15,16 +15,13 @@ public class Shop : MonoBehaviour
     {
         if (inRange)
         {
-            if (Timer.playerBreakTime)
+            if (Input.GetKeyDown(KeyCode.E) && !shopOpen)
             {
-                if (Input.GetKeyDown(KeyCode.E) && !shopOpen)
-                {
-                    OpenShop();
-                }
-                else if (Input.GetKeyDown(KeyCode.E) && shopOpen)
-                {
-                    OpenShop();
-                }
+                OpenShop();
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && shopOpen)
+            {
+                OpenShop();
             }
         }
         else if (!inRange)

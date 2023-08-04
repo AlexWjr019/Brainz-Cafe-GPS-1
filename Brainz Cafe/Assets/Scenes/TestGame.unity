@@ -1628,6 +1628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -2279,7 +2281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -930190664566558955, guid: 226955ebcc3751941b47c7a41b0ddb17, type: 3}
       propertyPath: m_Size.y
-      value: 0.41941583
+      value: 0.962179
       objectReference: {fileID: 0}
     - target: {fileID: -930190664566558955, guid: 226955ebcc3751941b47c7a41b0ddb17, type: 3}
       propertyPath: m_Offset.x
@@ -2287,7 +2289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -930190664566558955, guid: 226955ebcc3751941b47c7a41b0ddb17, type: 3}
       propertyPath: m_Offset.y
-      value: 0.5075287
+      value: 0.23614714
       objectReference: {fileID: 0}
     - target: {fileID: -930190664566558955, guid: 226955ebcc3751941b47c7a41b0ddb17, type: 3}
       propertyPath: m_IsTrigger
@@ -2988,6 +2990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -7529,6 +7533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -7556,6 +7562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -8091,6 +8099,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -8617,6 +8627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -8852,9 +8864,9 @@ MonoBehaviour:
   cookText: {fileID: 970759582}
   cookPrice: 80
   upgradable: []
-  repairable: []
   barrierText: {fileID: 1758311386}
   barrierPrice: 200
+  healthIncrease: 0
   upgrades:
   - {fileID: 21300000, guid: b8ab8a0c8f07d5b4a9bae1328b7c1dcc, type: 3}
   upgradedTable: 0
@@ -9262,6 +9274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -12055,6 +12069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -12553,6 +12569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0ea3f7bfd9084478190435765ec9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  bi: {fileID: 0}
   healthBarFill: {fileID: 306549647}
   currentHealth: 0
   maxHealth: 100
@@ -13458,24 +13476,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8150602544460679049, guid: 9ae6b03fc1736264b9cfcdbb57dd3e39, type: 3}
   m_PrefabInstance: {fileID: 8935019717013938117}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8935019717013938119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3505623965126790129, guid: 9ae6b03fc1736264b9cfcdbb57dd3e39, type: 3}
-  m_PrefabInstance: {fileID: 8935019717013938117}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &8935019717013938120
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935019717013938119}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.06044341, y: -0.0027107606}
-  m_Size: {x: 2.4497957, y: 1.5983491}
-  m_Direction: 1

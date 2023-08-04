@@ -14,11 +14,11 @@ public class BuyItem : MonoBehaviour
     [SerializeField] int cookPrice;
     int upgradedCook;
 
-    [SerializeField] EmptyChair[] upgradable;
-    [SerializeField] HealthBar[] repairable;
+    [SerializeField] Counter[] upgradable;
  
     [SerializeField] TMP_Text barrierText;
     [SerializeField] int barrierPrice;
+    [SerializeField] int healthIncrease;
     [SerializeField] Sprite[] upgrades;
     [HideInInspector] public int upgradedTable = -1;
 
@@ -31,8 +31,7 @@ public class BuyItem : MonoBehaviour
 
     private void Start()
     {
-        upgradable = FindObjectsOfType<EmptyChair>();
-        repairable = FindObjectsOfType<HealthBar>();
+        upgradable = FindObjectsOfType<Counter>();
 
         cookText.text = cookPrice.ToString();
         barrierText.text = barrierPrice.ToString();
@@ -52,9 +51,8 @@ public class BuyItem : MonoBehaviour
                 {
                     upgradable[i].sr.sprite = upgrades[upgradedTable];
 
-                    HealthBar hb = GetComponent<HealthBar>();
-                    hb.maxHealth += 150;
-                    hb.currentHealth = hb.maxHealth;
+                    upgradable[i].maxHealth += healthIncrease;
+                    upgradable[i].currentHealth = upgradable[i].maxHealth;
                 }
                 upgradedTable++;
             }
@@ -67,11 +65,9 @@ public class BuyItem : MonoBehaviour
         {
             CurrencyManager.Instance.SpendMoney(repairPrice);
 
-            for (int i = 0; i < repairable.Length; i++)
+            for (int i = 0; i < upgradable.Length; i++)
             {
-                HealthBar hb = GetComponent<HealthBar>();
-
-                hb.currentHealth = hb.maxHealth;
+                upgradable[i].Repair();
             }
         }
     }
