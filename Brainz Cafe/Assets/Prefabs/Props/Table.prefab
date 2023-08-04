@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -930190664566558955}
   - component: {fileID: -3613318791551263868}
   - component: {fileID: 8851553509838151209}
+  - component: {fileID: -958556291323618723}
   m_Layer: 8
   m_Name: Table
   m_TagString: Untagged
@@ -146,5 +147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9686db43f0170fa4ea790783a4741239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sr: {fileID: 6637835000142267307}
   isOccupied: 0
+  sr: {fileID: 6637835000142267307}
+  currentHealth: 0
+  maxHealth: 100
+  fillSpeed: 1
+  phasesDefault:
+  - {fileID: 21300000, guid: 453fe4c63a36d804ab49298b85079610, type: 3}
+  - {fileID: 21300000, guid: 1e3a2c4479b08404096d04df8ef8454b, type: 3}
+  phasesVer2:
+  - {fileID: 21300000, guid: 5fbb4597a688fe243b7a8bcd6a196c72, type: 3}
+  - {fileID: 21300000, guid: 781bad702db1e0e4eb5d6af18e9e2f82, type: 3}
+--- !u!210 &-958556291323618723
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314525650969415245}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0

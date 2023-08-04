@@ -10,21 +10,25 @@ public class BuyItem : MonoBehaviour
 
     [SerializeField] PlayerMovement PM;
 
+    [HideInInspector] Counter[] upgradable;
+
+    [SerializeField] Button cookButton;
     [SerializeField] TMP_Text cookText;
     [SerializeField] int cookPrice;
     int upgradedCook;
 
-    [SerializeField] Counter[] upgradable;
- 
+    [SerializeField] Button barrierButton;
     [SerializeField] TMP_Text barrierText;
     [SerializeField] int barrierPrice;
     [SerializeField] int healthIncrease;
     [SerializeField] Sprite[] upgrades;
     [HideInInspector] public int upgradedTable = -1;
 
+    [SerializeField] Button repairButton;
     [SerializeField] TMP_Text repairText;
     [SerializeField] int repairPrice;
 
+    [SerializeField] Button pillButton;
     [SerializeField] TMP_Text pillText; 
     [SerializeField] int pillPrice;
     [HideInInspector] public bool boost;
@@ -39,6 +43,41 @@ public class BuyItem : MonoBehaviour
         pillText.text = pillPrice.ToString();
     }
 
+    private void Update()
+    {
+        if (CurrencyManager.Instance.currency >= barrierPrice && upgradedTable < upgrades.Length)
+        {
+            barrierButton.interactable = true;
+        }
+        else
+        {
+            barrierButton.interactable = false;
+        }
+        if (CurrencyManager.Instance.currency >= repairPrice)
+        {
+            repairButton.interactable = true;
+        }
+        else
+        {
+            repairButton.interactable = false;
+        }
+        if (CurrencyManager.Instance.currency >= pillPrice)
+        {
+            pillButton.interactable = true;
+        }
+        else
+        {
+            pillButton.interactable = false;
+        }
+        if (CurrencyManager.Instance.currency >= cookPrice)
+        {
+            cookButton.interactable = true;
+        }
+        else
+        {
+            cookButton.interactable = false;
+        }
+    }
     public void UpgradeTable()
     {
         if (CurrencyManager.Instance.currency >= barrierPrice)

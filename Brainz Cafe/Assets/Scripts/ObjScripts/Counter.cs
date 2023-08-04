@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
@@ -14,7 +15,6 @@ public class Counter : MonoBehaviour
     [HideInInspector]
     BuyItem bi;
 
-    public Image    healthBarFill;
     public float currentHealth;
     public float maxHealth = 100f;
     public float fillSpeed = 1f; // Adjust the fill speed as desired
@@ -65,6 +65,7 @@ public class Counter : MonoBehaviour
         {
             Destroy(gameObject);
             AudioManager.instance.PlayBarrierDestroyAudio();
+            SceneManager.LoadScene("GameOver");
         }
     }
 

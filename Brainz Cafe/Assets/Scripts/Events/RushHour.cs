@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RushHour : MonoBehaviour
 {
-    public CustomerSpawner2 customerSpawner;
+    public CustomerSpawner customerSpawner;
 
     public float customerBoostDuration = 20f;
     private float customerBoost = 2f;
@@ -11,7 +11,7 @@ public class RushHour : MonoBehaviour
 
     private void Start()
     {
-        customerSpawner = FindObjectOfType<CustomerSpawner2>();
+        customerSpawner = FindObjectOfType<CustomerSpawner>();
         
     }
 

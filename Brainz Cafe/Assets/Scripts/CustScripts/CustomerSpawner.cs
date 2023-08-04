@@ -4,52 +4,86 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public Transform spawnpoint; // Spawnpoints
-    public GameObject[] cusPrefabs; // Customer list
+    public GameObject customerPair1; // Prefab for the first pair with 1 customer
+    public GameObject customerPair2; // Prefab for the second pair with 2 customers
+    public GameObject customerPair3;
+    public GameObject customerPair4;
+    public Transform spawnPosition; // Reference to the empty GameObject for the spawn position
 
-    public Vector2 spawnVal;
+    public float checkInterval = 3f; // Interval in seconds to check for customer presence
+    private float timer = 0f; // Timer to track the elapsed time
 
-    public float spawnWait;
-    public float spawnMostWait;
-    public float spawnLeastWait;
-    public float startWait;
+    private bool isSpawningAllowed = true;
 
-    public bool stop;
-
-    public Timer t;
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        StartCoroutine(waitSpawner());
+        isSpawningAllowed = true;
+        StartCoroutine(SpawnCustomersRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        spawnWait = Random.Range(spawnLeastWait, spawnMostWait);
+        isSpawningAllowed = false;
     }
 
-    IEnumerator waitSpawner()
+    private IEnumerator SpawnCustomersRoutine()
     {
-        yield return new WaitForSeconds(startWait);
-
-        while (!stop || !t.timerOn)
+        while (isSpawningAllowed)
         {
-            int randCus = Random.Range(0, cusPrefabs.Length); // Randomize the zombie type
-            int randCusGrp = Random.Range(1, 3); // Randomize the grp size
+            timer += Time.deltaTime;
 
-            if (randCusGrp == 1)
+            if (timer >= checkInterval)
             {
-                Instantiate(cusPrefabs[randCus], spawnpoint.position, Quaternion.identity);
-            }
-            else if (randCusGrp == 2)
-            {
-                Instantiate(cusPrefabs[randCus], spawnpoint.position, Quaternion.identity);
-                Instantiate(cusPrefabs[randCus], spawnpoint.position + new Vector3(1f, 0f, 0f), Quaternion.identity);
+                timer = 0f;
+
+                if (!IsStartPointOccupied())
+                {
+                    SpawnCustomers();
+                }
             }
 
-            yield return new WaitForSeconds(spawnWait);
+            yield return null;
+        }
+    }
+
+    private bool IsStartPointOccupied()
+    {
+        Collider2D[] colliders = Physics2D.OverlapPointAll(spawnPosition.position);
+        foreach (var collider in colliders)
+        {
+            // If any collider found at the spawn position that is not the spawner itself, return true
+            if (collider.gameObject != gameObject)
+            {
+                return true;
+            }
+        }
+        // No colliders found at the spawn position
+        return false;
+    }
+
+    public void SpawnCustomers()
+    {
+        int randomPair = Random.Range(1, 10); // Generate a random number between 1 and 2
+
+        if (randomPair <= 7)
+        {
+            Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayNormalZombieAudio();
+        }
+        else if (randomPair == 8)
+        {
+            Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayAcidZombieAudio();
+        }
+        else if (randomPair == 9)
+        {
+            Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayBruteZombieAudio();
+        }
+        else if (randomPair == 10)
+        {
+            Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
+            AudioManager.instance.PlayClownZombieAudio();
         }
     }
 }
