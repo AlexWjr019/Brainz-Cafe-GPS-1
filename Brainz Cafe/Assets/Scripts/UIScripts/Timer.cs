@@ -161,7 +161,7 @@ public class Timer : MonoBehaviour
                 clockImage.color = Color.gray;
 
                 nightShift = true;
-                EventManager.isAfter5PM = true;
+                //EventManager.isAfter5PM = true;
             }
         }
     }

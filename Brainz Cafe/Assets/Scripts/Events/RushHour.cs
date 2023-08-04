@@ -6,7 +6,7 @@ public class RushHour : MonoBehaviour
     public CustomerSpawner2 customerSpawner;
 
     public float customerBoostDuration = 20f;
-    private float customerBoost = 4f;
+    private float customerBoost = 2f;
 
 
     private void Start()

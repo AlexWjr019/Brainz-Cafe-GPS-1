@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AcidGang : MonoBehaviour
+public class AcidGangEvent : MonoBehaviour
 {
     public GameObject acidZombiePrefab;
     public Transform[] spawnPositions;
     public int minSpawnCount = 3;
     public int maxSpawnCount = 4;
 
-    
+
     public void TriggerAcidGang()
     {
         // Generate a random number between the min and max spawn counts
