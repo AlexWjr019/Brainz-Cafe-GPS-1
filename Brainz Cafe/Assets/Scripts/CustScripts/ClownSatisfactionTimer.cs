@@ -128,8 +128,6 @@ public class ClownSatisfactionTimer : MonoBehaviour
         jumpscareImage.SpawnImage();
         jumpscare = false;
 
-
-
     }
     private IEnumerator StartTimerAfterDelay(float delay)
     {

@@ -252,8 +252,6 @@ GameObject:
   - component: {fileID: 1218956893084428290}
   - component: {fileID: 8561214904854730930}
   - component: {fileID: 8881889787797086473}
-  - component: {fileID: 7222245054334037303}
-  - component: {fileID: 2671653146162926309}
   - component: {fileID: 42583204692176768}
   - component: {fileID: 875784011907880734}
   m_Layer: 10
@@ -458,48 +456,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecae52469bd6d914b8b824aa86960eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer_radial_image: {fileID: 0}
+  timer_radial_image: {fileID: 7869373918338522708}
   time_remaining: 0
   max_time: 30
   isAttacking: 0
   playerTag: Player
-  moveSpeed: 5
+  moveSpeed: 2
   damageRate: 1
   CustomerInteraction: {fileID: 0}
   moneyDrop: 5
---- !u!114 &7222245054334037303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f8d259569ef4b459da216a0054d378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
-  speed: 2
---- !u!114 &2671653146162926309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f885a9dc038fa0549a7bb1cb158ef73e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 3
+  normalZombie: 0
+  acidZombie: 1
+  bruteZombie: 0
+  ClownZombie: 0
+  jumpscareImage: {fileID: 0}
+  jumpscare: 0
+  tileSpawner: {fileID: 0}
 --- !u!95 &42583204692176768
 Animator:
   serializedVersion: 4
@@ -527,7 +504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f555cad57089bd241a68def17b2c2df9, type: 3}
   m_Name: 
