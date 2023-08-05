@@ -8,8 +8,8 @@ public class OneLastPush : MonoBehaviour
 
     public float playerBoostDuration = 30f;
     private float playerBoost = 7.5f;
-    private float foodSpawnSpeedIncrease = 2.1f;
-
+    private float foodSpawnSpeedIncrease = 1f;
+    public GameObject oneLastPushSignboard;
 
     private void Start()
     {
@@ -20,6 +20,9 @@ public class OneLastPush : MonoBehaviour
 
     public void TriggerOneLastPushEvent()
     {
+        // Move the signboard down when the event is triggered
+        oneLastPushSignboard.GetComponent<OLPDownwardMovement>().StartOLPDownwardMovement();
+
         StartBoostEvent();
     }
 

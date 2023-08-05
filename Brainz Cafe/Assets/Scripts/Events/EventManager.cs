@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
@@ -7,8 +8,44 @@ public class EventManager : MonoBehaviour
     private float eventInterval = 30f; // 30 minutes
     private float eventChance = 0.5f; // 50% chance
 
-    private float currentHour;
+    //private float currentHour;
 
+    // References to the three event scripts
+    public OneLastPush oneLastPush;
+    public RushHour rushHour;
+    public AcidGangEvent acidGangEvent;
+
+    private List<System.Action> eventsList = new List<System.Action>();
+
+    private void Start()
+    {
+        // Populate the list with the event functions
+        PopulateEventsList();
+
+        // Randomly shuffle the events list
+        Shuffle(eventsList);
+    }
+
+    private void PopulateEventsList()
+    {
+        eventsList.Clear();
+        eventsList.Add(oneLastPush.TriggerOneLastPushEvent);
+        eventsList.Add(rushHour.TriggerRushHourEvent);
+        eventsList.Add(acidGangEvent.TriggerAcidGang);
+    }
+
+    private void Shuffle<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
 
     private void Update()
     {
@@ -26,7 +63,7 @@ public class EventManager : MonoBehaviour
                 if (Random.value <= eventChance)
                 {
                     Debug.Log("Event Triggered");
-                    TriggerRandomSpecialEvent();
+                    ActivateRandomEvent();
                 }
                 else
                 {
@@ -34,6 +71,30 @@ public class EventManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ActivateRandomEvent()
+    {
+        Debug.Log(eventsList[0] + "Event");
+
+        // If all events have been activated, reset the list and shuffle again
+        if (eventsList.Count == 0)
+        {
+            PopulateEventsList();
+            Shuffle(eventsList);
+        }
+
+        // Get the first event in the shuffled list
+        System.Action eventFunction = eventsList[0];
+
+        // Call the event function
+        eventFunction();
+
+        // Remove the event from the list so it won't be chosen again immediately
+        eventsList.RemoveAt(0);
+
+        // Shuffle the list again to randomize the order for the next activation
+        Shuffle(eventsList);
     }
 
     //private void CheckTime()
@@ -47,95 +108,4 @@ public class EventManager : MonoBehaviour
     //    isAfter5PM = min >= 9;
     //}
 
-    private void TriggerRandomSpecialEvent()
-    {
-        int eventId = Random.Range(0, 3); // Generate a random event ID from 0 to 2 (inclusive)
-        switch (eventId)
-        {
-            case 0:
-                TriggerAcidGangEvent();
-                break;
-            case 1:
-                TriggerOneLastPushEvent();
-                break;
-            case 2:
-                TriggerRushHourEvent();
-                break;
-        }
-    }
-
-    private void TriggerAcidGangEvent()
-    {
-        // Logic for Special Event 1
-        Debug.Log("Special Event 1 triggered!");
-
-
-        // Get the DownwardMovement component from the same game object
-        DownwardMovement downwardMovement = GetComponent<DownwardMovement>();
-
-        // Check if the DownwardMovement component exists
-        if (downwardMovement != null)
-        {
-            // Move the object downward using the DownwardMovement script
-            downwardMovement.StartDownwardMovement();
-        }
-
-        // Trigger the Acid Gang event in the AcidGang script
-        AcidGangEvent acidGang = GetComponent<AcidGangEvent>();
-        if (acidGang != null)
-        {
-            acidGang.TriggerAcidGang();
-        }
-        if(acidGang == null)
-        {
-            Debug.Log("Acid Gang Event got problem");
-        }
-    }
-
-    private void TriggerOneLastPushEvent()
-    {
-        // Logic for Special Event 2
-        Debug.Log("Special Event 2 triggered!");
-
-        // Get the DownwardMovement component from the same game object
-        OLPDownwardMovement OLPDownwardMovement = GetComponent<OLPDownwardMovement>();
-
-        // Check if the DownwardMovement component exists
-        if (OLPDownwardMovement != null)
-        {
-            // Move the object downward using the DownwardMovement script
-            OLPDownwardMovement.StartOLPDownwardMovement();
-        }
-
-        // Trigger the One Last Push event in the OneLastPush script
-        OneLastPush oneLastPush = GetComponent<OneLastPush>();
-        if (oneLastPush != null)
-        {
-            oneLastPush.TriggerOneLastPushEvent();
-        }
-    }
-
-    private void TriggerRushHourEvent()
-    {
-        // Logic for Special Event 3
-        Debug.Log("Special Event 3 triggered!");
-
-        // Get the DownwardMovement component from the same game object
-        RHDownwardMovement RHDownwardMovement = GetComponent<RHDownwardMovement>();
-
-        // Check if the DownwardMovement component exists
-        if (RHDownwardMovement != null)
-        {
-            // Move the object downward using the DownwardMovement script
-            RHDownwardMovement.StartRHDownwardMovement();
-        }
-
-
-        // Trigger the One Last Push event in the OneLastPush script
-        RushHour rushHour = GetComponent<RushHour>();
-        if (rushHour != null)
-        {
-            rushHour.TriggerRushHourEvent();
-        }
-    }
 }

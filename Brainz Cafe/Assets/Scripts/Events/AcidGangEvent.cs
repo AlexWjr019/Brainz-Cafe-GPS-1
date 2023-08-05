@@ -8,10 +8,13 @@ public class AcidGangEvent : MonoBehaviour
     public Transform[] spawnPositions;
     public int minSpawnCount = 3;
     public int maxSpawnCount = 4;
-
+    public GameObject acidGangSignboard;
 
     public void TriggerAcidGang()
     {
+
+        acidGangSignboard.GetComponent<DownwardMovement>().StartDownwardMovement();
+
         // Generate a random number between the min and max spawn counts
         int spawnCount = Random.Range(minSpawnCount, maxSpawnCount + 1);
 
@@ -23,6 +26,7 @@ public class AcidGangEvent : MonoBehaviour
         {
             Instantiate(acidZombiePrefab, spawnPositions[i].position, spawnPositions[i].rotation);
         }
+
     }
 
 }
