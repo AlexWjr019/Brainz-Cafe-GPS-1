@@ -6674,7 +6674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a0ca4ab28c794b88d9e1c9a1f9b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerSpawner: {fileID: 1086172053}
+  customerSpawner: {fileID: 0}
   customerBoostDuration: 20
 --- !u!1 &1017576268 stripped
 GameObject:
@@ -7132,7 +7132,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1086172051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da86f97416df79c4a8dd1f5c3765c6e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ab46211d7a30646be457f93959e9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   customerPair1: {fileID: 1218956893084428294, guid: 9eff17ca157adba409b18d5f3de1248c, type: 3}
@@ -7140,7 +7140,7 @@ MonoBehaviour:
   customerPair3: {fileID: 1218956893084428294, guid: ed3225ca36ba2534990ed36a0a72af4b, type: 3}
   customerPair4: {fileID: 1218956893084428294, guid: 4e93becdf48350e4c93cc80dff0cd48b, type: 3}
   spawnPosition: {fileID: 509236466}
-  checkInterval: 6
+  checkInterval: 3
 --- !u!1 &1111819449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8359,7 +8359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a0ca4ab28c794b88d9e1c9a1f9b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerSpawner: {fileID: 1086172053}
+  customerSpawner: {fileID: 0}
   customerBoostDuration: 20
 --- !u!114 &1382251048
 MonoBehaviour:
