@@ -116,8 +116,4 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = soundSources[11];
         barrierSource.PlayOneShot(clip);
     }
-
-
-
-
 }
