@@ -10,21 +10,23 @@ public class CustomerInteraction : MonoBehaviour
     public GameObject[] foodImages2;
 
     //private bool isSitting = false; // Flag to track if the customer is sitting
-    private bool hasShownFoodImage = false; // Flag to track if the food image has been shown
-    private bool hasShownFoodImage2 = false; // Flag to track if the food image has been shown
+    [HideInInspector]
+    public bool hasShownFoodImage = false; // Flag to track if the food image has been shown
+    [HideInInspector]
+    public bool hasShownFoodImage2 = false; // Flag to track if the food image has been shown
     private FoodSpawn foodSpawn; // Reference to the FoodSpawn script
     private int randomIndex; // Variable to store the index of the shown food image
-    private CustomerSatisfactionTimer timer;
+    //private CustomerSatisfactionTimer timer;
     //private bool playerEnteredCollision = false; // Flag to track if the player has entered the collision
     public string foodName;
     public string foodName2;
-    private PlayerController playercontroller;
+    //private PlayerController playercontroller;
     private bool hasEntered = false;
 
     //NEW ADDED
     private PickUp pickup;
 
-    private Rigidbody2D rb2D;
+    //private Rigidbody2D rb2D;
 
     private void Start()
     {
@@ -35,34 +37,15 @@ public class CustomerInteraction : MonoBehaviour
 
         // Find and store a reference to the FoodSpawn script
         foodSpawn = FindObjectOfType<FoodSpawn>();
-        playercontroller = GetComponent<PlayerController>();
+        //playercontroller = GetComponent<PlayerController>();
 
-        timer = GetComponent<CustomerSatisfactionTimer>();
+        //timer = GetComponent<CustomerSatisfactionTimer>();
 
         pickup = FindObjectOfType<PickUp>();
         if (pickup == null)
         {
             Debug.LogError("PickUp component not found!");
         }
-
-
-    }
-
-    private void Update()
-    {
-
-        //// Check if the customer's position is not changing anymore
-        //if (rb2D.position == previousPosition)
-        //{
-        //    isCustomerStopMoving = true;
-        //}
-        //else
-        //{
-        //    isCustomerStopMoving = false;
-        //}
-
-        //// Update the previous position for the next frame
-        //previousPosition = rb2D.position;
     }
 
     public void serveCustomer()
@@ -80,11 +63,6 @@ public class CustomerInteraction : MonoBehaviour
         ShowRandomFoodImage2();
         hasShownFoodImage = true; // Set the flag to true
         hasShownFoodImage2 = true;
-        
-        //if (timer.isAttacking)
-        //{
-        //    menuImage.SetActive(false);
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -94,9 +72,7 @@ public class CustomerInteraction : MonoBehaviour
             hasEntered = true;
             Debug.Log("Touch Serving Counter");
             StartCoroutine(ActivateMenuImageDelayed());
-
         }
-
     }
 
 
@@ -114,7 +90,6 @@ public class CustomerInteraction : MonoBehaviour
             SetFoodImagesActive(false);
             SetFoodImages2Active(false);
         }
-
     }
 
     private void ShowRandomFoodImage()
@@ -130,7 +105,6 @@ public class CustomerInteraction : MonoBehaviour
         // Log the name of the shown food image
         foodName = foodImages[randomIndex].name;
         Debug.Log("Food Name: " + foodName);
-
     }
 
     private void ShowRandomFoodImage2()

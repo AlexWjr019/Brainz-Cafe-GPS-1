@@ -75,8 +75,6 @@ public class CustomerAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        //rb.position = Vector2.MoveTowards(rb.position, (Vector2)path.vectorPath[currentWayPoint], speed * Time.deltaTime);
-
         rb.MovePosition(Vector2.MoveTowards(rb.position, (Vector2)path.vectorPath[currentWayPoint], speed * Time.deltaTime));
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
@@ -101,13 +99,13 @@ public class CustomerAI : MonoBehaviour
                     
                     animator.SetBool("IsWalking", true);
 
-                    GetComponent<ObjectAutoWalk>().enabled = false;
                     yield break;
                 }
             }
             yield return new WaitForSeconds(5);
         }
     }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         if (tempChair != null && col.gameObject == tempChair.gameObject)
@@ -117,10 +115,5 @@ public class CustomerAI : MonoBehaviour
             OnReachedEndOfPath?.Invoke(reachedEndOfPath);
             Debug.Log("Finally FOOD");
         }
-    }
-
-    private void OnDestroy()
-    {
-         tempChair.isOccupied = false;
     }
 }

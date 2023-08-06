@@ -148,7 +148,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 2a28fd155dc2a5741ad2ccf863e701f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,9 +175,8 @@ GameObject:
   - component: {fileID: 1218956893084428349}
   - component: {fileID: 1218956893084428290}
   - component: {fileID: 8561214904854730930}
-  - component: {fileID: 673824610393985413}
-  - component: {fileID: 6423988895833422588}
   - component: {fileID: -2496252564051764135}
+  - component: {fileID: 6423988895833422588}
   m_Layer: 10
   m_Name: Zombie Normal
   m_TagString: Customer
@@ -368,29 +367,39 @@ MonoBehaviour:
   - {fileID: 1119910132310575060}
   - {fileID: 9165532689061436282}
   foodImages2: []
+  hasShownFoodImage: 0
+  hasShownFoodImage2: 0
   foodName: 
   foodName2: 
---- !u!114 &673824610393985413
+--- !u!114 &-2496252564051764135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ce43d25b63cbee48a60882a71a1b37b, type: 3}
+  m_Script: {fileID: 11500000, guid: ecae52469bd6d914b8b824aa86960eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timer_radial_image: {fileID: 3106324215579278099}
   time_remaining: 0
   max_time: 30
   isAttacking: 0
-  playerTag: Player
+  playerTag: Chairs
   moveSpeed: 5
-  damageRate: 1
+  damageRate: 2
+  dmgAmt: 1
   CustomerInteraction: {fileID: 0}
   moneyDrop: 5
+  normalZombie: 1
+  acidZombie: 0
+  bruteZombie: 0
+  ClownZombie: 0
+  jumpscareImage: {fileID: 0}
+  jumpscare: 0
+  tileSpawner: {fileID: 0}
 --- !u!95 &6423988895833422588
 Animator:
   serializedVersion: 4
@@ -411,34 +420,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-2496252564051764135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218956893084428294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecae52469bd6d914b8b824aa86960eb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer_radial_image: {fileID: 3106324215579278099}
-  time_remaining: 0
-  max_time: 30
-  isAttacking: 0
-  playerTag: Chairs
-  moveSpeed: 5
-  damageRate: 1
-  CustomerInteraction: {fileID: 0}
-  moneyDrop: 5
-  normalZombie: 1
-  acidZombie: 0
-  bruteZombie: 0
-  ClownZombie: 0
-  jumpscareImage: {fileID: 0}
-  jumpscare: 0
-  tileSpawner: {fileID: 0}
 --- !u!1 &1274435582938218989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1347,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: da03ecd2a7cc22b48afb13d08a80c9a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1534,7 +1515,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 864803f89243b5d42a7c207debc02e2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    [HideInInspector]
     public bool isOccupied;
 
     [HideInInspector]
@@ -17,7 +16,6 @@ public class Counter : MonoBehaviour
 
     public float currentHealth;
     public float maxHealth = 100f;
-    public float fillSpeed = 1f; // Adjust the fill speed as desired
 
     public Sprite[] phasesDefault;
     public Sprite[] phasesVer2;

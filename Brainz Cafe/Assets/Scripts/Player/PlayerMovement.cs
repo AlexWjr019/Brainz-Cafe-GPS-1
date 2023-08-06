@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     const string PLAYER_WALK_FRONT = "Player_Walk_Front";
     const string PLAYER_WALK_BACK = "Player_Walk_Back";
 
-    private bool isMoving = false;
+    [HideInInspector]
+    public bool isMoving = false;
 
     private void Start()
     {

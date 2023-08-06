@@ -20,6 +20,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     //DAMAGE CODE ONLY NORMAL ZOMBIE AND BRUTE ZOMBIE USED, OTHERS NO NEED
     public float damageRate = 1f; // Rate at which damage is applied to the table
     private float damageTimer = 0f; // Timer to track the time since the last damage
+    public float dmgAmt = 0f;
 
     private Transform player; // Reference to the player's transform
     private float destroyTimer = 0f;
@@ -93,7 +94,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             if (isSitting)
             {
-
                 if (time_remaining > 0)
                 {
                     if (CustomerInteraction.foodName == null)
@@ -121,7 +121,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     {
                         // Customer satisfaction time has run out, start chasing the player
                         StartDamageTable();
-
                     }
                 }
             }
@@ -378,7 +377,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     if (healthBar != null)
                     {
                         // Apply damage to the table's health bar
-                        healthBar.TakeDamage(0.5f);
+                        healthBar.TakeDamage(dmgAmt);
                         AudioManager.instance.PlayZombieAttackBarrierAudio();
                     }
                 }
@@ -399,7 +398,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     if (healthBar != null)
                     {
                         // Apply damage to the table's health bar
-                        healthBar.TakeDamage(5f);
+                        healthBar.TakeDamage(dmgAmt);
                         AudioManager.instance.PlayZombieAttackBarrierAudio();
                     }
                 }

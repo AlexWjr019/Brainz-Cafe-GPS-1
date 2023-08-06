@@ -63,24 +63,24 @@ public class CustomerSpawner : MonoBehaviour
 
     public void SpawnCustomers()
     {
-        int randomPair = Random.Range(1, 10); // Generate a random number between 1 and 2
+        int randomPair = Random.Range(1, 13); // Generate a random number between 1 and 2
 
         if (randomPair <= 7)
         {
             Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
             AudioManager.instance.PlayNormalZombieAudio();
         }
-        else if (randomPair == 8)
+        else if (randomPair >= 8 && randomPair <= 9)
         {
             Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
             AudioManager.instance.PlayAcidZombieAudio();
         }
-        else if (randomPair == 9)
+        else if (randomPair >= 10 && randomPair <= 11)
         {
             Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
             AudioManager.instance.PlayBruteZombieAudio();
         }
-        else if (randomPair == 10)
+        else if (randomPair >= 12 && randomPair <= 13)
         {
             Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
             AudioManager.instance.PlayClownZombieAudio();
