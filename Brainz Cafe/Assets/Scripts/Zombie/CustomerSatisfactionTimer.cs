@@ -46,10 +46,16 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     //Acid Zombie Behaviour
     public TileSpawner tileSpawner;
 
+    //satisfaction bar fill amount
+    private Coroutine fillCoroutine; // Reference to the fill coroutine
+    private float fillSpeed = 7.0f; // Speed at which the fill amount increases (you can adjust this value)
+
+
     void Start()
     {
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
+        timer_radial_image.fillAmount = 0.0f; // Set the initial fill amount to 0
 
         // Find the player object with the specified tag
         GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
@@ -112,7 +118,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     else
                     {
                         time_remaining -= Time.deltaTime;
-                        timer_radial_image.fillAmount = time_remaining / max_time;
+                        //timer_radial_image.fillAmount = time_remaining / max_time;
+                        // Stop the previous fill coroutine (if running) to avoid conflicts
+                        if (fillCoroutine != null)
+                        {
+                            StopCoroutine(fillCoroutine);
+                        }
+                        // Start a new fill coroutine
+                        fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
                 else
@@ -159,7 +172,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     else
                     {
                         time_remaining -= Time.deltaTime;
-                        timer_radial_image.fillAmount = time_remaining / max_time;
+                        //timer_radial_image.fillAmount = time_remaining / max_time;
+                        // Stop the previous fill coroutine (if running) to avoid conflicts
+                        if (fillCoroutine != null)
+                        {
+                            StopCoroutine(fillCoroutine);
+                        }
+                        // Start a new fill coroutine
+                        fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
                 else
@@ -217,7 +237,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         }
 
                         time_remaining -= Time.deltaTime * speedMultiplier;
-                        timer_radial_image.fillAmount = time_remaining / max_time;
+                        //timer_radial_image.fillAmount = time_remaining / max_time;
+                        // Stop the previous fill coroutine (if running) to avoid conflicts
+                        if (fillCoroutine != null)
+                        {
+                            StopCoroutine(fillCoroutine);
+                        }
+                        // Start a new fill coroutine
+                        fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
                 else
@@ -250,7 +277,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     else
                     {
                         time_remaining -= Time.deltaTime;
-                        timer_radial_image.fillAmount = time_remaining / max_time;
+                        //timer_radial_image.fillAmount = time_remaining / max_time;
+                        // Stop the previous fill coroutine (if running) to avoid conflicts
+                        if (fillCoroutine != null)
+                        {
+                            StopCoroutine(fillCoroutine);
+                        }
+                        // Start a new fill coroutine
+                        fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
                 else
@@ -278,6 +312,30 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator FillTimerRadialImage()
+    {
+        float elapsedTime = 0.0f;
+        float startFillAmount = timer_radial_image.fillAmount;
+
+        while (elapsedTime < fillSpeed)
+        {
+            elapsedTime += Time.deltaTime;
+            float newFillAmount = Mathf.Lerp(startFillAmount, 1.0f, elapsedTime / fillSpeed);
+            timer_radial_image.fillAmount = newFillAmount;
+            yield return null;
+        }
+
+        // Ensure the fill amount is exactly 1 when the coroutine ends
+        if (time_remaining <= 0)
+        {
+            // If time_remaining is 0 or negative, set the fill amount to 1 directly
+            timer_radial_image.fillAmount = 1.0f;
+        }
+
+        fillCoroutine = null; // Reset the coroutine reference
+    }
+
 
     //Acid Zombie Behaviour
     private void SpawnTileForPlayer()
