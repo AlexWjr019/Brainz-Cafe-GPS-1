@@ -7,8 +7,12 @@ public class SetColor : MonoBehaviour
 {
     public Image image;
 
-    public void SetColour()
+    public void SetColourDarkGrey()
     {
-        image.color = Color.grey;
+        image.color = new Color32(70, 70, 70, 225);
+    }
+    public void SetColourWhite()
+    {
+        image.color = Color.white;
     }
 }
