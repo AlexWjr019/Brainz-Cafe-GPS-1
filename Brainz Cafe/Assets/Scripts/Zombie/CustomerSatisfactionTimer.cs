@@ -50,12 +50,32 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private Coroutine fillCoroutine; // Reference to the fill coroutine
     private float fillSpeed = 7.0f; // Speed at which the fill amount increases (you can adjust this value)
 
+    //Normal Zombie Attack Animation
+    Animator NormalAttackAnimator;
+    string NormalcurrentState;
+    const string NORMALZOMBIE_ATTACKING = "NZombieAttackingAnimation";
+    const string NORMALZOMBIE_STANDING = "NZombieStandingAnimation";
+
+    //Brute Zombie Attack Animation
+    Animator BruteAttackAnimator;
+    string BrutecurrentState;
+    const string BRUTEZOMBIE_ATTACKING = "BruteZombieAttackingAnimation";
+
+    //Acid Zombie Attack Animation
+    Animator AcidAttackAnimator;
+    string AcidcurrentState;
+    const string ACIDZOMBIE_ATTACKING = "AcidZombieAttackingAnimation";
+    
 
     void Start()
     {
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
         timer_radial_image.fillAmount = 0.0f; // Set the initial fill amount to 0
+
+        NormalAttackAnimator = gameObject.GetComponent<Animator>();
+        BruteAttackAnimator = gameObject.GetComponent<Animator>();
+        AcidAttackAnimator = gameObject.GetComponent<Animator>();
 
         // Find the player object with the specified tag
         GameObject playerObject = GameObject.FindGameObjectWithTag(playerTag);
@@ -208,7 +228,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             }
         }
 
-        if(acidZombie)
+        if (acidZombie)
         {
             if (isSitting)
             {
@@ -249,14 +269,17 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 }
                 else
                 {
-                    // spawn tile that make player slow
-                    SpawnTileForPlayer();
-                    DestroyCustomer();
+                    changeAnimationState(ACIDZOMBIE_ATTACKING);
+                    //// spawn tile that make player slow
+                    //SpawnTileForPlayer();
+                    //DestroyCustomer();
+                    // Start the attack routine for Acid Zombie
+                    StartCoroutine(AcidZombieAttackRoutine(1.5f));
                 }
             }
         }
 
-        if(ClownZombie)
+        if (ClownZombie)
         {
             if (isSitting)
             {
@@ -400,8 +423,18 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     public void StartDamageTable()
     {
+
         isAttacking = true;
         damageCoroutine = StartCoroutine(ContinuousDamageTable());
+        if (normalZombie)
+        {
+            changeAnimationState(NORMALZOMBIE_ATTACKING);
+            StartCoroutine(ChangeAfterDamageAnimation(1.5f));
+        }
+        if (bruteZombie)
+        {
+            changeAnimationState(BRUTEZOMBIE_ATTACKING);
+        }
     }
 
     private void StopDamageTable()
@@ -411,6 +444,8 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             StopCoroutine(damageCoroutine);
         }
+
+
     }
 
     private void DestroyCustomer()
@@ -440,6 +475,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     }
                 }
             }
+            
         }
 
         if (bruteZombie)
@@ -479,4 +515,60 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             yield return new WaitForSeconds(damageRate);
         }
     }
+
+    void changeAnimationState(string newState)
+    {
+        if (normalZombie)
+        {
+            // Stop animation from interrupting itself
+            if (NormalcurrentState == newState) return;
+
+            //Play new animation
+            NormalAttackAnimator.Play(newState);
+
+
+            //Update current state
+            NormalcurrentState = newState;
+        }
+
+        if (bruteZombie)
+        {
+            // Stop animation from interrupting itself
+            if (BrutecurrentState == newState) return;
+
+            //Play new animation
+            BruteAttackAnimator.Play(newState);
+
+
+            //Update current state
+            BrutecurrentState = newState;
+        }
+
+        if(acidZombie)
+        {
+            // Stop animation from interrupting itself
+            if (AcidcurrentState == newState) return;
+
+            //Play new animation
+            AcidAttackAnimator.Play(newState);
+
+
+            //Update current state
+            AcidcurrentState = newState;
+        }
+    }
+
+    private IEnumerator ChangeAfterDamageAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        changeAnimationState(NORMALZOMBIE_STANDING);
+    }
+
+    private IEnumerator AcidZombieAttackRoutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpawnTileForPlayer();
+        DestroyCustomer();       
+    }
+
 }
