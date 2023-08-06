@@ -16,7 +16,7 @@ public class JumpScare : MonoBehaviour
     public CanvasGroup canvasGroup;
     private float targetAlpha = 0.98f;
     private bool isDarkMode = false;
-
+    private bool hasSpawnedImage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +41,34 @@ public class JumpScare : MonoBehaviour
 
     public void SpawnImage()
     {
-        jumpScare.SetActive(true);
+        //jumpScare.SetActive(true);
 
-        GameObject spawnedImage = Instantiate(jumpScare, transform.position, Quaternion.identity);
-        AudioManager.instance.PlayClownZombieJumpScareAudio();
-        StartCoroutine(DestroyImageAfterDelay(spawnedImage, imageDuration));
-        darkMode.SetActive(true);
-        isDarkMode = true;
-        DarkMode();
+        //GameObject spawnedImage = Instantiate(jumpScare, transform.position, Quaternion.identity);
+        //AudioManager.instance.PlayClownZombieJumpScareAudio();
+        //StartCoroutine(DestroyImageAfterDelay(spawnedImage, imageDuration));
+        //darkMode.SetActive(true);
+        //isDarkMode = true;
+        //DarkMode();
+        if (!hasSpawnedImage)
+        {
+            jumpScare.SetActive(true);
+
+            GameObject spawnedImage = Instantiate(jumpScare, transform.position, Quaternion.identity);
+            AudioManager.instance.PlayClownZombieJumpScareAudio();
+            StartCoroutine(DestroyImageAfterDelay(spawnedImage, imageDuration));
+            darkMode.SetActive(true);
+            isDarkMode = true;
+            DarkMode();
+
+            hasSpawnedImage = true;
+            ResetSpawnedFlag();
+
+        }
+    }
+
+    public void ResetSpawnedFlag()
+    {
+        hasSpawnedImage = false;
     }
 
     public float imageDuration = 5f; // Time in seconds before the spawned tile disappears

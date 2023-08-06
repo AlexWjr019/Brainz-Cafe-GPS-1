@@ -314,15 +314,24 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (jumpscare)
                     {
-                        SpawnImageForPlayer();
+                        StartAttack();
+                        
                     }
+
+
                     if (!isAttacking)
                     {
-                        StartAttack();
+                        //StartAttack();
                         //DestroyCustomer();
                         //jumpscareImage.SetActive(true);
                         //jumpscare player with a fade in and fade out screen and steal point from player
+                        if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                        {
+                            StartCoroutine(LeaveAfterDelay(3f));
+                            CurrencyManager.Instance.AddMoney(moneyDrop);
+                        }
                     }
+
                 }
             }
             if (isAttacking)
@@ -374,9 +383,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     //Clown Zombie Behaviour
     private void SpawnImageForPlayer()
     {
-        // Check if the tileSpawner is assigned and the tilePrefab is set
-
-        // Call the SpawnTile method on the tileSpawner
         jumpscareImage.SpawnImage();
         jumpscare = false;
     }
@@ -384,7 +390,11 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     //Clown Zombie Behaviour
     public void StartAttack()
     {
-        jumpscare = true;
+        if (jumpscare) // Check if the jumpscare is true
+        {
+            SpawnImageForPlayer();
+            jumpscare = false; // Set jumpscare to false after spawning the image
+        }
     }
 
     private IEnumerator StartTimerAfterDelay(float delay)
