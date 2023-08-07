@@ -58,7 +58,6 @@ public class Timer : MonoBehaviour
         canvasGroup = darkMode.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // Start with alpha 0
         isDarkMode = false;
-
     }
 
     void Update()

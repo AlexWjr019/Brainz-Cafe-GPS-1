@@ -8,11 +8,10 @@ public class Counter : MonoBehaviour
 {
     public bool isOccupied;
 
-    [HideInInspector]
+    //[HideInInspector]
     public SpriteRenderer sr;
 
-    [HideInInspector]
-    BuyItem bi;
+    public BuyItem bi;
 
     public float currentHealth;
     public float maxHealth = 100f;
@@ -20,42 +19,60 @@ public class Counter : MonoBehaviour
     public Sprite[] phasesDefault;
     public Sprite[] phasesVer2;
 
+    float poisonTimer;
+
     private void Start()
     {
         currentHealth = maxHealth;
         sr = GetComponent<SpriteRenderer>();
-        bi = FindObjectOfType<BuyItem>();
     }
 
     private void Update()
     {
         if (bi.upgradedTable == -1)
         {
-            if (currentHealth == 60)
+            if (currentHealth <= 60f && currentHealth >= 21f)
             {
                 sr.sprite = phasesDefault[0];
             }
-            if (currentHealth == 20)
+            if (currentHealth <= 20)
             {
                 sr.sprite = phasesDefault[1];
             }
         }
         else if (bi.upgradedTable == 0)
         {
-            if (currentHealth == 150)
+            if (currentHealth <= 150 && currentHealth >= 51f)
             {
                 sr.sprite = phasesVer2[0];
             }
-            if (currentHealth == 50)
+            if (currentHealth <= 50)
             {
                 sr.sprite = phasesVer2[1];
             }
+        }
+
+        if (bi.poisoned && poisonTimer < bi.poisonDuration)
+        {
+            poisonTimer += Time.deltaTime;
+        }
+        else
+        {
+            poisonTimer = 0;
+            bi.poisoned = false;
         }
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        if (bi.poisoned)
+        {
+            currentHealth -= damage / 2;
+        }
+        else
+        {
+            currentHealth -= damage;
+        }
 
         Debug.Log(damage);
 
@@ -63,7 +80,7 @@ public class Counter : MonoBehaviour
         {
             Destroy(gameObject);
             AudioManager.instance.PlayBarrierDestroyAudio();
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("LoseScene");
         }
     }
 

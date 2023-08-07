@@ -116,4 +116,11 @@ public class CustomerAI : MonoBehaviour
             Debug.Log("Finally FOOD");
         }
     }
+
+
+    //temp fix
+    private void OnDestroy()
+    {
+        tempChair.isOccupied = false;
+    }
 }

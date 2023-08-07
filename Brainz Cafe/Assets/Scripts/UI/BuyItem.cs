@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class BuyItem : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class BuyItem : MonoBehaviour
 
     [SerializeField] PlayerMovement PM;
 
-    [HideInInspector] Counter[] upgradable;
+    [HideInInspector] Counter[] tables;
 
     [SerializeField] Button cookButton;
     [SerializeField] TMP_Text cookText;
@@ -22,7 +23,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] int barrierPrice;
     [SerializeField] int healthIncrease;
     [SerializeField] Sprite[] upgrades;
-    [HideInInspector] public int upgradedTable = -1;
+    [HideInInspector, NonSerialized] public int upgradedTable = -1;
 
     [SerializeField] Button repairButton;
     [SerializeField] TMP_Text repairText;
@@ -33,9 +34,15 @@ public class BuyItem : MonoBehaviour
     [SerializeField] int pillPrice;
     [HideInInspector] public bool boost;
 
+    [SerializeField] Button poisonButton;
+    [SerializeField] TMP_Text poisonText;
+    [SerializeField] int poisonPrice;
+    [SerializeField] public float poisonDuration;
+    [HideInInspector] public bool poisoned;
+
     private void Start()
     {
-        upgradable = FindObjectsOfType<Counter>();
+        tables = FindObjectsOfType<Counter>();
 
         cookText.text = cookPrice.ToString();
         barrierText.text = barrierPrice.ToString();
@@ -53,6 +60,7 @@ public class BuyItem : MonoBehaviour
         {
             barrierButton.interactable = false;
         }
+
         if (CurrencyManager.Instance.currency >= repairPrice)
         {
             repairButton.interactable = true;
@@ -61,6 +69,7 @@ public class BuyItem : MonoBehaviour
         {
             repairButton.interactable = false;
         }
+
         if (CurrencyManager.Instance.currency >= pillPrice)
         {
             pillButton.interactable = true;
@@ -69,6 +78,7 @@ public class BuyItem : MonoBehaviour
         {
             pillButton.interactable = false;
         }
+
         if (CurrencyManager.Instance.currency >= cookPrice)
         {
             cookButton.interactable = true;
@@ -77,7 +87,17 @@ public class BuyItem : MonoBehaviour
         {
             cookButton.interactable = false;
         }
+
+        if (CurrencyManager.Instance.currency >= poisonPrice)
+        {
+            poisonButton.interactable = true;
+        }
+        else
+        {
+            poisonButton.interactable = false;
+        }
     }
+
     public void UpgradeTable()
     {
         if (CurrencyManager.Instance.currency >= barrierPrice)
@@ -86,12 +106,12 @@ public class BuyItem : MonoBehaviour
 
             if (upgradedTable < upgrades.Length)
             {
-                for (int i = 0; i < upgradable.Length; i++)
+                for (int i = 0; i < tables.Length; i++)
                 {
-                    upgradable[i].sr.sprite = upgrades[upgradedTable];
+                    tables[i].sr.sprite = upgrades[upgradedTable];
 
-                    upgradable[i].maxHealth += healthIncrease;
-                    upgradable[i].currentHealth = upgradable[i].maxHealth;
+                    tables[i].maxHealth += healthIncrease;
+                    tables[i].currentHealth = tables[i].maxHealth;
                 }
                 upgradedTable++;
             }
@@ -104,9 +124,9 @@ public class BuyItem : MonoBehaviour
         {
             CurrencyManager.Instance.SpendMoney(repairPrice);
 
-            for (int i = 0; i < upgradable.Length; i++)
+            for (int i = 0; i < tables.Length; i++)
             {
-                upgradable[i].Repair();
+                tables[i].Repair();
             }
         }
     }
@@ -134,6 +154,18 @@ public class BuyItem : MonoBehaviour
                 FS.spawnDelay -= 0.2f;
                 cookPrice += 10;
                 upgradedCook += 1;
+            }
+        }
+    }
+
+    public void PoisonGas()
+    {
+        if (CurrencyManager.Instance.currency >= poisonPrice)
+        {
+            CurrencyManager.Instance.SpendMoney(poisonPrice);
+            if (!poisoned)
+            {
+                poisoned = true;
             }
         }
     }

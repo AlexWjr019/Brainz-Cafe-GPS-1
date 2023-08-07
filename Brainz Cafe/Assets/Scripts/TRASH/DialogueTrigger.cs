@@ -8,7 +8,6 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    private bool inRange, triggered = false;
     public KeyCode interactKey;
 
     void Start()

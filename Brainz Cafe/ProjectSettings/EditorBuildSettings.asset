@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestGame.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: b141a52809ba7d14e95b6158d3c97f38
   - enabled: 1
-    path: Assets/Scenes/PlayerDeath.unity
+    path: Assets/Scenes/LoseScene.unity
     guid: f723a74ec39f28748b7867d2c1f93155
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 8af0e08254db69c4d9f60cc875ca623b
+    path: Assets/Scenes/WinScene.unity
+    guid: e64303492732d1943bf2496296be47f5
   m_configObjects: {}
