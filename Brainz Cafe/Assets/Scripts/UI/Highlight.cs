@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField]
+    bool isTutorial;
+
+    [SerializeField]
     Image image;
 
     [SerializeField]
@@ -31,7 +34,15 @@ public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        audioManager.ButtonClickingAudio();
-        throw new System.NotImplementedException();
+        if (isTutorial)
+        {
+            audioManager.PlayTutorialNextButtonAudio(); 
+            throw new System.NotImplementedException();
+        }
+        else
+        {
+            audioManager.ButtonClickingAudio();
+            throw new System.NotImplementedException();
+        }
     }
 }

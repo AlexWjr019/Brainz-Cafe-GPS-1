@@ -471,21 +471,20 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (shouldDamageTable)
             {
                 // Find all the table objects with the "Table" tag
-                GameObject[] tables = GameObject.FindGameObjectsWithTag("Chairs");
+                Counter[] tables = FindObjectsOfType<Counter>();
 
-                foreach (GameObject table in tables)
+                for (int i = 0; i < tables.Length; i++)
                 {
                     // Check if the table has a HealthBar component
-                    Counter healthBar = table.GetComponent<Counter>();
-                    if (healthBar != null)
+                    //Counter healthBar = table.GetComponent<Counter>();
+                    if (tables[i] != null)
                     {
                         // Apply damage to the table's health bar
-                        healthBar.TakeDamage(dmgAmt);
+                        tables[i].TakeDamage(dmgAmt);
                         AudioManager.instance.PlayZombieAttackBarrierAudio();
                     }
                 }
             }
-            
         }
 
         if (bruteZombie)
@@ -493,16 +492,16 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (shouldDamageTable)
             {
                 // Find all the table objects with the "Table" tag
-                GameObject[] tables = GameObject.FindGameObjectsWithTag("Chairs");
+                Counter[] tables = FindObjectsOfType<Counter>();
 
-                foreach (GameObject table in tables)
+                for (int i = 0; i < tables.Length; i++)
                 {
                     // Check if the table has a HealthBar component
-                    Counter healthBar = table.GetComponent<Counter>();
-                    if (healthBar != null)
+                    //Counter healthBar = table.GetComponent<Counter>();
+                    if (tables[i] != null)
                     {
                         // Apply damage to the table's health bar
-                        healthBar.TakeDamage(dmgAmt);
+                        tables[i].TakeDamage(dmgAmt);
                         AudioManager.instance.PlayZombieAttackBarrierAudio();
                     }
                 }
