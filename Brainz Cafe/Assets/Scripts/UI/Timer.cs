@@ -58,12 +58,6 @@ public class Timer : MonoBehaviour
         canvasGroup = darkMode.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // Start with alpha 0
         isDarkMode = false;
-<<<<<<< Updated upstream
-=======
-        AudioManager.instance.PlayMorningAfternoonAudio(0);
-
-
->>>>>>> Stashed changes
     }
 
     void Update()

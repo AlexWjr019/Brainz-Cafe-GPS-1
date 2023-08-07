@@ -11,8 +11,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource playerSource;
     [SerializeField] AudioSource zombieSource;
     [SerializeField] AudioSource barrierSource;
-    [SerializeField] AudioSource buttonSource;
-    [SerializeField] AudioSource otherSource;
     [SerializeField] AudioSource[] sounds;
     [SerializeField] List<AudioClip> soundSources = new List<AudioClip>();
 
@@ -20,14 +18,13 @@ public class AudioManager : MonoBehaviour
     {
         instance = this;
 
-        PlayMainMenuAudio(2);
+        PlayMorningAfternoonAudio(0);
     }
 
     public void PlayMorningAfternoonAudio(int index)
     {
         if (index >= 0 && index < sounds.Length)
         {
-            sounds[2].Stop();
             sounds[index].Play();           
         }
     }
@@ -37,15 +34,6 @@ public class AudioManager : MonoBehaviour
         if (index >= 0 && index < sounds.Length)
         {
             sounds[0].Stop();
-            sounds[2].Stop();
-            sounds[index].Play();
-        }
-    }
-
-    public void PlayMainMenuAudio(int index)
-    {
-        if (index >= 0 && index < sounds.Length)
-        {
             sounds[index].Play();
         }
     }
@@ -125,37 +113,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBarrierNextDamageStateAudio()
     {
-        AudioClip clip = soundSources[12];
+        AudioClip clip = soundSources[11];
         barrierSource.PlayOneShot(clip);
-    }
-
-    public void PlayTutorialNextButtonAudio()
-    {
-        AudioClip clip = soundSources[13];
-        buttonSource.PlayOneShot(clip);
-    }
-
-    public void SuperPillAudio()
-    {
-        AudioClip clip = soundSources[14];
-        otherSource.PlayOneShot(clip);
-    }
-
-    public void UpgradeRepairAudio()
-    {
-        AudioClip clip = soundSources[15];
-        barrierSource.PlayOneShot(clip);
-    }
-
-    public void PoisonGasSpawnAudio()
-    {
-        AudioClip clip = soundSources[16];
-        otherSource.PlayOneShot(clip);
-    }
-
-    public void ButtonClickingAudio()
-    {
-        AudioClip clip = soundSources[17];
-        otherSource.PlayOneShot(clip);
     }
 }

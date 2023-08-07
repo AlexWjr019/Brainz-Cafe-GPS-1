@@ -14053,10 +14053,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1738260655}
     m_Modifications:
-    - target: {fileID: 1316362165, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4189744269593334548, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -14104,10 +14100,6 @@ PrefabInstance:
     - target: {fileID: 4189744269593334550, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189744271069672629, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}

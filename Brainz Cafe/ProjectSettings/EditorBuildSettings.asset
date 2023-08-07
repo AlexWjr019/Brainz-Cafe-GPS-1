@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: f723a74ec39f28748b7867d2c1f93155
-<<<<<<< Updated upstream
-=======
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
->>>>>>> Stashed changes
   m_configObjects: {}
