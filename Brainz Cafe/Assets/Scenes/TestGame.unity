@@ -1029,7 +1029,7 @@ MonoBehaviour:
   countDown: 0
   timerDuration: 540
   timerStart: 780
-  sceneID: 4
+  sceneID: 2
   timerTxt: {fileID: 145933663}
   customerSpawnObject: {fileID: 1086172051}
   nightShift: 0
@@ -9710,7 +9710,6 @@ MonoBehaviour:
   healthIncrease: 150
   upgrades:
   - {fileID: 21300000, guid: b8ab8a0c8f07d5b4a9bae1328b7c1dcc, type: 3}
-  upgradedTable: 0
   repairButton: {fileID: 2046228568}
   repairText: {fileID: 2049140591}
   repairPrice: 150
@@ -9718,6 +9717,11 @@ MonoBehaviour:
   pillText: {fileID: 56269449}
   pillPrice: 60
   boost: 0
+  poisonButton: {fileID: 222440444}
+  poisonText: {fileID: 1718275221}
+  poisonPrice: 100
+  poisonDuration: 15
+  poisoned: 0
 --- !u!1 &1464397968
 GameObject:
   m_ObjectHideFlags: 0
@@ -13948,6 +13952,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_text
+      value: Decreases DMG from customers to the barrier
+      objectReference: {fileID: 0}
+    - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 113d00344388760419b9cfbbaebf4217, type: 2}
@@ -13955,6 +13963,18 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 8568553809652800883, guid: 113d00344388760419b9cfbbaebf4217, type: 2}
+    - target: {fileID: 2305803493274456305, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 233.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305803493274456305, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 64.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3447831927997520077, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_text
+      value: Poison Gas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
 --- !u!1001 &3050740536739004687
