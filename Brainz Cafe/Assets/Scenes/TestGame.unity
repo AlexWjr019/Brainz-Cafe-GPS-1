@@ -2196,6 +2196,7 @@ MonoBehaviour:
   image: {fileID: 383132189}
   sp_default: {fileID: 21300000, guid: 48efdfbb2de1f9e449015f547dc9b333, type: 3}
   sp_highlight: {fileID: 21300000, guid: 9e489f49dfa758842bf12e0b7caf7172, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &383132188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,6 +2683,7 @@ MonoBehaviour:
   image: {fileID: 442393178}
   sp_default: {fileID: 21300000, guid: 897f6b515ef4ff44eb99077662691447, type: 3}
   sp_highlight: {fileID: 21300000, guid: 79c79bb88f994d14f90cb88f19d5a3d7, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &442393177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4499,6 +4501,7 @@ MonoBehaviour:
   image: {fileID: 662303798}
   sp_default: {fileID: 21300000, guid: 88624038cb4734e4da2910aa96c4c5e5, type: 3}
   sp_highlight: {fileID: 21300000, guid: 0689454e7c5d05249b8211348afe69a4, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &662303797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5233,6 +5236,7 @@ MonoBehaviour:
   image: {fileID: 775952021}
   sp_default: {fileID: 21300000, guid: fca22685db5488e458100459703af958, type: 3}
   sp_highlight: {fileID: 21300000, guid: df22258cf584f614babff2f39bea02a7, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &775952020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12523,6 +12527,7 @@ MonoBehaviour:
   image: {fileID: 1986423945}
   sp_default: {fileID: 21300000, guid: b34dcb49a9504534997d23376731d403, type: 3}
   sp_highlight: {fileID: 21300000, guid: fa6347cb1b98f324baa3f8c3ca40c7c2, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &1986423944
 MonoBehaviour:
   m_ObjectHideFlags: 0
