@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering.Universal;
 
-public class LightFlicker : MonoBehaviour
+public class FlashingLight : MonoBehaviour
 {
     [SerializeField] float minLightIntensity;
     [SerializeField] float maxLightIntensity;
-    [SerializeField] float betweenLightFlickers;
+    [SerializeField] float betweenLightFlash;
     [SerializeField] float beginningTime;
 
     Light2D mylight;
@@ -27,8 +26,12 @@ public class LightFlicker : MonoBehaviour
 
     IEnumerator lightFlicker()
     {
-        yield return new WaitForSeconds(betweenLightFlickers);
-        mylight.intensity = Random.Range(minLightIntensity, maxLightIntensity);
+        yield return new WaitForSeconds(0.5f);
+        mylight.intensity = minLightIntensity;
+
+        yield return new WaitForSeconds(betweenLightFlash);
+        mylight.intensity = maxLightIntensity;
+
         StartCoroutine(lightFlicker());
     }
 }
