@@ -22,7 +22,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] TMP_Text barrierText;
     [SerializeField] int barrierPrice;
     [SerializeField] int healthIncrease;
-    [SerializeField] Sprite[] upgrades;
+    [SerializeField] public Sprite[] upgrades;
     [HideInInspector, NonSerialized] public int upgradedTable = -1;
 
     [SerializeField] Button repairButton;
@@ -48,6 +48,7 @@ public class BuyItem : MonoBehaviour
         barrierText.text = barrierPrice.ToString();
         repairText.text = repairPrice.ToString();
         pillText.text = pillPrice.ToString();
+        poisonText.text = poisonPrice.ToString();
     }
 
     private void Update()

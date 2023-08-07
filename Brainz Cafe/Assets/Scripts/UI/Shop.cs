@@ -15,11 +15,11 @@ public class Shop : MonoBehaviour
     {
         if (inRange)
         {
-            if (Input.GetKeyDown(KeyCode.E) && !shopOpen)
+            if (Input.GetKeyDown(KeyCode.V) && !shopOpen)
             {
                 OpenShop();
             }
-            else if (Input.GetKeyDown(KeyCode.E) && shopOpen)
+            else if (Input.GetKeyDown(KeyCode.V) && shopOpen)
             {
                 OpenShop();
             }

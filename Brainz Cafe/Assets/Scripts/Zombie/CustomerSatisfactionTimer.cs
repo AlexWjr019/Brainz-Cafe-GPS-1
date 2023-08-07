@@ -433,7 +433,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     public void StartDamageTable()
     {
-
         isAttacking = true;
         damageCoroutine = StartCoroutine(ContinuousDamageTable());
         if (normalZombie)
@@ -535,7 +534,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             //Play new animation
             NormalAttackAnimator.Play(newState);
 
-
             //Update current state
             NormalcurrentState = newState;
         }
@@ -548,7 +546,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             //Play new animation
             BruteAttackAnimator.Play(newState);
 
-
             //Update current state
             BrutecurrentState = newState;
         }
@@ -560,7 +557,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
             //Play new animation
             AcidAttackAnimator.Play(newState);
-
 
             //Update current state
             AcidcurrentState = newState;

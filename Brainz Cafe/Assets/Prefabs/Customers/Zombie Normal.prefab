@@ -390,7 +390,7 @@ MonoBehaviour:
   playerTag: Chairs
   moveSpeed: 5
   damageRate: 2
-  dmgAmt: 1
+  dmgAmt: 3
   CustomerInteraction: {fileID: 0}
   moneyDrop: 5
   normalZombie: 1

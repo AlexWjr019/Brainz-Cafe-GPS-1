@@ -31,24 +31,32 @@ public class Counter : MonoBehaviour
     {
         if (bi.upgradedTable == -1)
         {
-            if (currentHealth <= 60f && currentHealth >= 21f)
+            if (currentHealth <= 100 && currentHealth >= 61)
             {
                 sr.sprite = phasesDefault[0];
             }
-            if (currentHealth <= 20)
+            if (currentHealth <= 60f && currentHealth >= 21f)
             {
                 sr.sprite = phasesDefault[1];
+            }
+            if (currentHealth <= 20)
+            {
+                sr.sprite = phasesDefault[2];
             }
         }
         else if (bi.upgradedTable == 0)
         {
+            if (currentHealth <= 250 && currentHealth >= 151)
+            {
+                sr.sprite = bi.upgrades[bi.upgradedTable];
+            }
             if (currentHealth <= 150 && currentHealth >= 51f)
             {
-                sr.sprite = phasesVer2[0];
+                sr.sprite = phasesVer2[1];
             }
             if (currentHealth <= 50)
             {
-                sr.sprite = phasesVer2[1];
+                sr.sprite = phasesVer2[2];
             }
         }
 

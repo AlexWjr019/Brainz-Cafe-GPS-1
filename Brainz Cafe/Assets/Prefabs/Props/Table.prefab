@@ -148,12 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOccupied: 0
   sr: {fileID: 6637835000142267307}
+  bi: {fileID: 0}
   currentHealth: 0
   maxHealth: 100
-  fillSpeed: 1
   phasesDefault:
+  - {fileID: 21300000, guid: 550adb124c826464eba000212a75cc61, type: 3}
   - {fileID: 21300000, guid: 453fe4c63a36d804ab49298b85079610, type: 3}
   - {fileID: 21300000, guid: 1e3a2c4479b08404096d04df8ef8454b, type: 3}
   phasesVer2:
+  - {fileID: 21300000, guid: b8ab8a0c8f07d5b4a9bae1328b7c1dcc, type: 3}
   - {fileID: 21300000, guid: 5fbb4597a688fe243b7a8bcd6a196c72, type: 3}
   - {fileID: 21300000, guid: 781bad702db1e0e4eb5d6af18e9e2f82, type: 3}
