@@ -1551,10 +1551,11 @@ MonoBehaviour:
   timerOn: 0
   countDown: 0
   timerDuration: 540
-  timerStart: 780
+  timerStart: 1010
   sceneID: 2
   timerTxt: {fileID: 145933663}
   customerSpawnObject: {fileID: 1086172051}
+  foodSpawnObject: {fileID: 382217881}
   nightShift: 0
   darkMode: {fileID: 832048561}
   lights: {fileID: 1933977809}
