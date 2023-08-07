@@ -23,7 +23,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] int barrierPrice;
     [SerializeField] int healthIncrease;
     [SerializeField] public Sprite[] upgrades;
-    [HideInInspector, NonSerialized] public int upgradedTable = -1;
+    [HideInInspector] public int upgradedTable = -1;
 
     [SerializeField] Button repairButton;
     [SerializeField] TMP_Text repairText;
@@ -54,7 +54,7 @@ public class BuyItem : MonoBehaviour
 
     private void Update()
     {
-        if (CurrencyManager.Instance.currency >= barrierPrice && upgradedTable < upgrades.Length)
+        if (CurrencyManager.Instance.currency >= barrierPrice && upgradedTable < upgrades.Length - 1)
         {
             barrierButton.interactable = true;
         }
@@ -72,7 +72,7 @@ public class BuyItem : MonoBehaviour
             repairButton.interactable = false;
         }
 
-        if (CurrencyManager.Instance.currency >= pillPrice)
+        if (CurrencyManager.Instance.currency >= pillPrice && !boost)
         {
             pillButton.interactable = true;
         }
@@ -81,7 +81,7 @@ public class BuyItem : MonoBehaviour
             pillButton.interactable = false;
         }
 
-        if (CurrencyManager.Instance.currency >= cookPrice)
+        if (CurrencyManager.Instance.currency >= cookPrice && upgradedCook < 5)
         {
             cookButton.interactable = true;
         }
@@ -90,7 +90,7 @@ public class BuyItem : MonoBehaviour
             cookButton.interactable = false;
         }
 
-        if (CurrencyManager.Instance.currency >= poisonPrice)
+        if (CurrencyManager.Instance.currency >= poisonPrice && !poisoned)
         {
             poisonButton.interactable = true;
         }
@@ -108,10 +108,10 @@ public class BuyItem : MonoBehaviour
 
             if (upgradedTable < upgrades.Length)
             {
+                Debug.Log(upgradedTable);
+
                 for (int i = 0; i < tables.Length; i++)
                 {
-                    tables[i].sr.sprite = upgrades[upgradedTable];
-
                     tables[i].maxHealth += healthIncrease;
                     tables[i].currentHealth = tables[i].maxHealth;
                 }

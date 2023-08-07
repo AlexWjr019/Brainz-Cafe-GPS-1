@@ -10,6 +10,7 @@ public class CurrencyManager : MonoBehaviour
     
     public TMP_Text currencyText;
 
+    [HideInInspector]
     public int currency;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class CurrencyManager : MonoBehaviour
 
     void Start()
     {
-        currency = 0;
+        currency = 1000;
         currencyText.text = "Brainz: " + currency.ToString();
     }
 

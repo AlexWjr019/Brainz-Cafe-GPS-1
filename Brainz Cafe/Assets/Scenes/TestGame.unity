@@ -195,7 +195,7 @@ Transform:
   - {fileID: 514619132}
   - {fileID: 263192255}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &32260899
 GameObject:
@@ -1279,7 +1279,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &116701153 stripped
 Transform:
@@ -1551,16 +1551,18 @@ MonoBehaviour:
   timerOn: 0
   countDown: 0
   timerDuration: 540
-  timerStart: 1080
+  timerStart: 780
   sceneID: 2
   timerTxt: {fileID: 145933663}
   customerSpawnObject: {fileID: 1086172051}
+  foodSpawnObject: {fileID: 382217881}
+  SpecialEvents: {fileID: 1382251043}
   nightShift: 0
   darkMode: {fileID: 832048561}
   lights: {fileID: 1933977809}
   clockImage: {fileID: 61983772}
   fadeDuration: 2
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 832048565}
 --- !u!114 &145933663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3485,7 +3487,7 @@ Transform:
   - {fileID: 93323833}
   - {fileID: 507970555}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398635618
 GameObject:
@@ -3799,7 +3801,7 @@ RectTransform:
   m_Children:
   - {fileID: 1021369967}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5099,7 +5101,7 @@ RectTransform:
   - {fileID: 524549326}
   - {fileID: 1057594007}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5790,7 +5792,7 @@ Transform:
   m_Children:
   - {fileID: 1307916387}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659150133
 GameObject:
@@ -8309,7 +8311,7 @@ RectTransform:
   - {fileID: 562784240}
   - {fileID: 1032795112}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9559,7 +9561,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086172051}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da86f97416df79c4a8dd1f5c3765c6e5, type: 3}
   m_Name: 
@@ -9803,7 +9805,7 @@ RectTransform:
   m_Children:
   - {fileID: 1173188878}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11430,63 +11432,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6550670492044961224, guid: 226955ebcc3751941b47c7a41b0ddb17, type: 3}
   m_PrefabInstance: {fileID: 2116092207}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1378441813
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1218956893084428294, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_Name
-      value: Zombie Acid
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.037705
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.1409343
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1218956893084428345, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9d3f9edd745fba349a599d5e4b9d82cb, type: 3}
 --- !u!114 &1382002341 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4074890143663530924, guid: 06d8ae3481d299d4a83797cff3a63f1d, type: 3}
@@ -12010,7 +11955,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412633448
 GameObject:
@@ -12532,13 +12477,14 @@ MonoBehaviour:
   healthIncrease: 150
   upgrades:
   - {fileID: 21300000, guid: b8ab8a0c8f07d5b4a9bae1328b7c1dcc, type: 3}
+  upgradedTable: -1
   repairButton: {fileID: 2046228568}
   repairText: {fileID: 2049140591}
   repairPrice: 150
   pillButton: {fileID: 1525677342}
   pillText: {fileID: 56269449}
   pillPrice: 60
-  boostDuration: 0
+  boostDuration: 15
   boost: 0
   poisonButton: {fileID: 222440444}
   poisonText: {fileID: 1718275221}
@@ -15715,7 +15661,7 @@ RectTransform:
   - {fileID: 452238654}
   - {fileID: 1457432758}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
