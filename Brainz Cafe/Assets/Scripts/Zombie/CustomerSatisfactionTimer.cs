@@ -131,7 +131,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         }
                         else
                         {
-                            CurrencyManager.Instance.AddMoney(moneyDrop);
+                            //CurrencyManager.Instance.AddMoney(moneyDrop);
                             DestroyCustomer();
                         }
                     }
@@ -243,7 +243,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         }
                         else
                         {
-                            CurrencyManager.Instance.AddMoney(moneyDrop);
+                            //CurrencyManager.Instance.AddMoney(moneyDrop);
                             DestroyCustomer();
                         }
                     }
@@ -328,7 +328,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                         {
                             StartCoroutine(LeaveAfterDelay(3f));
-                            CurrencyManager.Instance.AddMoney(moneyDrop);
+                            //CurrencyManager.Instance.AddMoney(moneyDrop);
                         }
                     }
 
@@ -339,7 +339,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                 {
                     StartCoroutine(LeaveAfterDelay(3f));
-                    CurrencyManager.Instance.AddMoney(moneyDrop);
+                    //CurrencyManager.Instance.AddMoney(moneyDrop);
                 }
             }
         }
