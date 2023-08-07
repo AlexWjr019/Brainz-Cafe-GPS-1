@@ -13,27 +13,16 @@ public class FoodSpawn : MonoBehaviour
     private int spawnIndex = 0;
     private Queue<int> customerFoodIndices = new Queue<int>(); // Indices of the food shown to the customers
 
+
     private void Update()
     {
-        //delayTimer += Time.deltaTime;
 
-        //if (delayStarted && delayTimer >= spawnDelay)
-        //{
-        //    if (delayTimer >= spawnInterval)
-        //    {
-        //        SpawnFood();
-        //        delayTimer = 0.0f; // Reset the delay timer
-        //    }
-        //}
-        if (canSpawnFood && customerFoodIndices.Count > 0)
+        delayTimer += Time.deltaTime;
+
+        if (delayTimer >= spawnDelay)
         {
-            delayTimer += Time.deltaTime;
-
-            if (delayTimer >= spawnDelay)
-            {
-                SpawnFood();
-                delayTimer = 0.0f; // Reset the delay timer
-            }
+            SpawnFood();
+            delayTimer = 0.0f; // Reset the delay timer
         }
     }
 
@@ -64,30 +53,21 @@ public class FoodSpawn : MonoBehaviour
             return; // Exit the method if no available spawn positions
         }
 
-        int foodIndex = customerFoodIndices.Dequeue(); // Dequeue the first customer food index
-
-        if (foodIndex < 0 || foodIndex >= foodPrefabs.Length)
-        {
-            Debug.LogWarning("Invalid food index: " + foodIndex);
-            return; // Exit the method if the food index is invalid
-        }
+        //int foodIndex = customerFoodIndices.Dequeue();
+        int foodIndex = Random.Range(0, foodPrefabs.Length);
 
         GameObject foodPrefab = foodPrefabs[foodIndex];
         Transform spawnPosition = spawnPositions[spawnPositionIndex];
         GameObject foodInstance = Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
         AudioManager.instance.PlayFoodPreparedAudio();
 
-        // Remove the "(clone)" suffix from the instantiated food object's name
         foodInstance.name = RemoveCloneSuffix(foodInstance.name);
 
-        //canSpawnFood = false;
-        //delayStarted = false; // Reset the delay flag
         delayTimer = 0.0f; // Reset the delay timer
 
-        // Check if there are more customer food indices to spawn
         if (customerFoodIndices.Count > 0)
         {
-            delayStarted = true; // Start the delay for the next food spawn
+            delayTimer = 0.0f; // Reset the delay timer for subsequent customer food indices
         }
     }
 
