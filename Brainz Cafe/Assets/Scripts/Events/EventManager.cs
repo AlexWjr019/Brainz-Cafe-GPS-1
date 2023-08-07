@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static bool isAfter5PM = true;
+    //public static bool isAfter5PM = false;
     private float timeSinceLastEvent = 0f;
     private float eventInterval = 30f; // 30 minutes
     private float eventChance = 0.5f; // 50% chance
@@ -16,6 +16,38 @@ public class EventManager : MonoBehaviour
     public AcidGangEvent acidGangEvent;
 
     private List<System.Action> eventsList = new List<System.Action>();
+
+    private bool isNotBreakTime = true;
+
+    private void OnEnable()
+    {
+        isNotBreakTime = true;
+        if (isNotBreakTime == true)
+        {
+            //Debug.Log("Start Event");
+            timeSinceLastEvent += Time.deltaTime;
+
+            if (timeSinceLastEvent >= eventInterval)
+            {
+                timeSinceLastEvent = 0f;
+
+                if (Random.value <= eventChance)
+                {
+                    Debug.Log("Event Triggered");
+                    ActivateRandomEvent();
+                }
+                else
+                {
+                    Debug.Log("No Event");
+                }
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        isNotBreakTime = false;
+    }
 
     private void Start()
     {
@@ -51,7 +83,7 @@ public class EventManager : MonoBehaviour
     {
         //CheckTime();
 
-        if (isAfter5PM == true)
+        if (isNotBreakTime == true)
         {
             //Debug.Log("Start Event");
             timeSinceLastEvent += Time.deltaTime;

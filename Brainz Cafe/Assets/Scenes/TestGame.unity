@@ -1556,6 +1556,7 @@ MonoBehaviour:
   timerTxt: {fileID: 145933663}
   customerSpawnObject: {fileID: 1086172051}
   foodSpawnObject: {fileID: 382217881}
+  SpecialEvents: {fileID: 1382251043}
   nightShift: 0
   darkMode: {fileID: 832048561}
   lights: {fileID: 1933977809}

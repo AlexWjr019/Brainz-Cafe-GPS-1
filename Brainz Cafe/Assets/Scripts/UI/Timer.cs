@@ -31,6 +31,8 @@ public class Timer : MonoBehaviour
     GameObject customerSpawnObject;
     [SerializeField]
     GameObject foodSpawnObject;
+    [SerializeField]
+    GameObject SpecialEvents;
 
     public bool nightShift = false;
 
@@ -139,6 +141,7 @@ public class Timer : MonoBehaviour
 
                 customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
+                SpecialEvents.SetActive(true);
             }
             if (min == 17 && sec == 0)
             {
@@ -147,6 +150,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Player Break Time"); // Display break time message
 
                 customerSpawnObject.SetActive(false);
+                SpecialEvents.SetActive(false);
             }
 
             if (min == 17 && sec == 30)
@@ -166,13 +170,14 @@ public class Timer : MonoBehaviour
 
                 customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
+                SpecialEvents.SetActive(true);
                 darkMode.SetActive(true);
                 isDarkMode = true;
                 DarkMode();
                 clockImage.color = Color.gray;
 
                 nightShift = true;
-                EventManager.isAfter5PM = true;
+                //EventManager.isAfter5PM = true;
             }
         }
     }
