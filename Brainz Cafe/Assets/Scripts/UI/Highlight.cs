@@ -12,6 +12,13 @@ public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField]
     Sprite sp_default, sp_highlight;
 
+    public AudioManager audioManager;
+
+    public void Start()
+    {
+        audioManager = AudioManager.instance;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = sp_highlight;
@@ -24,6 +31,7 @@ public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        audioManager.ButtonClickingAudio();
         throw new System.NotImplementedException();
     }
 }

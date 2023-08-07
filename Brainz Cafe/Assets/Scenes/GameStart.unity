@@ -178,6 +178,7 @@ MonoBehaviour:
   image: {fileID: 8248845}
   sp_default: {fileID: 21300000, guid: 48efdfbb2de1f9e449015f547dc9b333, type: 3}
   sp_highlight: {fileID: 21300000, guid: 9e489f49dfa758842bf12e0b7caf7172, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &8248844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1450,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 652470566, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4189744269593334548, guid: e7bb7c23e06a1a8438ffe5f55ce98778, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2371,6 +2376,7 @@ MonoBehaviour:
   image: {fileID: 438368109}
   sp_default: {fileID: 21300000, guid: 88624038cb4734e4da2910aa96c4c5e5, type: 3}
   sp_highlight: {fileID: 21300000, guid: 0689454e7c5d05249b8211348afe69a4, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &438368108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3973,6 +3979,7 @@ MonoBehaviour:
   image: {fileID: 803333709}
   sp_default: {fileID: 21300000, guid: 897f6b515ef4ff44eb99077662691447, type: 3}
   sp_highlight: {fileID: 21300000, guid: 79c79bb88f994d14f90cb88f19d5a3d7, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &803333708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4633,6 +4640,7 @@ MonoBehaviour:
   image: {fileID: 947459744}
   sp_default: {fileID: 21300000, guid: d97a1c8b7d38a474aa02dea943f29cab, type: 3}
   sp_highlight: {fileID: 21300000, guid: 92098d98a0ea97b40929c85933f62b81, type: 3}
+<<<<<<< Updated upstream
 --- !u!1 &960212898
 GameObject:
   m_ObjectHideFlags: 0
@@ -4903,6 +4911,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016999273}
   m_CullTransparentMesh: 1
+=======
+  audioManager: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!1 &1043702820
 GameObject:
   m_ObjectHideFlags: 0
@@ -7425,6 +7436,7 @@ MonoBehaviour:
   image: {fileID: 1793415535}
   sp_default: {fileID: 21300000, guid: 02a54cbfb8178b249acdc71ea63c8f20, type: 3}
   sp_highlight: {fileID: 21300000, guid: ded295a2e2db9ea46a85bdfc0d03d0bf, type: 3}
+  audioManager: {fileID: 0}
 --- !u!114 &1793415534
 MonoBehaviour:
   m_ObjectHideFlags: 0
