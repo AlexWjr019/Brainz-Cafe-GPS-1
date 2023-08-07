@@ -7,20 +7,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     BuyItem BT;
 
-    //[HideInInspector] public StaminaController _staminaController;
-
     Rigidbody2D rb;
-    //public static bool isSprinting;
 
     public float walkSpeed = 5f;
     float tempSpeed;
 
-    //float runSpeed = 20f;
     float speedLimiter = 0.8f;
     float inputHorizontal;
     float inputVertical;
 
     float boostTimer = 0f;
+
+    public bool isSlowedDown = false;
+    float slowedSpeed;
+    [SerializeField]
+    float slowdownFactor = 0.5f;
 
     Animator animator;
 
@@ -46,12 +47,12 @@ public class PlayerMovement : MonoBehaviour
         tempSpeed = walkSpeed;
     }
 
-
-
     void Update()
     {
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
+
+        SpeedPill();
 
         // Check if the player is moving
         if (inputHorizontal != 0f || inputVertical != 0f)
@@ -83,17 +84,6 @@ public class PlayerMovement : MonoBehaviour
             // Reset velocity to stop the player's movement
             rb.velocity = Vector2.zero;
         }
-
-        if (BT.boost)
-        {
-            boostTimer = Time.deltaTime;
-        }
-        if (BT.boost && boostTimer >= 15)
-        {
-            walkSpeed = tempSpeed;
-            BT.boost = false;
-        }
-
 
     }
 
@@ -132,6 +122,38 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void SpeedPill()
+    {
+        if (BT.boost)
+        {
+            boostTimer = Time.deltaTime;
+        }
+        if (BT.boost && boostTimer >= BT.boostDuration)
+        {
+            walkSpeed = tempSpeed;
+            BT.boost = false;
+        }
+    }
+
+    public void AcidSlow()
+    {
+        if (isSlowedDown)
+        {
+            if (walkSpeed == slowedSpeed)
+            {
+                return;
+            }
+            else
+            {
+                walkSpeed *= slowdownFactor;
+                slowedSpeed = walkSpeed;
+            }
+        }
+        else
+        {
+            walkSpeed = tempSpeed;
+        }
+    }
 
     void changeAnimationState(string newState)
     {
@@ -141,8 +163,25 @@ public class PlayerMovement : MonoBehaviour
         //Play new animation
         animator.Play(newState);
 
-
         //Update current state
         currentState = newState;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Acid Puddle"))
+        {
+            isSlowedDown = true;
+            AcidSlow();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Acid Puddle"))
+        {
+            isSlowedDown = false;
+            AcidSlow();
+        }
     }
 }

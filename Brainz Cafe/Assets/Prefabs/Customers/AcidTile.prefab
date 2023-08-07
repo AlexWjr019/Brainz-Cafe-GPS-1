@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6835832544935611284}
   - component: {fileID: 4731836406576930970}
-  - component: {fileID: 369762806915710923}
-  - component: {fileID: 4791832996255492546}
+  - component: {fileID: 4353229812547476492}
   - component: {fileID: 1964153385639743675}
   m_Layer: 0
   m_Name: AcidTile
-  m_TagString: Untagged
+  m_TagString: Acid Puddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &369762806915710923
-CircleCollider2D:
+--- !u!70 &4353229812547476492
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,21 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &4791832996255492546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681786583827352886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293c862bc6fb8f047b72f6f03f981a01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: 0.019682646, y: -0.014383856}
+  m_Size: {x: 1.0493659, y: 0.71276516}
+  m_Direction: 1
 --- !u!95 &1964153385639743675
 Animator:
   serializedVersion: 4
@@ -123,7 +110,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2681786583827352886}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8df331560c30bcf4c8bf090a0386e654, type: 2}
   m_CullingMode: 0

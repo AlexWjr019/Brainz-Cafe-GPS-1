@@ -32,6 +32,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] Button pillButton;
     [SerializeField] TMP_Text pillText; 
     [SerializeField] int pillPrice;
+    [SerializeField] public int boostDuration;
     [HideInInspector] public bool boost;
 
     [SerializeField] Button poisonButton;
