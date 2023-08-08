@@ -32,6 +32,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
     public int moneyDrop;
+    public float deductionInterval = 5f;
+    public int deductionAmount = 5;
+    private bool shouldDeductPoints = true;
 
     //Declare which zombie
     public bool normalZombie = false;
@@ -65,8 +68,8 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     Animator AcidAttackAnimator;
     string AcidcurrentState;
     const string ACIDZOMBIE_ATTACKING = "AcidZombieAttackingAnimation";
-    
 
+    private bool isRepeatingAttackAnimation = false;
     void Start()
     {
         time_remaining = max_time;
@@ -268,15 +271,34 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     }
                 }
                 else
+
                 {
                     changeAnimationState(ACIDZOMBIE_ATTACKING);
-                    //// spawn tile that make player slow
-                    //SpawnTileForPlayer();
-                    //DestroyCustomer();
-                    // Start the attack routine for Acid Zombie
                     StartCoroutine(AcidZombieAttackRoutine(1.5f));
-                }
+            //        if (!isAttacking)
+            //        {
+            //            isAttacking = true;
+            //            isRepeatingAttackAnimation = true;
+            //            changeAnimationState(ACIDZOMBIE_ATTACKING);
+            //            StartCoroutine(AcidZombieAttackRoutine(1.5f));
+            //        }
+               }
             }
+            //if (isAttacking)
+            //{
+            //    if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+            //    {
+            //        isAttacking = false;
+            //        isRepeatingAttackAnimation = false;
+            //        StopCoroutine(RepeatAttackAnimation(5.0f));
+            //        DestroyCustomer();
+            //    }
+            //    else
+            //    {
+            //        isRepeatingAttackAnimation = true;
+            //        StartCoroutine(RepeatAttackAnimation(5.0f));
+            //    }
+            //}
         }
 
         if (ClownZombie)
@@ -314,8 +336,8 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (jumpscare)
                     {
-                        StartAttack();
-                        
+                        StartJumpScare();
+                        StartCoroutine(DeductPointsOverTime(deductionInterval, deductionAmount));
                     }
 
 
@@ -344,6 +366,29 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             }
         }
     }
+
+    //private IEnumerator RepeatAttackAnimation(float acidAttack)
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(acidAttack);
+    //        if (!isSitting)
+    //        {
+    //            // If not sitting, stop the coroutine
+    //            yield break;
+    //        }
+    //        if (isAttacking)
+    //        {
+    //            // Start the attack animation routine if it's not already running
+    //            SpawnTileForPlayer();
+    //            changeAnimationState(ACIDZOMBIE_ATTACKING);
+    //            StartCoroutine(AcidZombieAttackRoutine(1.5f));
+    //        }
+            
+    //    }
+    //}
+
+
 
     private IEnumerator FillTimerRadialImage()
     {
@@ -388,13 +433,52 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     }
 
     //Clown Zombie Behaviour
-    public void StartAttack()
+    public void StartJumpScare()
     {
         if (jumpscare) // Check if the jumpscare is true
         {
             SpawnImageForPlayer();
             jumpscare = false; // Set jumpscare to false after spawning the image
         }
+    }
+
+    //Clown Zombie Behaviour
+    IEnumerator DeductPointsOverTime(float interval, int amount)
+    {
+        Debug.LogWarning("Working");
+        while(true)
+        {
+            Debug.LogWarning("In the while");
+            if (CurrencyManager.Instance.currency >= amount)
+            {
+                shouldDeductPoints = true;
+                Debug.LogWarning("it is true");
+                // Deduct points and update player's points
+                if (shouldDeductPoints)
+                {
+                    Debug.LogWarning("Start Deduction");
+                    CurrencyManager.Instance.SpendMoney(amount);
+                }
+                
+            }
+            
+            // If moneyDrop becomes 0, stop deducting points
+            else if (CurrencyManager.Instance.currency <= 0)
+            {
+                Debug.LogWarning("NOOO Deduction");
+                shouldDeductPoints = false;
+            }
+
+            // Wait for the specified interval before deducting points again
+            yield return new WaitForSeconds(interval);
+        }
+
+        // If moneyDrop is replenished, start deducting points again
+        //if (CurrencyManager.Instance.currency > amount)
+        //{
+        //    shouldDeductPoints = true;
+        //    StartCoroutine(DeductPointsOverTime(interval, amount));
+        //}
     }
 
     private IEnumerator StartTimerAfterDelay(float delay)
@@ -573,7 +657,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         SpawnTileForPlayer();
-        DestroyCustomer();       
+        DestroyCustomer();
     }
 
 }

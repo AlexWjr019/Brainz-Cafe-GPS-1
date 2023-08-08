@@ -20,7 +20,7 @@ public class CurrencyManager : MonoBehaviour
 
     void Start()
     {
-        currency = 0;
+        currency = 1000;
         currencyText.text = "Brainz: " + currency.ToString();
     }
 
