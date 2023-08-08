@@ -2148,13 +2148,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1457432757}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1457432762}
+        m_TargetAssemblyTypeName: BuyItem, Assembly-CSharp
+        m_MethodName: PoisonGas
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3071,7 +3071,7 @@ MonoBehaviour:
   - {fileID: 1149840557}
   - {fileID: 572969758}
   canSpawnFood: 1
-  spawnDelay: 1.5
+  spawnDelay: 4
 --- !u!1 &383132185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9561,7 +9561,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086172051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da86f97416df79c4a8dd1f5c3765c6e5, type: 3}
   m_Name: 
@@ -10834,7 +10834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29268d13a0a8c4447b6d4af25d221321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BT: {fileID: 1457432762}
+  bi: {fileID: 1457432762}
   walkSpeed: 4
   isSlowedDown: 0
   slowdownFactor: 0.5
@@ -12471,10 +12471,13 @@ MonoBehaviour:
   cookButton: {fileID: 975321714}
   cookText: {fileID: 970759582}
   cookPrice: 80
+  cookPriceIncease: 10
+  cookTimeDecrease: 0.2
   barrierButton: {fileID: 1937070422}
   barrierText: {fileID: 1758311386}
   barrierPrice: 200
   healthIncrease: 150
+  minHealthPercentage: 0.99
   upgrades:
   - {fileID: 21300000, guid: b8ab8a0c8f07d5b4a9bae1328b7c1dcc, type: 3}
   upgradedTable: -1
