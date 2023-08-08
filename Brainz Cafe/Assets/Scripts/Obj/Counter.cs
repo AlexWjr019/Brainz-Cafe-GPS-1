@@ -76,10 +76,12 @@ public class Counter : MonoBehaviour
         if (bi.poisoned)
         {
             currentHealth -= damage / 2;
+            Debug.Log(damage / 2);
         }
         else
         {
             currentHealth -= damage;
+            Debug.Log(damage);
         }
 
         if (currentHealth <= 0)
