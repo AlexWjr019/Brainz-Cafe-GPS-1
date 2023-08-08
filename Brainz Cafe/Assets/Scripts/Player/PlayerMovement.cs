@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    BuyItem BT;
+    BuyItem bi;
 
     Rigidbody2D rb;
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     float inputHorizontal;
     float inputVertical;
 
-    float boostTimer = 0f;
+    float boostTimer;
 
     public bool isSlowedDown = false;
     float slowedSpeed;
@@ -84,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
             // Reset velocity to stop the player's movement
             rb.velocity = Vector2.zero;
         }
-
     }
 
     void FixedUpdate()
@@ -124,14 +123,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void SpeedPill()
     {
-        if (BT.boost)
+        if (bi.boost && boostTimer < bi.boostDuration)
         {
-            boostTimer = Time.deltaTime;
+            boostTimer += Time.deltaTime;
         }
-        if (BT.boost && boostTimer >= BT.boostDuration)
+        else if (bi.boost && boostTimer >= bi.boostDuration)
         {
             walkSpeed = tempSpeed;
-            BT.boost = false;
+            boostTimer = 0;
+            bi.boost = false;
         }
     }
 

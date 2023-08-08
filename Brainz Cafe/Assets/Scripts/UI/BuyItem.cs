@@ -16,12 +16,15 @@ public class BuyItem : MonoBehaviour
     [SerializeField] Button cookButton;
     [SerializeField] TMP_Text cookText;
     [SerializeField] int cookPrice;
+    [SerializeField] int cookPriceIncease;
+    [SerializeField] float cookTimeDecrease;
     int upgradedCook;
 
     [SerializeField] Button barrierButton;
     [SerializeField] TMP_Text barrierText;
     [SerializeField] int barrierPrice;
     [SerializeField] int healthIncrease;
+    [SerializeField] float minHealthPercentage;
     [SerializeField] public Sprite[] upgrades;
     [HideInInspector] public int upgradedTable = -1;
 
@@ -63,7 +66,7 @@ public class BuyItem : MonoBehaviour
             barrierButton.interactable = false;
         }
 
-        if (CurrencyManager.Instance.currency >= repairPrice)
+        if (CurrencyManager.Instance.currency >= repairPrice && tables[0].currentHealth < tables[0].maxHealth * minHealthPercentage)
         {
             repairButton.interactable = true;
         }
@@ -153,9 +156,10 @@ public class BuyItem : MonoBehaviour
             CurrencyManager.Instance.SpendMoney(cookPrice);
             if (upgradedCook < 5)
             {
-                FS.spawnDelay -= 0.2f;
-                cookPrice += 10;
+                FS.spawnDelay -= cookTimeDecrease;
                 upgradedCook += 1;
+                cookPrice += cookPriceIncease;
+                cookText.text = cookPrice.ToString();
             }
         }
     }
