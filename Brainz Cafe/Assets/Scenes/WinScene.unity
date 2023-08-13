@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2663627401374733099, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
       propertyPath: m_Name
-      value: NEWAudioManager
+      value: AudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
@@ -653,7 +653,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 274502538}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -827,7 +827,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 274502538}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -1001,7 +1001,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 274502538}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:

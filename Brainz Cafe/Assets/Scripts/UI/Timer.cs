@@ -51,10 +51,6 @@ public class Timer : MonoBehaviour
     private float targetAlpha = 0.98f;
     private bool isDarkMode = false;
 
-
-    //[SerializeField] AudioSource daySound;
-    //[SerializeField] AudioSource nightSound;
-
     void Start()
     {
         resetTimer();
@@ -62,8 +58,6 @@ public class Timer : MonoBehaviour
         canvasGroup = darkMode.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // Start with alpha 0
         isDarkMode = false;
-
-        //NEWAudioManager.Instance.Play("AfternoonBGM");
     }
 
     void Update()
@@ -118,9 +112,6 @@ public class Timer : MonoBehaviour
         if (currentTime <= 720)
         {
             timerTxt.text = string.Format("{0:00} : {1:00}", min, sec);
-
-            //daySound.Play();
-
         }
         else
         {
@@ -164,9 +155,7 @@ public class Timer : MonoBehaviour
 
                 Debug.Log("Player Night shift"); // Display break time message
 
-                //nightSound.Play();
-                //AudioManager.instance.PlayNightAudio(1);
-                NEWAudioManager.Instance.PlayBGM("NightBGM");
+                AudioManager.Instance.PlayBGM("NightBGM");
 
                 customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
@@ -177,7 +166,6 @@ public class Timer : MonoBehaviour
                 clockImage.color = Color.gray;
 
                 nightShift = true;
-                //EventManager.isAfter5PM = true;
             }
         }
     }

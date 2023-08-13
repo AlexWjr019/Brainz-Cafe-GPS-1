@@ -57,7 +57,7 @@ public class CustomerInteraction : MonoBehaviour
     private IEnumerator ActivateMenuImageDelayed()
     {
         yield return new WaitForSeconds(2.0f);
-        NEWAudioManager.Instance.Play("FoodCook");
+        AudioManager.Instance.Play("FoodCook");
         //menuImage.SetActive(true);
         ShowRandomFoodImage(); // Show a random food image
         ShowRandomFoodImage2();
@@ -167,8 +167,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding = null;
                 pickup.currentFoodObjectName = null;
                 foodName = null;
-                NEWAudioManager.Instance.Play("ServeFood");
-                NEWAudioManager.Instance.Play("CustomerEat");
+                AudioManager.Instance.Play("ServeFood");
+                AudioManager.Instance.Play("CustomerEat");
                 return; // Exit the method after deactivating the image
             }
         }
@@ -188,8 +188,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding = null;
                 pickup.currentFoodObjectName = null;
                 foodName2 = null;
-                NEWAudioManager.Instance.Play("ServeFood");
-                NEWAudioManager.Instance.Play("CustomerEat");
+                AudioManager.Instance.Play("ServeFood");
+                AudioManager.Instance.Play("CustomerEat");
                 return; // Exit the method after deactivating the image
             }
         }
@@ -209,8 +209,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding2 = null;
                 pickup.currentFoodObjectName2 = null;
                 foodName = null;
-                NEWAudioManager.Instance.Play("ServeFood");
-                NEWAudioManager.Instance.Play("CustomerEat");
+                AudioManager.Instance.Play("ServeFood");
+                AudioManager.Instance.Play("CustomerEat");
                 return; // Exit the method after deactivating the image
             }
         }
@@ -230,8 +230,8 @@ public class CustomerInteraction : MonoBehaviour
                 pickup.itemHolding2 = null;
                 pickup.currentFoodObjectName2 = null;
                 foodName2 = null;
-                NEWAudioManager.Instance.Play("ServeFood");
-                NEWAudioManager.Instance.Play("CustomerEat");
+                AudioManager.Instance.Play("ServeFood");
+                AudioManager.Instance.Play("CustomerEat");
                 return; // Exit the method after deactivating the image
             }
         }

@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2663627401374733096}
   - component: {fileID: 2663627401374733097}
   m_Layer: 0
-  m_Name: NEWAudioManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,6 +344,8 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 2663627401729771144}
+  bgmName: 
+  musicSource: {fileID: 0}
 --- !u!1 &2663627401729771146
 GameObject:
   m_ObjectHideFlags: 0

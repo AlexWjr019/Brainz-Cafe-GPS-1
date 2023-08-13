@@ -10,7 +10,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
 
     public float walkSpeed = 5f;
-    float tempSpeed;
+    float normSpeed;
+    [HideInInspector]
+    public float tempSpeed;
 
     float speedLimiter = 0.8f;
     float inputHorizontal;
@@ -44,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
-        tempSpeed = walkSpeed;
+        normSpeed = walkSpeed;
     }
 
     void Update()
@@ -129,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (bi.boost && boostTimer >= bi.boostDuration)
         {
-            walkSpeed = tempSpeed;
+            walkSpeed = normSpeed;
             boostTimer = 0;
             bi.boost = false;
         }
@@ -149,9 +151,13 @@ public class PlayerMovement : MonoBehaviour
                 slowedSpeed = walkSpeed;
             }
         }
-        else
+        else if (bi.boost)
         {
             walkSpeed = tempSpeed;
+        }
+        else
+        {
+            walkSpeed = normSpeed;
         }
     }
 

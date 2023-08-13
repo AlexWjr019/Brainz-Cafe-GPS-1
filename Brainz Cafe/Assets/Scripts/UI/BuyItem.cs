@@ -112,7 +112,7 @@ public class BuyItem : MonoBehaviour
                 Debug.Log(upgradedTable);
                 
                 CurrencyManager.Instance.SpendMoney(barrierPrice);
-                NEWAudioManager.Instance.Play("BarrierUpAndRep");
+                AudioManager.Instance.Play("BarrierUpAndRep");
 
                 for (int i = 0; i < tables.Length; i++)
                 {
@@ -131,7 +131,7 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= repairPrice)
         {
             CurrencyManager.Instance.SpendMoney(repairPrice);
-            NEWAudioManager.Instance.Play("BarrierUpAndRep");
+            AudioManager.Instance.Play("BarrierUpAndRep");
 
             for (int i = 0; i < tables.Length; i++)
             {
@@ -147,11 +147,12 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= pillPrice)
         {
             CurrencyManager.Instance.SpendMoney(pillPrice);
-            NEWAudioManager.Instance.Play("SuperP");
+            AudioManager.Instance.Play("SuperP");
 
             if (!boost)
             {
                 PM.walkSpeed *= 1.40f;
+                PM.tempSpeed = PM.walkSpeed;
                 boost = true;
             }
         }
@@ -162,7 +163,7 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= cookPrice)
         {
             CurrencyManager.Instance.SpendMoney(cookPrice);
-            NEWAudioManager.Instance.Play("ChefUp");
+            AudioManager.Instance.Play("ChefUp");
 
             if (upgradedCook < 5)
             {
@@ -179,7 +180,7 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= poisonPrice)
         {
             CurrencyManager.Instance.SpendMoney(poisonPrice);
-            NEWAudioManager.Instance.Play("PoisonG");
+            AudioManager.Instance.Play("PoisonG");
 
             if (!poisoned)
             {

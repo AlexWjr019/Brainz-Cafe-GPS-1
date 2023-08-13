@@ -34,7 +34,7 @@ public class FlashingLight : MonoBehaviour
         yield return new WaitForSeconds(betweenLightFlash);
         mylight.intensity = maxLightIntensity;
 
-        NEWAudioManager.Instance.Play(soundEffect);
+        AudioManager.Instance.Play(soundEffect);
 
         StartCoroutine(lightFlicker());
     }

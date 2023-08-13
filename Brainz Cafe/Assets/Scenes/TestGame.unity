@@ -1966,7 +1966,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -2172,7 +2172,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -2474,7 +2474,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -3231,7 +3231,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -3441,7 +3441,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -3994,7 +3994,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -4703,7 +4703,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -6168,7 +6168,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -6354,7 +6354,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -7517,7 +7517,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -8985,7 +8985,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -10988,6 +10988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bi: {fileID: 1457432762}
   walkSpeed: 4
+  tempSpeed: 0
   isSlowedDown: 0
   slowdownFactor: 0.5
   isMoving: 0
@@ -12386,7 +12387,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -12964,7 +12965,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -13480,7 +13481,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -13666,7 +13667,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -13840,7 +13841,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -14212,7 +14213,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -16586,7 +16587,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -17174,7 +17175,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -17874,7 +17875,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Button
         m_Mode: 1
         m_Arguments:
@@ -18526,7 +18527,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2051639599}
-        m_TargetAssemblyTypeName: NEWAudioManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: TutButton
         m_Mode: 1
         m_Arguments:
@@ -18932,9 +18933,21 @@ PrefabInstance:
       propertyPath: musicSource
       value: 
       objectReference: {fileID: 2663627400733628935}
+    - target: {fileID: 2663627401374733097, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
+      propertyPath: sounds.Array.data[20].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663627401374733097, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
+      propertyPath: sounds.Array.data[21].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663627401374733097, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
+      propertyPath: sounds.Array.data[22].loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2663627401374733099, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
       propertyPath: m_Name
-      value: NEWAudioManager
+      value: AudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}

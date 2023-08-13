@@ -44,7 +44,7 @@ public class Counter : MonoBehaviour
                 
                 if (!isPlayed)
                 {
-                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                    AudioManager.Instance.Play("BarrierDamageState");
                     isPlayed = true;
                 }
             }
@@ -54,7 +54,7 @@ public class Counter : MonoBehaviour
 
                 if (!isPlayed2)
                 {
-                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                    AudioManager.Instance.Play("BarrierDamageState");
                     isPlayed2 = true;
                 }
             }
@@ -71,7 +71,7 @@ public class Counter : MonoBehaviour
 
                 if (!isPlayed)
                 {
-                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                    AudioManager.Instance.Play("BarrierDamageState");
                     isPlayed = true;
                 }
             }
@@ -81,7 +81,7 @@ public class Counter : MonoBehaviour
 
                 if (!isPlayed2)
                 {
-                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                    AudioManager.Instance.Play("BarrierDamageState");
                     isPlayed2 = true;
                 }
             }
@@ -114,7 +114,7 @@ public class Counter : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
-            NEWAudioManager.Instance.Play("DestroyBar");
+            AudioManager.Instance.Play("DestroyBar");
             SceneManager.LoadScene("LoseScene");
         }
     }

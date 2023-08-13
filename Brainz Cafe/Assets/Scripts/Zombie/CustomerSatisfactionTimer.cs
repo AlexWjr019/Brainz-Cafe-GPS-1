@@ -559,7 +559,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             {
                 // Apply damage to the table's health bar
                 tables[i].TakeDamage(dmgAmt);
-                NEWAudioManager.Instance.Play("CustomerAttack");
+                AudioManager.Instance.Play("CustomerAttack");
             }
         }
     }

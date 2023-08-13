@@ -54,7 +54,7 @@ public class JumpScare : MonoBehaviour
             jumpScare.SetActive(true);
 
             GameObject spawnedImage = Instantiate(jumpScare, transform.position, Quaternion.identity);
-            NEWAudioManager.Instance.Play("Jumpscare");
+            AudioManager.Instance.Play("Jumpscare");
             StartCoroutine(DestroyImageAfterDelay(spawnedImage, imageDuration));
             darkMode.SetActive(true);
             isDarkMode = true;

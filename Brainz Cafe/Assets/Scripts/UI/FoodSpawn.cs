@@ -34,7 +34,6 @@ public class FoodSpawn : MonoBehaviour
 
     private void Update()
     {
-
         delayTimer += Time.deltaTime;
 
         if (delayTimer >= spawnDelay)
@@ -80,7 +79,7 @@ public class FoodSpawn : MonoBehaviour
             Transform spawnPosition = spawnPositions[spawnPositionIndex];
             GameObject foodInstance = Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
 
-            NEWAudioManager.Instance.Play("FoodSpawn");
+            AudioManager.Instance.Play("FoodSpawn");
 
             foodInstance.name = RemoveCloneSuffix(foodInstance.name);
 
@@ -129,10 +128,10 @@ public class FoodSpawn : MonoBehaviour
             delayStarted = true; // Start the delay when the first customer food index is added
             delayTimer = 0.0f; // Reset the delay timer
         }
-        else
-        {
-            delayTimer = 0.0f; // Reset the delay timer for subsequent customer food indices
-        }
+        //else
+        //{
+        //    delayTimer = 0.0f; // Reset the delay timer for subsequent customer food indices
+        //}
     }
 
     private string RemoveCloneSuffix(string name)
