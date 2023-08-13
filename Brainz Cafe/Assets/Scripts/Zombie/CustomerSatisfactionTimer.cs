@@ -163,8 +163,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
             if (isAttacking)
             {
-                DamageTable();
-                shouldDamageTable = false;
+                damageTimer += Time.deltaTime;
+                if (damageTimer >= damageRate)
+                {
+                    DamageTable();
+                    damageTimer = 0f;
+                }
+                //DamageTable();
+                //shouldDamageTable = false;
 
                 if (CustomerInteraction.foodName == null)
                 {
@@ -340,7 +346,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         StartCoroutine(DeductPointsOverTime(deductionInterval, deductionAmount));
                     }
 
-
                     if (!isAttacking)
                     {
                         //StartAttack();
@@ -350,7 +355,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                         {
                             StartCoroutine(LeaveAfterDelay(3f));
-                            //CurrencyManager.Instance.AddMoney(moneyDrop);
                         }
                     }
 
@@ -361,7 +365,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                 {
                     StartCoroutine(LeaveAfterDelay(3f));
-                    //CurrencyManager.Instance.AddMoney(moneyDrop);
                 }
             }
         }
@@ -490,7 +493,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Chairs"))
@@ -518,11 +520,11 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     public void StartDamageTable()
     {
         isAttacking = true;
-        damageCoroutine = StartCoroutine(ContinuousDamageTable());
+        //damageCoroutine = StartCoroutine(ContinuousDamageTable());
         if (normalZombie)
         {
             changeAnimationState(NORMALZOMBIE_ATTACKING);
-            StartCoroutine(ChangeAfterDamageAnimation(1.5f));
+            //StartCoroutine(ChangeAfterDamageAnimation(1.5f));
         }
         if (bruteZombie)
         {
@@ -537,8 +539,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             StopCoroutine(damageCoroutine);
         }
-
-
     }
 
     private void DestroyCustomer()
@@ -549,10 +549,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     private void DamageTable()
     {
-        if (normalZombie)
-        {
-            if (shouldDamageTable)
-            {
+        //if (normalZombie)
+        //{
+            //if (shouldDamageTable)
+            //{
                 // Find all the table objects with the "Table" tag
                 Counter[] tables = FindObjectsOfType<Counter>();
 
@@ -567,29 +567,29 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         AudioManager.instance.PlayZombieAttackBarrierAudio();
                     }
                 }
-            }
-        }
+            //}
+        //}
 
-        if (bruteZombie)
-        {
-            if (shouldDamageTable)
-            {
-                // Find all the table objects with the "Table" tag
-                Counter[] tables = FindObjectsOfType<Counter>();
+        //if (bruteZombie)
+        //{
+        //    if (shouldDamageTable)
+        //    {
+        //        // Find all the table objects with the "Table" tag
+        //        Counter[] tables = FindObjectsOfType<Counter>();
 
-                for (int i = 0; i < tables.Length; i++)
-                {
-                    // Check if the table has a HealthBar component
-                    //Counter healthBar = table.GetComponent<Counter>();
-                    if (tables[i] != null)
-                    {
-                        // Apply damage to the table's health bar
-                        tables[i].TakeDamage(dmgAmt);
-                        AudioManager.instance.PlayZombieAttackBarrierAudio();
-                    }
-                }
-            }
-        }
+        //        for (int i = 0; i < tables.Length; i++)
+        //        {
+        //            // Check if the table has a HealthBar component
+        //            //Counter healthBar = table.GetComponent<Counter>();
+        //            if (tables[i] != null)
+        //            {
+        //                // Apply damage to the table's health bar
+        //                tables[i].TakeDamage(dmgAmt);
+        //                AudioManager.instance.PlayZombieAttackBarrierAudio();
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private IEnumerator LeaveAfterDelay(float delay)
@@ -647,11 +647,11 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    private IEnumerator ChangeAfterDamageAnimation(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        changeAnimationState(NORMALZOMBIE_STANDING);
-    }
+    //private IEnumerator ChangeAfterDamageAnimation(float delay)
+    //{
+    //    yield return new WaitForSeconds(delay);
+    //    changeAnimationState(NORMALZOMBIE_STANDING);
+    //}
 
     private IEnumerator AcidZombieAttackRoutine(float delay)
     {
