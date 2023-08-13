@@ -31,6 +31,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] Button repairButton;
     [SerializeField] TMP_Text repairText;
     [SerializeField] int repairPrice;
+    [SerializeField] int repairPriceIncease;
 
     [SerializeField] Button pillButton;
     [SerializeField] TMP_Text pillText; 
@@ -139,6 +140,9 @@ public class BuyItem : MonoBehaviour
                 tables[i].isPlayed = false;
                 tables[i].isPlayed2 = false;
             }
+
+            repairPrice += repairPriceIncease;
+            repairText.text = repairPrice.ToString();
         }
     }
 
