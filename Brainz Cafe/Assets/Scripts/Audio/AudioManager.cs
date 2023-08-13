@@ -45,7 +45,9 @@ public class AudioManager : MonoBehaviour
     public void PlayBGM(string bgmName)
     {
         musicSource.Stop();
-        Play(bgmName);
+        Sound s = Array.Find(sounds, sound => sound.name == bgmName);
+        musicSource.clip = s.clip;
+        musicSource.Play();
     }
 
     public void NormZombSpawn()
