@@ -68,22 +68,22 @@ public class CustomerSpawner : MonoBehaviour
         if (randomPair <= 7)
         {
             Instantiate(customerPair1, spawnPosition.position, Quaternion.identity);
-            AudioManager.instance.PlayNormalZombieAudio();
+            NEWAudioManager.Instance.NormZombSpawn();
         }
         else if (randomPair >= 8 && randomPair <= 9)
         {
             Instantiate(customerPair2, spawnPosition.position, Quaternion.identity);
-            AudioManager.instance.PlayAcidZombieAudio();
+            NEWAudioManager.Instance.Play("AcidSpawn");
         }
         else if (randomPair >= 10 && randomPair <= 11)
         {
             Instantiate(customerPair3, spawnPosition.position, Quaternion.identity);
-            AudioManager.instance.PlayBruteZombieAudio();
+            NEWAudioManager.Instance.Play("BruteSpawn");
         }
         else if (randomPair >= 12 && randomPair <= 13)
         {
             Instantiate(customerPair4, spawnPosition.position, Quaternion.identity);
-            AudioManager.instance.PlayClownZombieAudio();
+            NEWAudioManager.Instance.Play("ClownSpawn");
         }
     }
 }

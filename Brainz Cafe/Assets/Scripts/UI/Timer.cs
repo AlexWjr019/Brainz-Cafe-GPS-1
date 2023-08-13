@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
         canvasGroup.alpha = 0f; // Start with alpha 0
         isDarkMode = false;
 
-        AudioManager.instance.PlayMorningAfternoonAudio(0);
+        NEWAudioManager.Instance.Play("AfternoonBGM");
     }
 
     void Update()
@@ -165,8 +165,8 @@ public class Timer : MonoBehaviour
                 Debug.Log("Player Night shift"); // Display break time message
 
                 //nightSound.Play();
-                AudioManager.instance.PlayNightAudio(1);
-                
+                //AudioManager.instance.PlayNightAudio(1);
+                NEWAudioManager.Instance.PlayNightBGM();
 
                 customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);

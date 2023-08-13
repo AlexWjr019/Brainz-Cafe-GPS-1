@@ -79,7 +79,8 @@ public class FoodSpawn : MonoBehaviour
             GameObject foodPrefab = foodPrefabs[foodIndex];
             Transform spawnPosition = spawnPositions[spawnPositionIndex];
             GameObject foodInstance = Instantiate(foodPrefab, spawnPosition.position, spawnPosition.rotation);
-            AudioManager.instance.PlayFoodPreparedAudio();
+
+            NEWAudioManager.Instance.Play("FoodSpawn");
 
             foodInstance.name = RemoveCloneSuffix(foodInstance.name);
 
@@ -117,7 +118,6 @@ public class FoodSpawn : MonoBehaviour
                 return true; // An object already exists at the position
             }
         }
-
         return false; // No object found at the position
     }
 

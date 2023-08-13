@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
                 
                 //throwingFoodSoundEffect.Play();
                 Destroy(child.gameObject); // Destroy the food object
-                AudioManager.instance.PlayFoodThrowAudio();
+                NEWAudioManager.Instance.Play("ThrowFood");
                 return; // Exit the function to avoid destroying multiple food objects
             }
         }

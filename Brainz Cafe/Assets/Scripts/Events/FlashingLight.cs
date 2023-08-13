@@ -10,6 +10,8 @@ public class FlashingLight : MonoBehaviour
     [SerializeField] float betweenLightFlash;
     [SerializeField] float beginningTime;
 
+    [SerializeField] string soundEffect;
+
     Light2D mylight;
 
     private void Start()
@@ -31,6 +33,8 @@ public class FlashingLight : MonoBehaviour
 
         yield return new WaitForSeconds(betweenLightFlash);
         mylight.intensity = maxLightIntensity;
+
+        NEWAudioManager.Instance.Play(soundEffect);
 
         StartCoroutine(lightFlicker());
     }

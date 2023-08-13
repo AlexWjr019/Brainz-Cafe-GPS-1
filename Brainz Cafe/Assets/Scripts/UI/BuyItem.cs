@@ -107,11 +107,12 @@ public class BuyItem : MonoBehaviour
     {
         if (CurrencyManager.Instance.currency >= barrierPrice)
         {
-            CurrencyManager.Instance.SpendMoney(barrierPrice);
-
             if (upgradedTable < upgrades.Length)
             {
                 Debug.Log(upgradedTable);
+                
+                CurrencyManager.Instance.SpendMoney(barrierPrice);
+                NEWAudioManager.Instance.Play("BarrierUpAndRep");
 
                 for (int i = 0; i < tables.Length; i++)
                 {
@@ -128,6 +129,7 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= repairPrice)
         {
             CurrencyManager.Instance.SpendMoney(repairPrice);
+            NEWAudioManager.Instance.Play("BarrierUpAndRep");
 
             for (int i = 0; i < tables.Length; i++)
             {
@@ -141,6 +143,8 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= pillPrice)
         {
             CurrencyManager.Instance.SpendMoney(pillPrice);
+            NEWAudioManager.Instance.Play("SuperP");
+
             if (!boost)
             {
                 PM.walkSpeed *= 1.40f;
@@ -154,6 +158,8 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= cookPrice)
         {
             CurrencyManager.Instance.SpendMoney(cookPrice);
+            NEWAudioManager.Instance.Play("ChefUp");
+
             if (upgradedCook < 5)
             {
                 FS.spawnDelay -= cookTimeDecrease;
@@ -169,6 +175,8 @@ public class BuyItem : MonoBehaviour
         if (CurrencyManager.Instance.currency >= poisonPrice)
         {
             CurrencyManager.Instance.SpendMoney(poisonPrice);
+            NEWAudioManager.Instance.Play("PoisonG");
+
             if (!poisoned)
             {
                 poisoned = true;

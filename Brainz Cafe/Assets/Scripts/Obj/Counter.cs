@@ -37,11 +37,15 @@ public class Counter : MonoBehaviour
             }
             if (currentHealth <= 60f && currentHealth >= 21f)
             {
-                sr.sprite = phasesDefault[1];
+                sr.sprite = phasesDefault[1]; 
+                
+                NEWAudioManager.Instance.Play("BarrierDamageState");
             }
             if (currentHealth <= 20)
             {
                 sr.sprite = phasesDefault[2];
+
+                NEWAudioManager.Instance.Play("BarrierDamageState");
             }
         }
         else if (bi.upgradedTable == 0)
@@ -53,10 +57,14 @@ public class Counter : MonoBehaviour
             if (currentHealth <= 150 && currentHealth >= 51f)
             {
                 sr.sprite = phasesVer2[1];
+
+                NEWAudioManager.Instance.Play("BarrierDamageState");
             }
             if (currentHealth <= 50)
             {
                 sr.sprite = phasesVer2[2];
+
+                NEWAudioManager.Instance.Play("BarrierDamageState");
             }
         }
 
@@ -87,7 +95,7 @@ public class Counter : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
-            AudioManager.instance.PlayBarrierDestroyAudio();
+            NEWAudioManager.Instance.Play("DestroyBar");
             SceneManager.LoadScene("LoseScene");
         }
     }

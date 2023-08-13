@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
@@ -5,6 +7,8 @@ using UnityEngine;
 public class NEWAudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+
+    public AudioSource musicSource;
 
     public static NEWAudioManager Instance;
 
@@ -14,7 +18,6 @@ public class NEWAudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            //s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
@@ -29,13 +32,45 @@ public class NEWAudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip);
     }
 
-    public void Select()
+    public void PlayNightBGM()
     {
-        Play("Select");
+        musicSource.Stop();
+        Play("NightBGM");
     }
 
-    public void Cancel()
+    public void NormZombSpawn()
     {
-        Play("Cancel");
+        int randomPair = UnityEngine.Random.Range(1, 5);
+
+        if (randomPair == 1)
+        {
+            Play("NorSpawn1");
+        }
+        else if (randomPair == 2)
+        {
+            Play("NorSpawn2");
+        }
+        else if (randomPair == 3)
+        {
+            Play("NorSpawn3");
+        }
+        else if (randomPair == 4)
+        {
+            Play("NorSpawn4");
+        }
+        else
+        {
+            Play("NorSpawn5");
+        }
+    }
+
+    public void Button()
+    {
+        Play("Button");
+    }
+
+    public void TutButton()
+    {
+        Play("TutButton");
     }
 }

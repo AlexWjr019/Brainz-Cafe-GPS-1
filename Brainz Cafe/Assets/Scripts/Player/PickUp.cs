@@ -47,17 +47,6 @@ public class PickUp : MonoBehaviour
                     currentFoodObjectName2 = itemHolding2.name;
                 }
             }
-
-            //else if(itemHolding)
-            //{
-            //    itemHolding.transform.position = transform.position + Direction;
-            //    itemHolding.transform.parent = null;
-            //    if (itemHolding.GetComponent<Rigidbody2D>())
-            //        itemHolding.GetComponent<Rigidbody2D>().simulated = true;
-            //    itemHolding = null;
-            //}
-
         }
     }
-
 }

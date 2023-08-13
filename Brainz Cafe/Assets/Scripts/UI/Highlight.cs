@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     bool isTutorial;
@@ -15,13 +15,6 @@ public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField]
     Sprite sp_default, sp_highlight;
 
-    public AudioManager audioManager;
-
-    public void Start()
-    {
-        audioManager = AudioManager.instance;
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = sp_highlight;
@@ -30,19 +23,5 @@ public class Highlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         image.sprite = sp_default;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (isTutorial)
-        {
-            audioManager.PlayTutorialNextButtonAudio(); 
-            throw new System.NotImplementedException();
-        }
-        else
-        {
-            audioManager.ButtonClickingAudio();
-            throw new System.NotImplementedException();
-        }
     }
 }

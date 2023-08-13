@@ -549,47 +549,19 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     private void DamageTable()
     {
-        //if (normalZombie)
-        //{
-            //if (shouldDamageTable)
-            //{
-                // Find all the table objects with the "Table" tag
-                Counter[] tables = FindObjectsOfType<Counter>();
+        Counter[] tables = FindObjectsOfType<Counter>();
 
-                for (int i = 0; i < tables.Length; i++)
-                {
-                    // Check if the table has a HealthBar component
-                    //Counter healthBar = table.GetComponent<Counter>();
-                    if (tables[i] != null)
-                    {
-                        // Apply damage to the table's health bar
-                        tables[i].TakeDamage(dmgAmt);
-                        AudioManager.instance.PlayZombieAttackBarrierAudio();
-                    }
-                }
-            //}
-        //}
-
-        //if (bruteZombie)
-        //{
-        //    if (shouldDamageTable)
-        //    {
-        //        // Find all the table objects with the "Table" tag
-        //        Counter[] tables = FindObjectsOfType<Counter>();
-
-        //        for (int i = 0; i < tables.Length; i++)
-        //        {
-        //            // Check if the table has a HealthBar component
-        //            //Counter healthBar = table.GetComponent<Counter>();
-        //            if (tables[i] != null)
-        //            {
-        //                // Apply damage to the table's health bar
-        //                tables[i].TakeDamage(dmgAmt);
-        //                AudioManager.instance.PlayZombieAttackBarrierAudio();
-        //            }
-        //        }
-        //    }
-        //}
+        for (int i = 0; i < tables.Length; i++)
+        {
+            // Check if the table has a HealthBar component
+            //Counter healthBar = table.GetComponent<Counter>();
+            if (tables[i] != null)
+            {
+                // Apply damage to the table's health bar
+                tables[i].TakeDamage(dmgAmt);
+                NEWAudioManager.Instance.Play("CustomerAttack");
+            }
+        }
     }
 
     private IEnumerator LeaveAfterDelay(float delay)
@@ -599,14 +571,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         DestroyCustomer();
     }
 
-    private IEnumerator ContinuousDamageTable()
-    {
-        while (true)
-        {
-            DamageTable();
-            yield return new WaitForSeconds(damageRate);
-        }
-    }
+    //private IEnumerator ContinuousDamageTable()
+    //{
+    //    while (true)
+    //    {
+    //        DamageTable();
+    //        yield return new WaitForSeconds(damageRate);
+    //    }
+    //}
 
     void changeAnimationState(string newState)
     {
@@ -659,5 +631,4 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         SpawnTileForPlayer();
         DestroyCustomer();
     }
-
 }
