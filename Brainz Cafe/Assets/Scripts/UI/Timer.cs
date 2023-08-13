@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
         canvasGroup.alpha = 0f; // Start with alpha 0
         isDarkMode = false;
 
-        NEWAudioManager.Instance.Play("AfternoonBGM");
+        //NEWAudioManager.Instance.Play("AfternoonBGM");
     }
 
     void Update()
@@ -117,14 +117,14 @@ public class Timer : MonoBehaviour
 
         if (currentTime <= 720)
         {
-            timerTxt.text = string.Format("{0:00} : {1:00} AM", min, sec);
+            timerTxt.text = string.Format("{0:00} : {1:00}", min, sec);
 
             //daySound.Play();
 
         }
         else
         {
-            timerTxt.text = string.Format("{0:00} : {1:00} PM", min, sec);
+            timerTxt.text = string.Format("{0:00} : {1:00}", min, sec);
             if (min == 12 && sec == 0)
             {
                 playerBreakTime = true;

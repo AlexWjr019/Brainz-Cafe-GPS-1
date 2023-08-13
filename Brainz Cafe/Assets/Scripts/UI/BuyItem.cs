@@ -118,6 +118,8 @@ public class BuyItem : MonoBehaviour
                 {
                     tables[i].maxHealth += healthIncrease;
                     tables[i].currentHealth = tables[i].maxHealth;
+                    tables[i].isPlayed = false;
+                    tables[i].isPlayed2 = false;
                 }
                 upgradedTable++;
             }
@@ -134,6 +136,8 @@ public class BuyItem : MonoBehaviour
             for (int i = 0; i < tables.Length; i++)
             {
                 tables[i].Repair();
+                tables[i].isPlayed = false;
+                tables[i].isPlayed2 = false;
             }
         }
     }

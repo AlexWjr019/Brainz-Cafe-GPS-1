@@ -21,6 +21,9 @@ public class Counter : MonoBehaviour
 
     float poisonTimer;
 
+    [HideInInspector]
+    public bool isPlayed, isPlayed2;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -35,17 +38,23 @@ public class Counter : MonoBehaviour
             {
                 sr.sprite = phasesDefault[0];
             }
-            if (currentHealth <= 60f && currentHealth >= 21f)
+            else if (currentHealth <= 60f && currentHealth >= 21f)
             {
                 sr.sprite = phasesDefault[1]; 
                 
-                NEWAudioManager.Instance.Play("BarrierDamageState");
+                if (!isPlayed)
+                {
+                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                }
             }
-            if (currentHealth <= 20)
+            else if (currentHealth <= 20)
             {
                 sr.sprite = phasesDefault[2];
 
-                NEWAudioManager.Instance.Play("BarrierDamageState");
+                if (!isPlayed2)
+                {
+                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                }
             }
         }
         else if (bi.upgradedTable == 0)
@@ -54,17 +63,23 @@ public class Counter : MonoBehaviour
             {
                 sr.sprite = bi.upgrades[bi.upgradedTable];
             }
-            if (currentHealth <= 150 && currentHealth >= 51f)
+            else if (currentHealth <= 150 && currentHealth >= 51f)
             {
                 sr.sprite = phasesVer2[1];
 
-                NEWAudioManager.Instance.Play("BarrierDamageState");
+                if (!isPlayed)
+                {
+                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                }
             }
-            if (currentHealth <= 50)
+            else if (currentHealth <= 50)
             {
                 sr.sprite = phasesVer2[2];
 
-                NEWAudioManager.Instance.Play("BarrierDamageState");
+                if (!isPlayed2)
+                {
+                    NEWAudioManager.Instance.Play("BarrierDamageState");
+                }
             }
         }
 

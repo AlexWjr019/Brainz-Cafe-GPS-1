@@ -38,6 +38,11 @@ public class NEWAudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip);
     }
 
+    //public void Stop()
+    //{
+    //    AudioSource MusicAS = GetComponentInChildren(AudioSource);
+    //}
+
     public void PlayBGM(string bgmName)
     {
         musicSource.Stop();
