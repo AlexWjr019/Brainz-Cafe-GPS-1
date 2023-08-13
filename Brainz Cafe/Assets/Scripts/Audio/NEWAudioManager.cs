@@ -8,7 +8,11 @@ public class NEWAudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
+    [SerializeField]
+    public string bgmName;
+
     public AudioSource musicSource;
+    
 
     public static NEWAudioManager Instance;
 
@@ -23,6 +27,8 @@ public class NEWAudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+        PlayBGM(bgmName);
     }
 
     public void Play(string name)
@@ -32,10 +38,10 @@ public class NEWAudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip);
     }
 
-    public void PlayNightBGM()
+    public void PlayBGM(string bgmName)
     {
         musicSource.Stop();
-        Play("NightBGM");
+        Play(bgmName);
     }
 
     public void NormZombSpawn()

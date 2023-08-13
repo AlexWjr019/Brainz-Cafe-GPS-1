@@ -166,7 +166,7 @@ public class Timer : MonoBehaviour
 
                 //nightSound.Play();
                 //AudioManager.instance.PlayNightAudio(1);
-                NEWAudioManager.Instance.PlayNightBGM();
+                NEWAudioManager.Instance.PlayBGM("NightBGM");
 
                 customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
