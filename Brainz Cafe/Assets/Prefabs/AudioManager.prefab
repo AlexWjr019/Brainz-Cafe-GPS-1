@@ -300,19 +300,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c592634ce6888d94da91ecad6132b0eb, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 2663627400208546660}
   - name: AfternoonBGM
     clip: {fileID: 8300000, guid: fd7f265420995fc46b12a0abcfe9a256, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 2663627400208546660}
   - name: NightBGM
     clip: {fileID: 8300000, guid: 09d21f8cadc6fda4187b2fc802f11c22, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 2663627400208546660}
   - name: Thunder
     clip: {fileID: 8300000, guid: 2ece62b68fe8d0348953c83bba6f37b1, type: 3}
