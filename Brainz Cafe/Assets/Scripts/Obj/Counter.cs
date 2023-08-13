@@ -45,6 +45,7 @@ public class Counter : MonoBehaviour
                 if (!isPlayed)
                 {
                     NEWAudioManager.Instance.Play("BarrierDamageState");
+                    isPlayed = true;
                 }
             }
             else if (currentHealth <= 20)
@@ -54,6 +55,7 @@ public class Counter : MonoBehaviour
                 if (!isPlayed2)
                 {
                     NEWAudioManager.Instance.Play("BarrierDamageState");
+                    isPlayed2 = true;
                 }
             }
         }
@@ -70,6 +72,7 @@ public class Counter : MonoBehaviour
                 if (!isPlayed)
                 {
                     NEWAudioManager.Instance.Play("BarrierDamageState");
+                    isPlayed = true;
                 }
             }
             else if (currentHealth <= 50)
@@ -79,6 +82,7 @@ public class Counter : MonoBehaviour
                 if (!isPlayed2)
                 {
                     NEWAudioManager.Instance.Play("BarrierDamageState");
+                    isPlayed2 = true;
                 }
             }
         }
