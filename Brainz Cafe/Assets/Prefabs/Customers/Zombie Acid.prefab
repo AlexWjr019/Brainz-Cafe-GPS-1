@@ -472,7 +472,7 @@ MonoBehaviour:
   damageRate: 1
   dmgAmt: 0
   CustomerInteraction: {fileID: 0}
-  moneyDrop: 10
+  moneyDrop: 15
   deductionInterval: 5
   deductionAmount: 5
   normalZombie: 0

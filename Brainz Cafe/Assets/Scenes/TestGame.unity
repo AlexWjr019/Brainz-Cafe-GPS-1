@@ -12648,6 +12648,7 @@ MonoBehaviour:
   repairButton: {fileID: 2046228568}
   repairText: {fileID: 2049140591}
   repairPrice: 150
+  repairPriceIncease: 0
   pillButton: {fileID: 1525677342}
   pillText: {fileID: 56269449}
   pillPrice: 60

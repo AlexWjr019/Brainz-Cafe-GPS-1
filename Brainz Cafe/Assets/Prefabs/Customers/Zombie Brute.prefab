@@ -388,14 +388,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer_radial_image: {fileID: 4507373120922077783}
   time_remaining: 0
-  max_time: 30
+  max_time: 40
   isAttacking: 0
   playerTag: Player
   moveSpeed: 5
   damageRate: 2
   dmgAmt: 10
   CustomerInteraction: {fileID: 0}
-  moneyDrop: 10
+  moneyDrop: 30
   deductionInterval: 5
   deductionAmount: 5
   normalZombie: 0
