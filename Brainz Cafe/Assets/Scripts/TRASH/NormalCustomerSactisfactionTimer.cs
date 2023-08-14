@@ -17,15 +17,15 @@
 //    public string playerTag = "Chairs"; // Tag of the player object
 //    public float moveSpeed = 5f; // Speed at which the customer moves towards the player
 
-//    public float damageRate = 1f; // Rate at which damage is applied to the table
-//    private float damageTimer = 0f; // Timer to track the time since the last damage
+//    public float dmgRate = 1f; // Rate at which damage is applied to the table
+//    private float dmgTimer = 0f; // Timer to track the time since the last damage
 
 //    private Transform player; // Reference to the player's transform
 //    private float destroyTimer = 0f;
 //    private float destroyDelay = 3f;
 //    public CustomerInteraction CustomerInteraction;
 
-//    private Coroutine damageCoroutine; // Reference to the damage coroutine
+//    private Coroutine dmgCoroutine; // Reference to the damage coroutine
 //    private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
 //    public int moneyDrop;
@@ -82,7 +82,7 @@
 //                if (!isAttacking)
 //                {
 //                    // Customer satisfaction time has run out, start chasing the player
-//                    StartDamageTable();
+//                    StartAtk();
                     
 //                }
 //            }
@@ -92,12 +92,12 @@
 //        {
 //            //StartCoroutine(LeaveAfterDelay(3f));
 //            //DestroyCustomer();
-//            //damageTimer += Time.deltaTime;
-//            //if (damageTimer >= damageRate)
+//            //dmgTimer += Time.deltaTime;
+//            //if (dmgTimer >= dmgRate)
 //            //{
 //               DamageTable();
 //            shouldDamageTable = false;
-//            //    damageTimer = 0f;
+//            //    dmgTimer = 0f;
 
 //            //}
 //            if (CustomerInteraction.foodName == null)
@@ -138,18 +138,18 @@
 //        }
 //    }
 
-//    public void StartDamageTable()
+//    public void StartAtk()
 //    {
 //        isAttacking = true;
-//        damageCoroutine = StartCoroutine(ContinuousDamageTable());
+//        dmgCoroutine = StartCoroutine(ContinuousDamageTable());
 //    }
 
-//    private void StopDamageTable()
+//    private void StopAtk()
 //    {
 //        isAttacking = false;
-//        if (damageCoroutine != null)
+//        if (dmgCoroutine != null)
 //        {
-//            StopCoroutine(damageCoroutine);
+//            StopCoroutine(dmgCoroutine);
 //        }
 //    }
 
@@ -183,7 +183,7 @@
 //    private IEnumerator LeaveAfterDelay(float delay)
 //    {
 //        yield return new WaitForSeconds(delay);
-//        StopDamageTable();
+//        StopAtk();
 //        DestroyCustomer();
 //    }
 
@@ -192,7 +192,7 @@
 //        while (true)
 //        {
 //            DamageTable();
-//            yield return new WaitForSeconds(damageRate);
+//            yield return new WaitForSeconds(dmgRate);
 //        }
 //    }
 //}

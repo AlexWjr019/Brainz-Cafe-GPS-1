@@ -17,15 +17,15 @@ public class ClownSatisfactionTimer : MonoBehaviour
     public string playerTag = "Chairs"; // Tag of the player object
     public float moveSpeed = 5f; // Speed at which the customer moves towards the player
 
-    //public float damageRate = 1f; // Rate at which damage is applied to the table
-    //private float damageTimer = 0f; // Timer to track the time since the last damage
+    //public float dmgRate = 1f; // Rate at which damage is applied to the table
+    //private float dmgTimer = 0f; // Timer to track the time since the last damage
 
     private Transform player; // Reference to the player's transform
     private float destroyTimer = 0f;
     private float destroyDelay = 3f;
     public CustomerInteraction CustomerInteraction;
 
-    //private Coroutine damageCoroutine; // Reference to the damage coroutine
+    //private Coroutine dmgCoroutine; // Reference to the damage coroutine
     //private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
     public JumpScare jumpscareImage;

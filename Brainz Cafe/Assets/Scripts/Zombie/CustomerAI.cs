@@ -72,6 +72,7 @@ public class CustomerAI : MonoBehaviour
         }
         else
         {
+            animator.SetBool("IsWalking", true);
             reachedEndOfPath = false;
         }
 
@@ -117,8 +118,6 @@ public class CustomerAI : MonoBehaviour
         }
     }
 
-
-    //temp fix
     private void OnDestroy()
     {
         tempChair.isOccupied = false;

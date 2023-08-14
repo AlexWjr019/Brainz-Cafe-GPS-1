@@ -28,6 +28,8 @@ public class Timer : MonoBehaviour
     TMP_Text timerTxt;
 
     [SerializeField]
+    CustomerSpawner cs;
+    [SerializeField]
     GameObject customerSpawnObject;
     [SerializeField]
     GameObject foodSpawnObject;
@@ -161,7 +163,7 @@ public class Timer : MonoBehaviour
                 foodSpawnObject.SetActive(true);
                 SpecialEvents.SetActive(true);
                 darkMode.SetActive(true);
-                isDarkMode = true;
+                //isDarkMode = true;
                 DarkMode();
                 clockImage.color = Color.gray;
 
@@ -172,10 +174,12 @@ public class Timer : MonoBehaviour
 
     private void DarkMode()
     {
-        if(isDarkMode)
-        {
+        //if(isDarkMode)
+        //{
+            cs.checkInterval = cs.nightModeInterval;
+            
             StartCoroutine(FadeInCanvas());
-        }
+        //}
     }
 
     private IEnumerator FadeInCanvas()

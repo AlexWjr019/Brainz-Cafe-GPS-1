@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 8881889787797086473}
   - component: {fileID: 6124281703558117473}
   m_Layer: 10
-  m_Name: Zombie Brute
+  m_Name: Brute Zombie
   m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,6 +405,7 @@ MonoBehaviour:
   jumpscareImage: {fileID: 0}
   jumpscare: 0
   tileSpawner: {fileID: 0}
+  constSpitTime: 0
 --- !u!95 &6124281703558117473
 Animator:
   serializedVersion: 4

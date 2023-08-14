@@ -15,6 +15,7 @@ TagManager:
   - TileSpawner
   - JumpScare
   - Acid Puddle
+  - Exit
   layers:
   - Default
   - TransparentFX
