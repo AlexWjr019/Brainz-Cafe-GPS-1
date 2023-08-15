@@ -34,7 +34,7 @@ public class ClownSatisfactionTimer : MonoBehaviour
     public int moneyDrop;
     void Start()
     {
-        //jumpscareImage.SetActive(false);
+        //jumpscare.SetActive(false);
 
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
@@ -102,7 +102,7 @@ public class ClownSatisfactionTimer : MonoBehaviour
                 {
                     StartChase();
                     //DestroyCustomer();
-                    //jumpscareImage.SetActive(true);
+                    //jumpscare.SetActive(true);
                     //jumpscare player with a fade in and fade out screen and steal point from player
                 }
 

@@ -9,7 +9,6 @@ public class CustomerSpawner : MonoBehaviour
     public GameObject customerPair3;
     public GameObject customerPair4;
     public Transform spawnPosition; // Reference to the empty GameObject for the spawn position
-    public Transform Exit;
 
     public float checkInterval = 4f; // Interval in seconds to check for customer presence
     public float nightModeInterval;

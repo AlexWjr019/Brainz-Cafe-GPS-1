@@ -321,7 +321,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 18b0ad97460f4094ebf1971ae0bf5662, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -469,8 +469,9 @@ MonoBehaviour:
   isAttacking: 0
   playerTag: Player
   moveSpeed: 2
-  damageRate: 1
+  dmgRate: 1
   dmgAmt: 0
+  leaveDelay: 3
   CustomerInteraction: {fileID: 0}
   moneyDrop: 15
   deductionInterval: 5
@@ -479,10 +480,10 @@ MonoBehaviour:
   acidZombie: 1
   bruteZombie: 0
   ClownZombie: 0
-  jumpscareImage: {fileID: 0}
-  jumpscare: 0
+  jumpscare: {fileID: 0}
   tileSpawner: {fileID: 0}
   constSpitTime: 7
+  spitSpawnDelay: 0
 --- !u!95 &42583204692176768
 Animator:
   serializedVersion: 4

@@ -19,6 +19,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private bool isSitting = false; // Flag to track if the customer is sitting
     private bool isLeaving = false;
     private bool isCalled = false;
+    private bool isFed = false;
 
     public bool isAttacking = false; // Flag to track if the customer is currently chasing the player
 
@@ -47,8 +48,8 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     public bool ClownZombie = false;
 
     //Clown Zombie Behaviour 
-    public JumpScare jumpscareImage;
-    public bool jumpscare = false;
+    public JumpScare jumpscare;
+    //public bool jumpscare = false;
 
     //Acid Zombie Behaviour
     public TileSpawner tileSpawner;
@@ -77,18 +78,17 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         cs = FindObjectOfType<CustomerSpawner>();
         pm = FindObjectOfType<PlayerMovement>();
         CustomerInteraction = GetComponent<CustomerInteraction>();
+        animator = gameObject.GetComponent<Animator>();
 
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
         timer_radial_image.fillAmount = 0.0f; // Set the initial fill amount to 0
 
-        animator = gameObject.GetComponent<Animator>();
-
         //Clown Zombie Code
         GameObject jumpScareObject = GameObject.FindGameObjectWithTag("JumpScare");
         if (jumpScareObject != null)
         {
-            jumpscareImage = jumpScareObject.GetComponent<JumpScare>();
+            jumpscare = jumpScareObject.GetComponent<JumpScare>();
         }
         else
         {
@@ -109,6 +109,11 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     void Update()
     {
+        if (isLeaving) //bc the coroutine is being a BITCH!!!!
+        {
+            ai.reachedEndOfPath = false;
+        }
+
         if (normalZombie)
         {
             if (isSitting)
@@ -119,11 +124,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     {
                         if (!isCalled)
                         {
-                            if (!isCalled)
-                            {
-                                StartCoroutine(LeaveAfterDelay(leaveDelay));
-                            }
-                        }
+                            isFed = true;
+                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            isCalled = true;
+                        }   
                     }
                     else
                     {
@@ -138,24 +142,20 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
-                else
+                else if (!isFed && !isAttacking)
                 {
-                    if (!isAttacking)
+                    StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
+                }
+            }
+            if (isAttacking)
+            {
+                if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                {
+                    if (!isCalled)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
-                    }
-                    else if (isAttacking)
-                    {
-                        if (CustomerInteraction.foodName == null)
-                        {
-                            if (!isCalled)
-                            {
-                                if (!isCalled)
-                                {
-                                    StartCoroutine(LeaveAfterDelay(leaveDelay));
-                                }
-                            }
-                        }
+                        isFed = true;
+                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        isCalled = true;
                     }
                 }
             }
@@ -171,7 +171,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     {
                         if (!isCalled)
                         {
+                            isFed = true;
                             StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            isCalled = true;
                         }
                     }
                     else
@@ -187,21 +189,20 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
-                else
+                else if (!isFed && !isAttacking)
                 {
-                    if (!isAttacking)
+                    StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
+                }
+            }
+            if (isAttacking)
+            {
+                if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                {
+                    if (!isCalled)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
-                    }
-                    else if (isAttacking)
-                    {
-                        if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
-                        {
-                            if (!isCalled)
-                            {
-                                StartCoroutine(LeaveAfterDelay(leaveDelay));
-                            }
-                        }
+                        isFed = true;
+                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        isCalled = true;
                     }
                 }
             }
@@ -217,7 +218,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     {
                         if (!isCalled)
                         {
+                            isFed = true;
                             StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            isCalled = true;
                         }
                     }
                     else
@@ -240,12 +243,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
-                else
+                else if (!isFed && !isAttacking)
                 {
-                    if (!isAttacking)
-                    {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
-                    }
+                    StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
                 }
             }
             if (isAttacking)
@@ -254,7 +254,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (!isCalled)
                     {
+                        isFed = true;
                         StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        isCalled = true;
                     }
                 }
             }
@@ -270,7 +272,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                     {
                         if (!isCalled)
                         {
+                            isFed = true;
                             StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            isCalled = true;
                         }
                     }
                     else
@@ -286,21 +290,20 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                         fillCoroutine = StartCoroutine(FillTimerRadialImage());
                     }
                 }
-                else
+                else if (!isFed && !isAttacking)
                 {
-                    if (!isAttacking)
+                    StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
+                }
+            }
+            if (isAttacking)
+            {
+                if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                {
+                    if (!isCalled)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
-                    }
-                    if (isAttacking)
-                    {
-                        if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
-                        {
-                            if (!isCalled)
-                            {
-                                StartCoroutine(LeaveAfterDelay(leaveDelay));
-                            }
-                        }
+                        isFed = true;
+                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        isCalled = true;
                     }
                 }
             }
@@ -363,7 +366,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    IEnumerator DeductPointsOverTime(float interval, int amount)
+    private IEnumerator DeductPointsOverTime(float interval, int amount)
     {
         while(true)
         {
@@ -377,8 +380,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 }
                 
             }
-            
-            // If moneyDrop becomes 0, stop deducting points
             else if (CurrencyManager.Instance.currency <= 0)
             {
                 shouldDeductPoints = false;
@@ -431,12 +432,12 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
         if (ClownZombie)
         {
-            jumpscareImage.SpawnImage();
             pm.walkSpeed = 0f;
             pm.isStunned = true;
             dmgCoroutine = StartCoroutine(DeductPointsOverTime(interval, amount));
+            jumpscare.SpawnImage();
         }
-        if (acidZombie)
+        else if (acidZombie)
         {
             dmgCoroutine = StartCoroutine(AcidZombieAttackRoutine(spawnDelay, spitTime));
         }
@@ -446,9 +447,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    private void StopAtk()
+    public void StopAtk()
     {
         isAttacking = false;
+        AudioManager.Instance.Play("CustomerEat");
 
         if (dmgCoroutine != null)
         {
@@ -456,7 +458,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    private void DamageTable()
+    public void DamageTable()
     {
         Counter[] tables = FindObjectsOfType<Counter>();
 
@@ -474,17 +476,15 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     }
 
     private IEnumerator LeaveAfterDelay(float delay)
-    {        
+    {
         StopAtk();
-
-        AudioManager.Instance.Play("CustomerEat");
-
+        
         yield return new WaitForSeconds(delay);
-
-        ai.reachedEndOfPath = false;
+        
         ai.target = cs.spawnPosition;
         ai.animator.SetBool("IsWalking", true);
         ai.animator.SetBool("isFacingRight", false);
+        ai.reachedEndOfPath = false;
         isLeaving = true;
     }
 

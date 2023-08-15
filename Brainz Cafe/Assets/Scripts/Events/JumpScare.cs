@@ -6,7 +6,7 @@ public class JumpScare : MonoBehaviour
 {
     Animator animator;
 
-    public GameObject jumpScare;
+    public GameObject jumpScareImage;
 
     private bool hasSpawnedImage = false;
 
@@ -14,24 +14,25 @@ public class JumpScare : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        jumpScare.SetActive(false);
+        jumpScareImage.SetActive(false);
     }
 
     public void SpawnImage()
     {
         if (!hasSpawnedImage)
         {
-            jumpScare.SetActive(true);
+            jumpScareImage.SetActive(true);
 
-            animator.Play("JumpScare");
+            GameObject spawnedImage = Instantiate(jumpScareImage, transform.position, Quaternion.identity);
 
-            GameObject spawnedImage = Instantiate(jumpScare, transform.position, Quaternion.identity);
             AudioManager.Instance.Play("Jumpscare");
 
             StartCoroutine(DestroyImageAfterDelay(spawnedImage, imageDuration));
 
             hasSpawnedImage = true;
             ResetSpawnedFlag();
+
+            animator.Play("JumpScare");
         }
     }
 

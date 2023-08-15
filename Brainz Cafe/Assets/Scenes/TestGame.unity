@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e211665663144414194a5acc59fb7685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpScare: {fileID: 1407346888}
+  jumpScareImage: {fileID: 1407346888}
   imageDuration: 2
 --- !u!4 &110320946
 Transform:
@@ -9533,7 +9533,6 @@ MonoBehaviour:
   customerPair3: {fileID: 1218956893084428294, guid: ed3225ca36ba2534990ed36a0a72af4b, type: 3}
   customerPair4: {fileID: 1218956893084428294, guid: 4e93becdf48350e4c93cc80dff0cd48b, type: 3}
   spawnPosition: {fileID: 509236466}
-  Exit: {fileID: 0}
   checkInterval: 6
   nightModeInterval: 0
 --- !u!1 &1113456433
@@ -12353,7 +12352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 397.96002, y: -165.66992}
+  m_AnchoredPosition: {x: 397.96002, y: -165.6699}
   m_SizeDelta: {x: -1237.12, y: -470.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457432759
@@ -15831,7 +15830,7 @@ PrefabInstance:
     - target: {fileID: 4074890143663530924, guid: 06d8ae3481d299d4a83797cff3a63f1d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9d689b6e804eb6e4f9ba7d77e068bcb0, type: 3}
+      objectReference: {fileID: 21300000, guid: d925ce0cbc80f0e42876aadf33f10b0d, type: 3}
     - target: {fileID: 4074890143663530924, guid: 06d8ae3481d299d4a83797cff3a63f1d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -15958,8 +15957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemUI: {fileID: 362554533}
   image: {fileID: 1331160385}
-  sp_default: {fileID: 21300000, guid: 9d689b6e804eb6e4f9ba7d77e068bcb0, type: 3}
-  sp_highlight: {fileID: 21300000, guid: 8b8f163371bbc1b4684b15041cccc07c, type: 3}
+  sp_default: {fileID: 21300000, guid: d925ce0cbc80f0e42876aadf33f10b0d, type: 3}
+  sp_highlight: {fileID: 21300000, guid: 571b360c834d7cd4c91853e0215f6ea2, type: 3}
 --- !u!1 &1926748490
 GameObject:
   m_ObjectHideFlags: 0
