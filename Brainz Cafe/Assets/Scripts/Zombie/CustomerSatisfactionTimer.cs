@@ -149,7 +149,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             }
             if (isAttacking)
             {
-                if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
+                if (CustomerInteraction.foodName == null)
                 {
                     if (!isCalled)
                     {
@@ -478,6 +478,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private IEnumerator LeaveAfterDelay(float delay)
     {
         StopAtk();
+        animator.SetBool("isIdle", true);
         
         yield return new WaitForSeconds(delay);
         
