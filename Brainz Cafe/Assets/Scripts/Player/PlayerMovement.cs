@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public bool isStunned;
+    [SerializeField]
+    float stunDura;
+    private float stunTimer;
+
     public float walkSpeed = 5f;
     float normSpeed;
     [HideInInspector]
@@ -54,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
 
+        Stunned();
         SpeedPill();
 
         // Check if the player is moving
@@ -120,6 +126,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(0f, 0f);
+        }
+    }
+
+    public void Stunned()
+    {
+        if (isStunned && stunTimer < stunDura)
+        {
+            stunTimer += Time.deltaTime;
+        }
+        else if (isStunned && stunTimer >= stunDura)
+        {
+            walkSpeed = normSpeed;
         }
     }
 

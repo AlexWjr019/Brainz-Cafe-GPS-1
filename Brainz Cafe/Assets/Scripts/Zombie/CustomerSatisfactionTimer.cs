@@ -8,6 +8,9 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 {
     CustomerAI ai;
     CustomerSpawner cs;
+    PlayerMovement pm;
+
+    Animator animator;
 
     //ALL ZOMBIE SHARED CODE
     public Image timer_radial_image;
@@ -15,6 +18,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     public float max_time = 5.0f;
     private bool isSitting = false; // Flag to track if the customer is sitting
     private bool isLeaving = false;
+    private bool isCalled = false;
 
     public bool isAttacking = false; // Flag to track if the customer is currently chasing the player
 
@@ -23,17 +27,13 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     //DAMAGE CODE ONLY NORMAL ZOMBIE AND BRUTE ZOMBIE USED, OTHERS NO NEED
     public float dmgRate = 1f; // Rate at which damage is applied to the table
-    private float dmgTimer = 0f; // Timer to track the time since the last damage
     public float dmgAmt = 0f;
 
-    //private Transform player; // Reference to the player's transform
-    //private float destroyTimer = 0f;
     [SerializeField] private float leaveDelay = 3f;
     public CustomerInteraction CustomerInteraction;
 
     //DAMAGE CODE ONLY NORMAL ZOMBIE AND BRUTE ZOMBIE USED, OTHERS NO NEED
     private Coroutine dmgCoroutine; // Reference to the damage coroutine
-    //private bool shouldDamageTable = true; // Flag to track if the customer should damage the table
 
     public int moneyDrop;
     public float deductionInterval = 5f;
@@ -60,35 +60,29 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private float fillSpeed = 7.0f; // Speed at which the fill amount increases (you can adjust this value)
 
     //Normal Zombie Attack Animation
-    Animator NormalAttackAnimator;
     string NormalcurrentState;
     const string NORMALZOMBIE_ATTACKING = "NZombieAttackingAnimation";
-    //const string NORMALZOMBIE_STANDING = "NZombieStandingAnimation";
 
     //Brute Zombie Attack Animation
-    Animator BruteAttackAnimator;
     string BrutecurrentState;
     const string BRUTEZOMBIE_ATTACKING = "BruteZombieAttackingAnimation";
 
     //Acid Zombie Attack Animation
-    Animator AcidAttackAnimator;
     string AcidcurrentState;
     const string ACIDZOMBIE_ATTACKING = "AcidZombieAttackingAnimation";
-
-    private bool isRepeatingAttackAnimation = false;
 
     void Start()
     {
         ai = GetComponent<CustomerAI>();
         cs = FindObjectOfType<CustomerSpawner>();
+        pm = FindObjectOfType<PlayerMovement>();
+        CustomerInteraction = GetComponent<CustomerInteraction>();
 
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
         timer_radial_image.fillAmount = 0.0f; // Set the initial fill amount to 0
 
-        NormalAttackAnimator = gameObject.GetComponent<Animator>();
-        BruteAttackAnimator = gameObject.GetComponent<Animator>();
-        AcidAttackAnimator = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
 
         //Clown Zombie Code
         GameObject jumpScareObject = GameObject.FindGameObjectWithTag("JumpScare");
@@ -111,8 +105,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             Debug.LogWarning("TileSpawner object not found with tag: TileSpawner");
         }
-
-        CustomerInteraction = GetComponent<CustomerInteraction>();
     }
 
     void Update()
@@ -125,7 +117,13 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (CustomerInteraction.foodName == null)
                     {
-                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        if (!isCalled)
+                        {
+                            if (!isCalled)
+                            {
+                                StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            }
+                        }
                     }
                     else
                     {
@@ -144,13 +142,19 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (!isAttacking)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime);
+                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
                     }
                     else if (isAttacking)
                     {
                         if (CustomerInteraction.foodName == null)
                         {
-                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            if (!isCalled)
+                            {
+                                if (!isCalled)
+                                {
+                                    StartCoroutine(LeaveAfterDelay(leaveDelay));
+                                }
+                            }
                         }
                     }
                 }
@@ -165,7 +169,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                     {
-                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        if (!isCalled)
+                        {
+                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        }
                     }
                     else
                     {
@@ -184,13 +191,16 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (!isAttacking)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime);
+                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
                     }
                     else if (isAttacking)
                     {
                         if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                         {
-                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            if (!isCalled)
+                            {
+                                StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            }
                         }
                     }
                 }
@@ -205,7 +215,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                     {
-                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        if (!isCalled)
+                        {
+                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        }
                     }
                     else
                     {
@@ -231,7 +244,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (!isAttacking)
                     {
-                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime);
+                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
                     }
                 }
             }
@@ -239,7 +252,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             {
                 if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                 {
-                    StartCoroutine(LeaveAfterDelay(leaveDelay));
+                    if (!isCalled)
+                    {
+                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                    }
                 }
             }
         }
@@ -252,7 +268,10 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 {
                     if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                     {
-                        StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        if (!isCalled)
+                        {
+                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                        }
                     }
                     else
                     {
@@ -269,28 +288,18 @@ public class CustomerSatisfactionTimer : MonoBehaviour
                 }
                 else
                 {
-                    if (jumpscare)
-                    {
-                        StartJumpScare();
-                        StartCoroutine(DeductPointsOverTime(deductionInterval, deductionAmount));
-                    }
-
                     if (!isAttacking)
                     {
-                        //StartAttack();
-                        //DestroyCustomer();
-                        //jumpscareImage.SetActive(true);
-                        //jumpscare player with a fade in and fade out screen and steal point from player
-                        if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
-                        {
-                            StartCoroutine(LeaveAfterDelay(leaveDelay));
-                        }
+                        StartAtk(dmgRate, spitSpawnDelay, constSpitTime, deductionInterval, deductionAmount);
                     }
                     if (isAttacking)
                     {
                         if (CustomerInteraction.foodName == null && CustomerInteraction.foodName2 == null)
                         {
-                            StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            if (!isCalled)
+                            {
+                                StartCoroutine(LeaveAfterDelay(leaveDelay));
+                            }
                         }
                     }
                 }
@@ -321,6 +330,27 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         fillCoroutine = null; // Reset the coroutine reference
     }
 
+    private IEnumerator ContinuousDamageTable(float dmgRate)
+    {
+        while (true)
+        {
+            if (normalZombie)
+            {
+                Debug.Log("dmg");
+                changeAnimationState(NORMALZOMBIE_ATTACKING);
+                DamageTable();
+            }
+            else if (bruteZombie)
+            {
+                Debug.Log("dmg");
+                changeAnimationState(BRUTEZOMBIE_ATTACKING);
+                DamageTable();
+            }
+
+            yield return new WaitForSeconds(dmgRate);
+        }
+    }
+
     private IEnumerator AcidZombieAttackRoutine(float spawnDelay, float spitTime)
     {
         while (true)
@@ -333,43 +363,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    private IEnumerator ContinuousDamageTable(float dmgRate)
-    {
-        while (true)
-        {
-            if (normalZombie)
-            {
-                changeAnimationState(NORMALZOMBIE_ATTACKING);
-                DamageTable();
-            }
-            else if (bruteZombie)
-            {
-                changeAnimationState(BRUTEZOMBIE_ATTACKING);
-                DamageTable();
-            }
-
-            yield return new WaitForSeconds(dmgRate);
-        }
-    }
-
-    //Clown Zombie Behaviour
-    private void SpawnImageForPlayer()
-    {
-        jumpscareImage.SpawnImage();
-        jumpscare = false;
-    }
-
-    //Clown Zombie Behaviour
-    public void StartJumpScare()
-    {
-        if (jumpscare) // Check if the jumpscare is true
-        {
-            SpawnImageForPlayer();
-            jumpscare = false; // Set jumpscare to false after spawning the image
-        }
-    }
-
-    //Clown Zombie Behaviour
     IEnumerator DeductPointsOverTime(float interval, int amount)
     {
         while(true)
@@ -411,11 +404,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         {
             isSitting = true;
             StartCoroutine(StartTimerAfterDelay(2f)); // Start the timer after a 2-second delay
-
-            if (ClownZombie)
-            {
-                jumpscare = true;
-            }
         }
 
         if (collision.gameObject.CompareTag("Exit"))
@@ -437,10 +425,17 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         }
     }
 
-    public void StartAtk(float dmgRate, float spawnDelay, float spitTime)
+    public void StartAtk(float dmgRate, float spawnDelay, float spitTime, float interval, int amount)
     {
         isAttacking = true;
 
+        if (ClownZombie)
+        {
+            jumpscareImage.SpawnImage();
+            pm.walkSpeed = 0f;
+            pm.isStunned = true;
+            dmgCoroutine = StartCoroutine(DeductPointsOverTime(interval, amount));
+        }
         if (acidZombie)
         {
             dmgCoroutine = StartCoroutine(AcidZombieAttackRoutine(spawnDelay, spitTime));
@@ -454,8 +449,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private void StopAtk()
     {
         isAttacking = false;
-
-        CurrencyManager.Instance.AddMoney(moneyDrop);
 
         if (dmgCoroutine != null)
         {
@@ -484,10 +477,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     {        
         StopAtk();
 
+        AudioManager.Instance.Play("CustomerEat");
+
         yield return new WaitForSeconds(delay);
 
         ai.reachedEndOfPath = false;
         ai.target = cs.spawnPosition;
+        ai.animator.SetBool("IsWalking", true);
+        ai.animator.SetBool("isFacingRight", false);
         isLeaving = true;
     }
 
@@ -499,7 +496,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (NormalcurrentState == newState) return;
 
             //Play new animation
-            NormalAttackAnimator.Play(newState);
+            animator.Play(newState);
 
             //Update current state
             NormalcurrentState = newState;
@@ -511,7 +508,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (BrutecurrentState == newState) return;
 
             //Play new animation
-            BruteAttackAnimator.Play(newState);
+            animator.Play(newState);
 
             //Update current state
             BrutecurrentState = newState;
@@ -523,10 +520,15 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (AcidcurrentState == newState) return;
 
             //Play new animation
-            AcidAttackAnimator.Play(newState);
+            animator.Play(newState);
 
             //Update current state
             AcidcurrentState = newState;
         }
+    }
+
+    private void OnDestroy()
+    {
+        CurrencyManager.Instance.AddMoney(moneyDrop);
     }
 }

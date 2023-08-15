@@ -60,7 +60,7 @@ public class CustomerAI : MonoBehaviour
     {
         if (reachedEndOfPath || path == null)
         {
-            
+            animator.SetBool("IsWalking", false);
             return;
         }
         if (currentWayPoint >= path.vectorPath.Count)
@@ -83,6 +83,15 @@ public class CustomerAI : MonoBehaviour
         if (distance < nextWayPointDistance)
         {
             currentWayPoint++;
+        }
+
+        if (rb.velocity.x > 0.01f)
+        {
+            animator.SetBool("isFacingRight", true);
+        }
+        else if (rb.velocity.x < -0.01f)
+        {
+            animator.SetBool("isFacingRight", false);
         }
     }
 

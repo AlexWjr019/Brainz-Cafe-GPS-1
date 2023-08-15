@@ -174,12 +174,9 @@ public class Timer : MonoBehaviour
 
     private void DarkMode()
     {
-        //if(isDarkMode)
-        //{
-            cs.checkInterval = cs.nightModeInterval;
+        cs.checkInterval = cs.nightModeInterval;
             
-            StartCoroutine(FadeInCanvas());
-        //}
+        StartCoroutine(FadeInCanvas());
     }
 
     private IEnumerator FadeInCanvas()
