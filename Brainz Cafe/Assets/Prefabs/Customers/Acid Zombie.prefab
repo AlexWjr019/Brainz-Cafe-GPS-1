@@ -483,7 +483,7 @@ MonoBehaviour:
   jumpscare: {fileID: 0}
   tileSpawner: {fileID: 0}
   constSpitTime: 7
-  spitSpawnDelay: 0
+  spitSpawnDelay: 1.5
 --- !u!95 &42583204692176768
 Animator:
   serializedVersion: 4

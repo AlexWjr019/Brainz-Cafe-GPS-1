@@ -14,7 +14,8 @@ public class CustomerSpawner : MonoBehaviour
     public float nightModeInterval;
     private float timer = 0f; // Timer to track the elapsed time
 
-    private bool isSpawningAllowed = true;
+    [HideInInspector]
+    public bool isSpawningAllowed = true;
 
     private void OnEnable()
     {

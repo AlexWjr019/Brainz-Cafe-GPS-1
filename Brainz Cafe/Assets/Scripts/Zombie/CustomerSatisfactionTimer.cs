@@ -23,14 +23,15 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     public bool isAttacking = false; // Flag to track if the customer is currently chasing the player
 
-    public string playerTag = "Chairs"; // Tag of the player object
     public float moveSpeed = 5f; // Speed at which the customer moves towards the player
 
     //DAMAGE CODE ONLY NORMAL ZOMBIE AND BRUTE ZOMBIE USED, OTHERS NO NEED
     public float dmgRate = 1f; // Rate at which damage is applied to the table
     public float dmgAmt = 0f;
 
-    [SerializeField] private float leaveDelay = 3f;
+    [SerializeField] 
+    private float leaveDelay = 3f;
+    [HideInInspector]
     public CustomerInteraction CustomerInteraction;
 
     //DAMAGE CODE ONLY NORMAL ZOMBIE AND BRUTE ZOMBIE USED, OTHERS NO NEED
@@ -49,7 +50,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
     //Clown Zombie Behaviour 
     public JumpScare jumpscare;
-    //public bool jumpscare = false;
 
     //Acid Zombie Behaviour
     public TileSpawner tileSpawner;
@@ -60,17 +60,17 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private Coroutine fillCoroutine; // Reference to the fill coroutine
     private float fillSpeed = 7.0f; // Speed at which the fill amount increases (you can adjust this value)
 
-    //Normal Zombie Attack Animation
-    string NormalcurrentState;
-    const string NORMALZOMBIE_ATTACKING = "NZombieAttackingAnimation";
+    ////Normal Zombie Attack Animation
+    //string NormalcurrentState;
+    //const string NORMALZOMBIE_ATTACKING = "NZombieAttackingAnimation";
 
-    //Brute Zombie Attack Animation
-    string BrutecurrentState;
-    const string BRUTEZOMBIE_ATTACKING = "BruteZombieAttackingAnimation";
+    ////Brute Zombie Attack Animation
+    //string BrutecurrentState;
+    //const string BRUTEZOMBIE_ATTACKING = "BruteZombieAttackingAnimation";
 
-    //Acid Zombie Attack Animation
-    string AcidcurrentState;
-    const string ACIDZOMBIE_ATTACKING = "AcidZombieAttackingAnimation";
+    ////Acid Zombie Attack Animation
+    //string AcidcurrentState;
+    //const string ACIDZOMBIE_ATTACKING = "AcidZombieAttackingAnimation";
 
     void Start()
     {
@@ -78,7 +78,7 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         cs = FindObjectOfType<CustomerSpawner>();
         pm = FindObjectOfType<PlayerMovement>();
         CustomerInteraction = GetComponent<CustomerInteraction>();
-        animator = gameObject.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         time_remaining = max_time;
         timer_radial_image.gameObject.SetActive(true); // Deactivate the image at the start
@@ -340,13 +340,13 @@ public class CustomerSatisfactionTimer : MonoBehaviour
             if (normalZombie)
             {
                 Debug.Log("dmg");
-                changeAnimationState(NORMALZOMBIE_ATTACKING);
+                animator.SetBool("isAttacking", true);
                 DamageTable();
             }
             else if (bruteZombie)
             {
                 Debug.Log("dmg");
-                changeAnimationState(BRUTEZOMBIE_ATTACKING);
+                animator.SetBool("isAttacking", true);
                 DamageTable();
             }
 
@@ -358,10 +358,18 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     {
         while (true)
         {
-            changeAnimationState(ACIDZOMBIE_ATTACKING);
+            animator.SetBool("isIdle", false);
+            animator.SetBool("isAttacking", true);
+
             AudioManager.Instance.Play("AcidSpit");
+
             yield return new WaitForSeconds(spawnDelay);
+
             tileSpawner.SpawnTile();
+
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isAttacking", false);
+
             yield return new WaitForSeconds(spitTime);
         }
     }
@@ -450,6 +458,8 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     public void StopAtk()
     {
         isAttacking = false;
+        animator.SetBool("isIdle", true);
+        animator.SetBool("isAttacking", false);
         AudioManager.Instance.Play("CustomerEat");
 
         if (dmgCoroutine != null)
@@ -478,7 +488,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
     private IEnumerator LeaveAfterDelay(float delay)
     {
         StopAtk();
-        animator.SetBool("isIdle", true);
         
         yield return new WaitForSeconds(delay);
         
@@ -489,44 +498,44 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         isLeaving = true;
     }
 
-    void changeAnimationState(string newState)
-    {
-        if (normalZombie)
-        {
-            // Stop animation from interrupting itself
-            if (NormalcurrentState == newState) return;
+    //void changeAnimationState(string newState)
+    //{
+    //    if (normalZombie)
+    //    {
+    //        // Stop animation from interrupting itself
+    //        if (NormalcurrentState == newState) return;
 
-            //Play new animation
-            animator.Play(newState);
+    //        //Play new animation
+    //        animator.Play(newState);
 
-            //Update current state
-            NormalcurrentState = newState;
-        }
+    //        //Update current state
+    //        NormalcurrentState = newState;
+    //    }
 
-        if (bruteZombie)
-        {
-            // Stop animation from interrupting itself
-            if (BrutecurrentState == newState) return;
+    //    if (bruteZombie)
+    //    {
+    //        // Stop animation from interrupting itself
+    //        if (BrutecurrentState == newState) return;
 
-            //Play new animation
-            animator.Play(newState);
+    //        //Play new animation
+    //        animator.Play(newState);
 
-            //Update current state
-            BrutecurrentState = newState;
-        }
+    //        //Update current state
+    //        BrutecurrentState = newState;
+    //    }
 
-        if(acidZombie)
-        {
-            // Stop animation from interrupting itself
-            if (AcidcurrentState == newState) return;
+    //    if(acidZombie)
+    //    {
+    //        // Stop animation from interrupting itself
+    //        if (AcidcurrentState == newState) return;
 
-            //Play new animation
-            animator.Play(newState);
+    //        //Play new animation
+    //        animator.Play(newState);
 
-            //Update current state
-            AcidcurrentState = newState;
-        }
-    }
+    //        //Update current state
+    //        AcidcurrentState = newState;
+    //    }
+    //}
 
     private void OnDestroy()
     {

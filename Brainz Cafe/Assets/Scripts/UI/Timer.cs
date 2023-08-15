@@ -29,8 +29,8 @@ public class Timer : MonoBehaviour
 
     [SerializeField]
     CustomerSpawner cs;
-    [SerializeField]
-    GameObject customerSpawnObject;
+    //[SerializeField]
+    //GameObject customerSpawnObject;
     [SerializeField]
     GameObject foodSpawnObject;
     [SerializeField]
@@ -118,21 +118,23 @@ public class Timer : MonoBehaviour
         else
         {
             timerTxt.text = string.Format("{0:00} : {1:00}", min, sec);
-            if (min == 12 && sec == 0)
-            {
-                playerBreakTime = true;
+            //if (min == 12 && sec == 0)
+            //{
+            //    playerBreakTime = true;
 
-                Debug.Log("Player Break Time"); // Display break time message
+            //    Debug.Log("Player Break Time"); // Display break time message
 
-                customerSpawnObject.SetActive(false);
-            }
+            //    cs.isSpawningAllowed = false;
+            //    //customerSpawnObject.SetActive(false);
+            //}
             if (min == 13 && sec == 0)
             {
                 playerBreakTime = false;
 
                 Debug.Log("Player Afternoon shift"); // Display break time message
 
-                customerSpawnObject.SetActive(true);
+                cs.isSpawningAllowed = true;
+                //customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
                 SpecialEvents.SetActive(true);
             }
@@ -142,7 +144,8 @@ public class Timer : MonoBehaviour
 
                 Debug.Log("Player Break Time"); // Display break time message
 
-                customerSpawnObject.SetActive(false);
+                cs.isSpawningAllowed = false;
+                //customerSpawnObject.SetActive(false);
                 SpecialEvents.SetActive(false);
             }
 
@@ -159,11 +162,13 @@ public class Timer : MonoBehaviour
 
                 AudioManager.Instance.PlayBGM("NightBGM");
 
-                customerSpawnObject.SetActive(true);
+                cs.isSpawningAllowed = true;
+                //customerSpawnObject.SetActive(true);
                 foodSpawnObject.SetActive(true);
                 SpecialEvents.SetActive(true);
                 darkMode.SetActive(true);
                 //isDarkMode = true;
+
                 DarkMode();
                 clockImage.color = Color.gray;
 

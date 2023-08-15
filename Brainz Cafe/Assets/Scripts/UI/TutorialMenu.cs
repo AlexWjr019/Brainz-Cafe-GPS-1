@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class TutorialMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    CustomerSpawner cs;
+
+    [SerializeField]
+    Timer timer;
+
     void Start()
     {
-        Time.timeScale = 0f;
+        cs.gameObject.SetActive(false);
+        timer.timerOn = false;
     }
     
     public void StartGame()
     {
-        Time.timeScale = 1f;
+        cs.gameObject.SetActive(true);
+        timer.timerOn = true;
     }
 }
