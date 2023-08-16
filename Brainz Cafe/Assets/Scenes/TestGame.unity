@@ -10811,7 +10811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bi: {fileID: 1457432762}
   isStunned: 0
-  stunDura: 0
+  stunDura: 2
   walkSpeed: 4
   tempSpeed: 0
   isSlowedDown: 0
@@ -12444,8 +12444,8 @@ MonoBehaviour:
   PM: {fileID: 1307916384}
   cookButton: {fileID: 975321714}
   cookText: {fileID: 970759582}
-  cookPrice: 40
-  cookPriceIncease: 20
+  cookPrice: 50
+  cookPriceIncease: 30
   cookTimeDecrease: 0.4
   barrierButton: {fileID: 1937070422}
   barrierText: {fileID: 1758311386}
