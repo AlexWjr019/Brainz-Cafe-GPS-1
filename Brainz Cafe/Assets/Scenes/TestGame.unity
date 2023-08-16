@@ -1761,6 +1761,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_text
+      value: Buy chef some fancy new equipment, increase cooking speed by 0.4 each
+        time
+      objectReference: {fileID: 0}
+    - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 113d00344388760419b9cfbbaebf4217, type: 2}
@@ -8237,6 +8242,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_text
+      value: Upgrade the table with reinforced steel, quite durable and heavy. Increased
+        the table durability by 150HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 113d00344388760419b9cfbbaebf4217, type: 2}
@@ -9161,8 +9171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 803.93, y: -473}
-  m_SizeDelta: {x: 283.89, y: 97.46}
+  m_AnchoredPosition: {x: 769.43, y: -473}
+  m_SizeDelta: {x: 352.9, y: 97.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032795113
 MonoBehaviour:
@@ -12453,6 +12463,7 @@ MonoBehaviour:
   pillText: {fileID: 56269449}
   pillPrice: 60
   boostDuration: 15
+  pillBoostPercent: 1.4
   boost: 0
   poisonButton: {fileID: 222440444}
   poisonText: {fileID: 1718275221}
@@ -16590,9 +16601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_text
-      value: 'Fully fix all damaged barrier
-
-'
+      value: Fully fix all damaged barrier
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset
@@ -17438,7 +17447,7 @@ PrefabInstance:
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_text
       value: Inject yourself with the some fancy "Juice". Increase your speed by
-        30%
+        40%
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset
@@ -18605,6 +18614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065612585}
     m_Modifications:
+    - target: {fileID: 165598112702385982, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d925ce0cbc80f0e42876aadf33f10b0d, type: 3}
     - target: {fileID: 531966957672162777, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18699,7 +18712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_text
-      value: Decreases DMG from customers to the barrier
+      value: Reduce zombie damage to barrier by 50%
       objectReference: {fileID: 0}
     - target: {fileID: 531966957798019846, guid: d3616ef410da7bf4fba5c2b6d9e84d2e, type: 3}
       propertyPath: m_fontAsset

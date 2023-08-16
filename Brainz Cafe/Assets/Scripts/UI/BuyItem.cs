@@ -37,6 +37,7 @@ public class BuyItem : MonoBehaviour
     [SerializeField] TMP_Text pillText; 
     [SerializeField] int pillPrice;
     [SerializeField] public int boostDuration;
+    [SerializeField] float pillBoostPercent;
     [HideInInspector] public bool boost;
 
     [SerializeField] Button poisonButton;
@@ -155,7 +156,7 @@ public class BuyItem : MonoBehaviour
 
             if (!boost)
             {
-                PM.walkSpeed *= 1.40f;
+                PM.walkSpeed *= pillBoostPercent;
                 PM.tempSpeed = PM.walkSpeed;
                 boost = true;
             }
