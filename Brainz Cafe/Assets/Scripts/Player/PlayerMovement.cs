@@ -138,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         else if (isStunned && stunTimer >= stunDura)
         {
             walkSpeed = normSpeed;
+            isStunned = false;
         }
     }
 
