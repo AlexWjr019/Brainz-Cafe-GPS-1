@@ -390,13 +390,12 @@ MonoBehaviour:
   time_remaining: 0
   max_time: 40
   isAttacking: 0
-  playerTag: Player
   moveSpeed: 5
-  dmgRate: 1
+  dmgRate: 2
   dmgAmt: 10
   leaveDelay: 3
   CustomerInteraction: {fileID: 0}
-  moneyDrop: 30
+  moneyDrop: 35
   deductionInterval: 5
   deductionAmount: 5
   normalZombie: 0

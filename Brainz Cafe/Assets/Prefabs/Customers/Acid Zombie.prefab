@@ -472,7 +472,7 @@ MonoBehaviour:
   dmgAmt: 0
   leaveDelay: 3
   CustomerInteraction: {fileID: 0}
-  moneyDrop: 15
+  moneyDrop: 20
   deductionInterval: 5
   deductionAmount: 5
   normalZombie: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   ClownZombie: 0
   jumpscare: {fileID: 0}
   tileSpawner: {fileID: 0}
-  constSpitTime: 10
+  constSpitTime: 9
   spitSpawnDelay: 1.5
 --- !u!95 &42583204692176768
 Animator:

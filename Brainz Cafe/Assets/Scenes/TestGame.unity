@@ -12444,12 +12444,12 @@ MonoBehaviour:
   PM: {fileID: 1307916384}
   cookButton: {fileID: 975321714}
   cookText: {fileID: 970759582}
-  cookPrice: 50
+  cookPrice: 40
   cookPriceIncease: 20
   cookTimeDecrease: 0.4
   barrierButton: {fileID: 1937070422}
   barrierText: {fileID: 1758311386}
-  barrierPrice: 200
+  barrierPrice: 150
   healthIncrease: 150
   minHealthPercentage: 0.99
   upgrades:
@@ -12457,17 +12457,17 @@ MonoBehaviour:
   upgradedTable: -1
   repairButton: {fileID: 2046228568}
   repairText: {fileID: 2049140591}
-  repairPrice: 130
+  repairPrice: 100
   repairPriceIncease: 20
   pillButton: {fileID: 1525677342}
   pillText: {fileID: 56269449}
-  pillPrice: 70
+  pillPrice: 50
   boostDuration: 20
   pillBoostPercent: 1.5
   boost: 0
   poisonButton: {fileID: 222440444}
   poisonText: {fileID: 1718275221}
-  poisonPrice: 150
+  poisonPrice: 90
   poisonDuration: 25
   poisoned: 0
 --- !u!1 &1464397968
@@ -18806,6 +18806,10 @@ PrefabInstance:
     - target: {fileID: 2663627401374733097, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
       propertyPath: sounds.Array.data[22].loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663627401374733097, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 0.497
       objectReference: {fileID: 0}
     - target: {fileID: 2663627401374733099, guid: 8590f863ed4742341b28d39f4bdb45a3, type: 3}
       propertyPath: m_Name

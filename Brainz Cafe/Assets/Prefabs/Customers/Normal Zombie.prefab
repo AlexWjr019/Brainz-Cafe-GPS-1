@@ -392,7 +392,7 @@ MonoBehaviour:
   dmgAmt: 3
   leaveDelay: 3
   CustomerInteraction: {fileID: 0}
-  moneyDrop: 10
+  moneyDrop: 15
   deductionInterval: 5
   deductionAmount: 5
   normalZombie: 1
