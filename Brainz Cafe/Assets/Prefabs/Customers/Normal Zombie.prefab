@@ -387,9 +387,8 @@ MonoBehaviour:
   time_remaining: 0
   max_time: 30
   isAttacking: 0
-  playerTag: Chairs
   moveSpeed: 5
-  dmgRate: 1
+  dmgRate: 2
   dmgAmt: 3
   leaveDelay: 3
   CustomerInteraction: {fileID: 0}
