@@ -12,44 +12,31 @@ public class CustomerSpawner : MonoBehaviour
 
     public float checkInterval = 4f; // Interval in seconds to check for customer presence
     public float nightModeInterval;
-    private float timer = 0f; // Timer to track the elapsed time
 
     [HideInInspector]
     public bool isSpawningAllowed = true;
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(SpawnCustomersRoutine());
+        StartCoroutine(SpawnCustomersRoutine(checkInterval));
     }
 
+    private void OnDisable()
+    {
+        isSpawningAllowed = false;
+    }
 
-    //private void OnEnable()
-    //{
-    //    isSpawningAllowed = true;
-    //    StartCoroutine(SpawnCustomersRoutine());
-    //}
-
-    //private void OnDisable()
-    //{
-    //    isSpawningAllowed = false;
-    //}
-
-    private IEnumerator SpawnCustomersRoutine()
+    private IEnumerator SpawnCustomersRoutine(float checkInterval)
     {
         while (true)
         {
             if (isSpawningAllowed)
             {
-                timer += Time.deltaTime;
+                yield return new WaitForSeconds(checkInterval);
 
-                if (timer >= checkInterval)
+                if (!IsStartPointOccupied())
                 {
-                    timer = 0f;
-
-                    if (!IsStartPointOccupied())
-                    {
-                        SpawnCustomers();
-                    }
+                    SpawnCustomers();
                 }
             }
             yield return null;

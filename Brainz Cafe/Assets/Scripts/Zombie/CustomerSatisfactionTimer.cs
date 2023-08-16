@@ -363,12 +363,14 @@ public class CustomerSatisfactionTimer : MonoBehaviour
 
             AudioManager.Instance.Play("AcidSpit");
 
-            yield return new WaitForSeconds(spawnDelay);
-
-            tileSpawner.SpawnTile();
+            yield return new WaitForSeconds(1f);
 
             animator.SetBool("isIdle", true);
             animator.SetBool("isAttacking", false);
+
+            yield return new WaitForSeconds(spawnDelay);
+
+            tileSpawner.SpawnTile();
 
             yield return new WaitForSeconds(spitTime);
         }
@@ -497,45 +499,6 @@ public class CustomerSatisfactionTimer : MonoBehaviour
         ai.reachedEndOfPath = false;
         isLeaving = true;
     }
-
-    //void changeAnimationState(string newState)
-    //{
-    //    if (normalZombie)
-    //    {
-    //        // Stop animation from interrupting itself
-    //        if (NormalcurrentState == newState) return;
-
-    //        //Play new animation
-    //        animator.Play(newState);
-
-    //        //Update current state
-    //        NormalcurrentState = newState;
-    //    }
-
-    //    if (bruteZombie)
-    //    {
-    //        // Stop animation from interrupting itself
-    //        if (BrutecurrentState == newState) return;
-
-    //        //Play new animation
-    //        animator.Play(newState);
-
-    //        //Update current state
-    //        BrutecurrentState = newState;
-    //    }
-
-    //    if(acidZombie)
-    //    {
-    //        // Stop animation from interrupting itself
-    //        if (AcidcurrentState == newState) return;
-
-    //        //Play new animation
-    //        animator.Play(newState);
-
-    //        //Update current state
-    //        AcidcurrentState = newState;
-    //    }
-    //}
 
     private void OnDestroy()
     {
