@@ -17,30 +17,39 @@ public class CustomerSpawner : MonoBehaviour
     [HideInInspector]
     public bool isSpawningAllowed = true;
 
-    private void OnEnable()
+    private void Start()
     {
-        isSpawningAllowed = true;
         StartCoroutine(SpawnCustomersRoutine());
     }
 
-    private void OnDisable()
-    {
-        isSpawningAllowed = false;
-    }
+
+    //private void OnEnable()
+    //{
+    //    isSpawningAllowed = true;
+    //    StartCoroutine(SpawnCustomersRoutine());
+    //}
+
+    //private void OnDisable()
+    //{
+    //    isSpawningAllowed = false;
+    //}
 
     private IEnumerator SpawnCustomersRoutine()
     {
-        while (isSpawningAllowed)
+        while (true)
         {
-            timer += Time.deltaTime;
-
-            if (timer >= checkInterval)
+            if (isSpawningAllowed)
             {
-                timer = 0f;
+                timer += Time.deltaTime;
 
-                if (!IsStartPointOccupied())
+                if (timer >= checkInterval)
                 {
-                    SpawnCustomers();
+                    timer = 0f;
+
+                    if (!IsStartPointOccupied())
+                    {
+                        SpawnCustomers();
+                    }
                 }
             }
             yield return null;
