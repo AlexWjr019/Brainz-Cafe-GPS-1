@@ -37,9 +37,6 @@ public class CustomerInteraction : MonoBehaviour
 
         // Find and store a reference to the FoodSpawn script
         foodSpawn = FindObjectOfType<FoodSpawn>();
-        //playercontroller = GetComponent<PlayerController>();
-
-        //timer = GetComponent<CustomerSatisfactionTimer>();
 
         pickup = FindObjectOfType<PickUp>();
         if (pickup == null)
@@ -58,7 +55,6 @@ public class CustomerInteraction : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         AudioManager.Instance.Play("FoodCook");
-        //menuImage.SetActive(true);
         ShowRandomFoodImage(); // Show a random food image
         ShowRandomFoodImage2();
         hasShownFoodImage = true; // Set the flag to true
@@ -80,7 +76,6 @@ public class CustomerInteraction : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Chairs"))
         {
-            //isCustomerStopMoving = false;
             // Reset the food image flag
             hasShownFoodImage = false;
             hasShownFoodImage2 = false;
@@ -140,7 +135,6 @@ public class CustomerInteraction : MonoBehaviour
             foodImage2.SetActive(isActive);
         }
     }
-
 
     //NEW ADDED
     private void DropOffFood()

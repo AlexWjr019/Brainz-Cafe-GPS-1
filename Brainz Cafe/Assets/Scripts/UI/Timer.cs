@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
     public float fadeDuration = 2.0f; // Time in seconds to fade from 0 to 0.98
     public CanvasGroup canvasGroup;
     private float targetAlpha = 0.98f;
-    private bool isDarkMode = false;
+    //private bool isDarkMode = false;
 
     void Start()
     {
@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
         nightShift = false;
         canvasGroup = darkMode.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f; // Start with alpha 0
-        isDarkMode = false;
+        //isDarkMode = false;
     }
 
     void Update()

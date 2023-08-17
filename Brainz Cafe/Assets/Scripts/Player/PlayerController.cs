@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    //private Rigidbody2D rb;
     private bool isFacingLeft;
     public float customerDetectionDistance = 5f;
     public LayerMask customerLayer;
@@ -13,13 +13,10 @@ public class PlayerController : MonoBehaviour
 
     private bool canBeDestroyed = false;
 
-    //[SerializeField] private AudioSource throwingFoodSoundEffect;
-    //[SerializeField] private AudioSource servingFoodSoundEffect;
-
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -33,11 +30,11 @@ public class PlayerController : MonoBehaviour
         if (customerHit)
         {
             CustomerInteraction customerAction = customerHit.collider.gameObject.GetComponent<CustomerInteraction>();
-            PickUp pickUp = customerHit.collider.gameObject.GetComponent<PickUp>();
+            //PickUp pickUp = customerHit.collider.gameObject.GetComponent<PickUp>();
 
             if (customerAction != null && !customerAction.menuImage.activeInHierarchy)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.J))
                 {
                     //servingFoodSoundEffect.Play();
                     customerAction.serveCustomer();
@@ -58,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Check if the player presses the 'E' key
-        if (canBeDestroyed && Input.GetKeyDown(KeyCode.E))
+        if (canBeDestroyed && Input.GetKeyDown(KeyCode.K))
         {
             DestroyFoodObject(); // Destroy the food object
         }
@@ -97,7 +94,6 @@ public class PlayerController : MonoBehaviour
             if (child.CompareTag("Food"))
             {
                 
-                //throwingFoodSoundEffect.Play();
                 Destroy(child.gameObject); // Destroy the food object
                 AudioManager.Instance.Play("ThrowFood");
                 return; // Exit the function to avoid destroying multiple food objects
