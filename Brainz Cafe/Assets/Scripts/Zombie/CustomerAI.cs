@@ -26,9 +26,12 @@ public class CustomerAI : MonoBehaviour
 
     public Animator animator;
 
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -106,6 +109,8 @@ public class CustomerAI : MonoBehaviour
                     target = chairs[i].transform;
                     tempChair = chairs[i];
                     tempChair.isOccupied = true;
+
+                    spriteRenderer.sortingOrder = chairs[i].sr.sortingOrder;
                     
                     animator.SetBool("IsWalking", true);
 
